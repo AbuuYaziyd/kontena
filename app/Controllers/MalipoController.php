@@ -64,10 +64,13 @@ class MalipoController extends BaseController
         // dd($this->request->getVar());
         $malipo = new Malipo();
         $kont = new Kontena();
+        $set = new Setting();
 
         // Invoice 4mula
         $invc = $id.date('s');
         $invc = "KONT" . date("mhi") . sprintf('%05s', $invc);
+        $price = $set->find(1)['price'];
+        // dd($price); 
 
         $user = $malipo->where('user_id', $id)->orderBy('id', 'desc')->first();
         // dd($user);
@@ -81,18 +84,24 @@ class MalipoController extends BaseController
                 'amount' => $this->request->getVar('leo'),
                 'receipt' => $invc,
             ];
-        }
+            // dd($dt);
 
-        $d['idadi'] = $this->request->getVar('idadi');
-        $d['jumla'] = $this->request->getVar('price') * $this->request->getVar('idadi');
-        
-        if ($this->request->getVar('leo')) {
-            $d['paid'] = $this->request->getVar('leo')+($user['total']??0);
-            $d['risiti'] = $invc;
-            
             $malipo->save($dt);
         }
-        // dd($dt);
+
+        $d = [
+            'idadi' => $this->request->getVar('idadi'),
+            'jumla' => $price * $this->request->getVar('idadi'),
+        ];
+        
+        if ($this->request->getVar('leo')) {
+            $d = [
+                'idadi' => $this->request->getVar('idadi'),
+                'jumla' => $price * $this->request->getVar('idadi'),
+                'paid' => $this->request->getVar('leo')+($user['total']??0),
+                'risiti' => $invc,
+            ];
+        }
         // dd($d);
 
         $kont->update($id, $d);
