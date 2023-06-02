@@ -290,4 +290,20 @@ class KontenaController extends BaseController
 
         return view('kontena/print', $data);
     }
+
+    public function count()
+    {
+        $set = new Setting();
+
+        // dd($this->request->getVar());
+
+        $data = [
+            'count' => $this->request->getVar('count'),
+        ];
+        // dd($data);
+
+        $set->update(1, $data);
+
+        return redirect()->back()->with('toast', 'success')->with('message', 'Idadi ya Box Imesasishwa Kikamilifu!');
+    }
 }

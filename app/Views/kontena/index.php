@@ -11,7 +11,7 @@
                     <div class="card card-primary card-outline">
                         <div class="card-header">
                             <h3 style="align-items: center;">Kontena
-                                <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#tuma" <?= ($data['count'] <= $box ? 'disabled' : '') ?> disabled>
+                                <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#tuma" <?= ($data['count'] <= $box ? 'disabled' : '') ?>>
                                     <i class="nav-icon fas fa-paper-plane"></i> Jisajili
                                 </button>
                             </h3>

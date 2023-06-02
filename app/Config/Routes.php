@@ -48,6 +48,7 @@ $routes->group('kontena', function ($routes) {
     $routes->get('register', 'KontenaController::register');
     $routes->post('register', 'KontenaController::store');
     $routes->get('print/(:num)', 'KontenaController::print/$1');
+    $routes->post('count', 'KontenaController::count');
 });
 
 $routes->group('malipo', function ($routes) {
