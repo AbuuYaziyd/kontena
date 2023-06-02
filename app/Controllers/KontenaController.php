@@ -21,9 +21,9 @@ class KontenaController extends BaseController
         $data['out'] = $kont->where('jamia', 'mgeni')->countAllResults();
         $data['in'] = $kont->where('jamia!=', 'mgeni')->countAllResults();
         $data['data'] = $set->where('set', 'kontena')->first();
-        $data['total'] = $kont->countAll();
+        $data['total'] = $kont->where('idadi>=', 1)->countAllResults();
         $data['baki'] = $kont->where('paid<jumla')->countAllResults();
-        $data['maliza'] = $kont->where('paid=jumla')->countAllResults();
+        $data['maliza'] = $kont->where(['paid=jumla', 'paid!='=>0])->countAllResults();
         $data['box'] = $kont->selectSum('idadi')->get()->getRow()->idadi;
         // dd($data);
 

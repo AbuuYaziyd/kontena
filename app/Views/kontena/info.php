@@ -15,7 +15,7 @@
     <div class="small-box bg-success">
         <div class="inner">
             <h3><?= $maliza ?><sub style="font-size: 20px"> <i class="fas fa-thumbs-up"></i></sub></h3>
-            <p>Waliomaliza Malipo</p>
+            <p>Waliolipa</p>
         </div>
         <div class="icon">
             <i class="fas fa-box-open"></i>

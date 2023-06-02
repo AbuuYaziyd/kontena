@@ -89,7 +89,7 @@
                 </div>
               </div>
                 <?php endif ?>
-              <?php if ($kont['jumla']!=$kont['paid']) : ?>
+              <?php if ($kont['jumla']!=$kont['paid'] || $kont['idadi']<1) : ?>
               <div class="row" style="text-align: center;">
                 <div class="col-md-6">
                   <div class="form-group">

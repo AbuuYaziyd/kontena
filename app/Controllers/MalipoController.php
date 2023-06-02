@@ -17,13 +17,27 @@ class MalipoController extends BaseController
         $set = new Setting();
         $kont = new Kontena();
 
+        
+        // $data['title'] = 'Kontena';
+        // $data['nje'] = $kont->where('jamia', 'mgeni')->findAll();
+        // $data['ndani'] = $kont->where('jamia!=', 'mgeni')->findAll();
+        // $data['out'] = $kont->where('jamia', 'mgeni')->countAllResults();
+        // $data['in'] = $kont->where('jamia!=', 'mgeni')->countAllResults();
+        // $data['data'] = $set->where('set', 'kontena')->first();
+        $data['total'] = $kont->where('idadi>=', 1)->countAllResults();
+        // $data['baki'] = $kont->where('paid<jumla')->countAllResults();
+        $data['maliza'] = $kont->where(['paid=jumla', 'paid>'=>0])->countAllResults();
+        $data['comp'] = $kont->where(['paid=jumla', 'paid>'=>0])->findAll();
+        $data['mishkila'] = $kont->where(['idadi'=>0])->findAll();
+        // $data['box'] = $kont->selectSum('idadi')->get()->getRow()->idadi;
+
         $data['title'] = 'Kontena';
-        $data['users'] = $kont->where('paid<jumla')->findAll();
-        $data['comp'] = $kont->where('paid=jumla')->findAll();
+        $data['users'] = $kont->where(['jumla>'=>0])->findAll();
+        // $data['comp'] = $kont->where(['paid=jumla', 'paid>'=>0])->findAll();
         $data['data'] = $set->where('set', 'kontena')->first();
-        $data['total'] = $kont->countAll();
+        // $data['total'] = $kont->countAll();
         $data['baki'] = $kont->where('paid<jumla')->countAllResults();
-        $data['maliza'] = $kont->where('paid=jumla')->countAllResults();
+        // $data['maliza'] = $kont->where('paid=jumla')->countAllResults();
         $data['box'] = $kont->selectSum('idadi')->get()->getRow()->idadi;
         $data['admin'] = $kont->where('role', 'admin')->get()->getFirstRow();
         // dd($data);

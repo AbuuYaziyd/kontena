@@ -146,6 +146,46 @@ Baarakallahu Fiykum!';
           </div>
         <?php endif ?>
       </div>
+      <div class="row">
+        
+        <?php if ($mishkila) : ?>
+          <div class="col-lg">
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h3>Wamesajili Kontena (Mushkila)</h3>
+              </div>
+              <div class="card-body">
+                <table class="table table-bordered table-striped dtTable">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Mhusika</th>
+                      <th>Idadi</th>
+                      <th>Mafikio</th>
+                      <th>Mpokeaji</th>
+                      <th>Lipa</th>
+                      <th>Edit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($mishkila as $key => $user) : ?>
+                      <tr>
+                        <td><?= $key + 1 ?></td>
+                        <td> <?= $user['mhusika'] ?></td>
+                        <td><?= $user['idadi'] ?></td>
+                        <td><?= $user['fikia'] ?></td>
+                        <td><?= $user['mpokeaji'] ?></td>
+                        <td><?= $user['paid'] ?></td>
+                        <td><a href="<?= base_url('malipo/make/' . $user['id']) ?>" class="btn btn-warning btn-sm"><i class="fas fa-credit-card"></i></a></td>
+                      </tr>
+                    <?php endforeach ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        <?php endif ?>
+      </div>
   </div>
 
 <div class="modal fade" id="tuma">
