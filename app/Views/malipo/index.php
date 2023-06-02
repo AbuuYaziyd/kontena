@@ -38,7 +38,6 @@
                   </thead>
                   <tbody>
                     <?php foreach ($users as $key => $user) : ?>
-                      <?php if ($user['paid']!= $user['jumla']) : ?>
                       <tr>
                         <td><?= $key + 1 ?></td>
                         <td> <?= $user['mhusika'] ?></td>
@@ -97,7 +96,6 @@ Baarakallahu Fiykum!';
                           </div>
                       </div>
                       </tr>
-                      <?php endif ?>
                     <?php endforeach ?>
                   </tbody>
                 </table>

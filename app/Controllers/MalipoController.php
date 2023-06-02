@@ -32,7 +32,7 @@ class MalipoController extends BaseController
         // $data['box'] = $kont->selectSum('idadi')->get()->getRow()->idadi;
 
         $data['title'] = 'Kontena';
-        $data['users'] = $kont->where(['jumla>'=>0])->findAll();
+        $data['users'] = $kont->where('jumla>paid')->findAll();
         // $data['comp'] = $kont->where(['paid=jumla', 'paid>'=>0])->findAll();
         $data['data'] = $set->where('set', 'kontena')->first();
         // $data['total'] = $kont->countAll();
