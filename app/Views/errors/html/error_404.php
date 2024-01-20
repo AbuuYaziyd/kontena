@@ -1,84 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <title><?= lang('Errors.pageNotFound') ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?= APP_NAME ?> | 404 Kurasa Haijapatikana!</title>
 
-    <style>
-        div.logo {
-            height: 200px;
-            width: 155px;
-            display: inline-block;
-            opacity: 0.08;
-            position: absolute;
-            top: 2rem;
-            left: 50%;
-            margin-left: -73px;
-        }
-        body {
-            height: 100%;
-            background: #fafafa;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            color: #777;
-            font-weight: 300;
-        }
-        h1 {
-            font-weight: lighter;
-            letter-spacing: normal;
-            font-size: 3rem;
-            margin-top: 0;
-            margin-bottom: 0;
-            color: #222;
-        }
-        .wrap {
-            max-width: 1024px;
-            margin: 5rem auto;
-            padding: 2rem;
-            background: #fff;
-            text-align: center;
-            border: 1px solid #efefef;
-            border-radius: 0.5rem;
-            position: relative;
-        }
-        pre {
-            white-space: normal;
-            margin-top: 1.5rem;
-        }
-        code {
-            background: #fafafa;
-            border: 1px solid #efefef;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            display: block;
-        }
-        p {
-            margin-top: 1.5rem;
-        }
-        .footer {
-            margin-top: 2rem;
-            border-top: 1px solid #efefef;
-            padding: 1em 2em 0 2em;
-            font-size: 85%;
-            color: #999;
-        }
-        a:active,
-        a:link,
-        a:visited {
-            color: #dd4814;
-        }
-    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="<?= base_url('plugins/fontawesome-free/css/all.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('asset/css/adminlte.min.css') ?>">
 </head>
-<body>
-    <div class="wrap">
-        <h1>404</h1>
 
-        <p>
-            <?php if (ENVIRONMENT !== 'production') : ?>
-                <?= nl2br(esc($message)) ?>
-            <?php else : ?>
-                <?= lang('Errors.sorryCannotFind') ?>
-            <?php endif; ?>
-        </p>
+<body class="hold-transition layout-top-nav">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="error-page col-12 px-5 py-5">
+                            <div class="error-content offset-2 px-5 py-5">
+                                <h1 class="headline text-danger display-1"> 404</h1>
+                                <h3><i class="fas fa-exclamation-triangle text-danger"></i> <b>Oops!</b> Ukurasa Haupo.</h3>
+                                <p>
+                                    <?php if (!empty($message) && $message !== '(null)') : ?>
+                                        <?= nl2br(esc($message)) ?>
+                                    <?php else : ?>
+                                        Samahani! Inavoonyesha kurasa unayoitafuta Haipo!
+                                    <?php endif ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <aside class="control-sidebar control-sidebar-dark">
+        </aside>
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-inline">
+                <a href="https://abouyaziyd.rf.gd" target="_blank"> <strong>aBy Solutions</strong></a>
+            </div>
+            <strong>Hakimiliki &copy; <?php echo date('Y'); ?> <a href="<?= base_url() ?>"><?php echo APP_NAME ?></a>.</strong>
+            Haki zote zimehifadhiwa.
+        </footer>
     </div>
+    <script src="<?= base_url('plugins/jquery/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?= base_url('asset/js/adminlte.min.js') ?>"></script>
+    <script src="<?= base_url('asset/js/demo.js') ?>"></script>
 </body>
+
 </html>
