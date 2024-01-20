@@ -25,7 +25,7 @@ class KontenaController extends BaseController
         $data['baki'] = $kont->where('paid<jumla')->countAllResults();
         $data['maliza'] = $kont->where(['paid=jumla', 'paid!='=>0])->countAllResults();
         $data['box'] = $kont->selectSum('idadi')->get()->getRow()->idadi;
-        // dd($data);
+        dd($data);
 
         return view('kontena/index', $data);
     }

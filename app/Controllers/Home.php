@@ -10,6 +10,7 @@ class Home extends BaseController
 {
     public function index()
     {
+        // dd('jhgf');
         return redirect()->to('kontena');
     }
     
