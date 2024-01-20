@@ -28,8 +28,7 @@ class Table
     /**
      * All of the fields this table represents.
      *
-     * @var array
-     * @phpstan-var array<string, array<string, bool|int|string|null>>
+     * @var array<string, array<string, bool|int|string|null>>
      */
     protected $fields = [];
 
@@ -114,7 +113,7 @@ class Table
         // if primary key index exists twice then remove psuedo index name 'primary'.
         $primaryIndexes = array_filter($this->keys, static fn ($index) => $index['type'] === 'primary');
 
-        if (! empty($primaryIndexes) && count($primaryIndexes) > 1 && array_key_exists('primary', $this->keys)) {
+        if ($primaryIndexes !== [] && count($primaryIndexes) > 1 && array_key_exists('primary', $this->keys)) {
             unset($this->keys['primary']);
         }
 
@@ -183,14 +182,14 @@ class Table
      *
      * @return Table
      */
-    public function modifyColumn(array $field)
+    public function modifyColumn(array $fields)
     {
-        $field = $field[0];
+        foreach ($fields as $field) {
+            $oldName = $field['name'];
+            unset($field['name']);
 
-        $oldName = $field['name'];
-        unset($field['name']);
-
-        $this->fields[$oldName] = $field;
+            $this->fields[$oldName] = $field;
+        }
 
         return $this;
     }

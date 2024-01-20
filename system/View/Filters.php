@@ -66,7 +66,7 @@ class Filters
      */
     public static function default($value, string $default): string
     {
-        return empty($value)
+        return empty($value) // @phpstan-ignore-line
             ? $default
             : $value;
     }
@@ -170,6 +170,8 @@ class Filters
     public static function local_currency($value, string $currency, ?string $locale = null, $fraction = null): string
     {
         helper('number');
+
+        $fraction ??= 0;
 
         $options = [
             'type'     => NumberFormatter::CURRENCY,

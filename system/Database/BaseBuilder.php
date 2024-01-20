@@ -88,8 +88,7 @@ class BaseBuilder
      * QB keys
      * list of column names.
      *
-     * @var string[]
-     * @phpstan-var list<string>
+     * @var list<string>
      */
     protected $QBKeys = [];
 
@@ -131,8 +130,7 @@ class BaseBuilder
     /**
      * QB data sets
      *
-     * @var array[]|string[]
-     * @phpstan-var array<string, string>|list<list<string|int>>
+     * @var array<string, string>|list<list<int|string>>
      */
     protected $QBSet = [];
 
@@ -164,7 +162,7 @@ class BaseBuilder
      * Holds additional options and data used to render SQL
      * and is reset by resetWrite()
      *
-     * @phpstan-var array{
+     * @var array{
      *   updateFieldsAdditional?: array,
      *   tableIdentity?: string,
      *   updateFields?: array,
@@ -173,7 +171,6 @@ class BaseBuilder
      *   sql?: string,
      *   alias?: string
      * }
-     * @var array
      */
     protected $QBOptions;
 
@@ -321,7 +318,7 @@ class BaseBuilder
 
         $this->from($tableName);
 
-        if (! empty($options)) {
+        if ($options !== null && $options !== []) {
             foreach ($options as $key => $value) {
                 if (property_exists($this, $key)) {
                     $this->{$key} = $value;
@@ -706,7 +703,6 @@ class BaseBuilder
      *
      * @param array|RawSql|string $key
      * @param mixed               $value
-     * @param bool                $escape
      *
      * @return $this
      */
@@ -728,9 +724,15 @@ class BaseBuilder
      */
     protected function whereHaving(string $qbKey, $key, $value = null, string $type = 'AND ', ?bool $escape = null)
     {
+        $rawSqlOnly = false;
+
         if ($key instanceof RawSql) {
-            $keyValue = [(string) $key => $key];
-            $escape   = false;
+            if ($value === null) {
+                $keyValue   = [(string) $key => $key];
+                $rawSqlOnly = true;
+            } else {
+                $keyValue = [(string) $key => $value];
+            }
         } elseif (! is_array($key)) {
             $keyValue = [$key => $value];
         } else {
@@ -745,7 +747,7 @@ class BaseBuilder
         foreach ($keyValue as $k => $v) {
             $prefix = empty($this->{$qbKey}) ? $this->groupGetType('') : $this->groupGetType($type);
 
-            if ($v instanceof RawSql) {
+            if ($rawSqlOnly === true) {
                 $k  = '';
                 $op = '';
             } elseif ($v !== null) {
@@ -755,9 +757,9 @@ class BaseBuilder
                     $k = trim($k);
 
                     end($op);
-
                     $op = trim(current($op));
 
+                    // Does the key end with operator?
                     if (substr($k, -strlen($op)) === $op) {
                         $k  = rtrim(substr($k, 0, -strlen($op)));
                         $op = " {$op}";
@@ -777,7 +779,15 @@ class BaseBuilder
             } elseif (! $this->hasOperator($k) && $qbKey !== 'QBHaving') {
                 // value appears not to have been set, assign the test to IS NULL
                 $op = ' IS NULL';
-            } elseif (preg_match('/\s*(!?=|<>|IS(?:\s+NOT)?)\s*$/i', $k, $match, PREG_OFFSET_CAPTURE)) {
+            } elseif (
+                // The key ends with !=, =, <>, IS, IS NOT
+                preg_match(
+                    '/\s*(!?=|<>|IS(?:\s+NOT)?)\s*$/i',
+                    $k,
+                    $match,
+                    PREG_OFFSET_CAPTURE
+                )
+            ) {
                 $k  = substr($k, 0, $match[0][1]);
                 $op = $match[1][0] === '=' ? ' IS NULL' : ' IS NOT NULL';
             } else {
@@ -910,6 +920,7 @@ class BaseBuilder
      * @used-by whereNotIn()
      * @used-by orWhereNotIn()
      *
+     * @param non-empty-string|null          $key
      * @param array|BaseBuilder|Closure|null $values The values searched on, or anonymous function with subquery
      *
      * @return $this
@@ -918,7 +929,7 @@ class BaseBuilder
      */
     protected function _whereIn(?string $key = null, $values = null, bool $not = false, string $type = 'AND ', ?bool $escape = null, string $clause = 'QBWhere')
     {
-        if (empty($key) || ! is_string($key)) {
+        if ($key === null || $key === '') {
             throw new InvalidArgumentException(sprintf('%s() expects $key to be a non-empty string', debug_backtrace(0, 2)[1]['function']));
         }
 
@@ -1424,7 +1435,7 @@ class BaseBuilder
     public function orderBy(string $orderBy, string $direction = '', ?bool $escape = null)
     {
         $qbOrderBy = [];
-        if (empty($orderBy)) {
+        if ($orderBy === '') {
             return $this;
         }
 
@@ -1480,7 +1491,7 @@ class BaseBuilder
             $this->QBLimit = $value;
         }
 
-        if (! empty($offset)) {
+        if ($offset !== null && $offset !== 0) {
             $this->QBOffset = $offset;
         }
 
@@ -1494,8 +1505,8 @@ class BaseBuilder
      */
     public function offset(int $offset)
     {
-        if (! empty($offset)) {
-            $this->QBOffset = (int) $offset;
+        if ($offset !== 0) {
+            $this->QBOffset = $offset;
         }
 
         return $this;
@@ -1726,7 +1737,7 @@ class BaseBuilder
             $this->where($where);
         }
 
-        if (! empty($limit)) {
+        if ($limit !== null && $limit !== 0) {
             $this->limit($limit, $offset);
         }
 
@@ -1954,11 +1965,9 @@ class BaseBuilder
      *
      * @used-by batchExecute
      *
-     * @param string   $table Protected table name
-     * @param string[] $keys  QBKeys
-     * @phpstan-param list<string> $keys QBKeys
-     * @param array<array<int|string>> $values QBSet
-     * @phpstan-param list<list<string|int>> $values QBSet
+     * @param string                 $table  Protected table name
+     * @param list<string>           $keys   QBKeys
+     * @param list<list<int|string>> $values QBSet
      */
     protected function _upsertBatch(string $table, array $keys, array $values): string
     {
@@ -1983,7 +1992,7 @@ class BaseBuilder
         }
 
         if (isset($this->QBOptions['setQueryAsData'])) {
-            $data = $this->QBOptions['setQueryAsData'];
+            $data = $this->QBOptions['setQueryAsData'] . "\n";
         } else {
             $data = 'VALUES ' . implode(', ', $this->formatValues($values)) . "\n";
         }
@@ -2007,9 +2016,9 @@ class BaseBuilder
     /**
      * Sets update fields for upsert, update
      *
-     * @param string|string[] $set
-     * @param bool            $addToDefault adds update fields to the default ones
-     * @param array|null      $ignore       ignores items in set
+     * @param RawSql[]|string|string[] $set
+     * @param bool                     $addToDefault adds update fields to the default ones
+     * @param array|null               $ignore       ignores items in set
      *
      * @return $this
      */
@@ -2183,11 +2192,9 @@ class BaseBuilder
      *
      * @used-by batchExecute
      *
-     * @param string   $table Protected table name
-     * @param string[] $keys  QBKeys
-     * @phpstan-param list<string> $keys QBKeys
-     * @param array<array<int|string>> $values QBSet
-     * @phpstan-param list<list<string|int>> $values QBSet
+     * @param string                 $table  Protected table name
+     * @param list<string>           $keys   QBKeys
+     * @param list<list<int|string>> $values QBSet
      */
     protected function _insertBatch(string $table, array $keys, array $values): string
     {
@@ -2264,7 +2271,7 @@ class BaseBuilder
      *
      * @param array|object|null $set
      *
-     * @return bool
+     * @return BaseResult|bool|Query
      *
      * @throws DatabaseException
      */
@@ -2446,7 +2453,7 @@ class BaseBuilder
             $this->where($where);
         }
 
-        if (! empty($limit)) {
+        if ($limit !== null && $limit !== 0) {
             if (! $this->canLimitWhereUpdates) {
                 throw new DatabaseException('This driver does not allow LIMITs on UPDATE queries using WHERE.');
             }
@@ -2553,11 +2560,9 @@ class BaseBuilder
      *
      * @used-by batchExecute
      *
-     * @param string   $table Protected table name
-     * @param string[] $keys  QBKeys
-     * @phpstan-param list<string> $keys QBKeys
-     * @param array[] $values QBSet
-     * @phpstan-param list<list<string|int>> $values QBSet
+     * @param string                 $table  Protected table name
+     * @param list<string>           $keys   QBKeys
+     * @param list<list<int|string>> $values QBSet
      */
     protected function _updateBatch(string $table, array $keys, array $values): string
     {
@@ -2734,9 +2739,9 @@ class BaseBuilder
     /**
      * Compiles a delete string and runs the query
      *
-     * @param mixed $where
+     * @param array|RawSql|string $where
      *
-     * @return bool|string Returns a string if in test mode.
+     * @return bool|string Returns a SQL string if in test mode.
      *
      * @throws DatabaseException
      */
@@ -2758,7 +2763,7 @@ class BaseBuilder
 
         $sql = $this->_delete($this->removeAlias($table));
 
-        if (! empty($limit)) {
+        if ($limit !== null && $limit !== 0) {
             $this->QBLimit = $limit;
         }
 
@@ -2817,11 +2822,9 @@ class BaseBuilder
      *
      * @used-by batchExecute
      *
-     * @param string   $table Protected table name
-     * @param string[] $keys  QBKeys
-     * @phpstan-param list<string> $keys QBKeys
-     * @param array<array<int|string>> $values QBSet
-     * @phpstan-param list<list<string|int>> $values QBSet
+     * @param string       $table Protected table name
+     * @param list<string> $keys  QBKeys
+     * @paramst<string|int>> $values QBSet
      */
     protected function _deleteBatch(string $table, array $keys, array $values): string
     {
@@ -3068,6 +3071,10 @@ class BaseBuilder
                     continue;
                 }
 
+                if ($qbkey instanceof RawSql) {
+                    continue;
+                }
+
                 if ($qbkey['condition'] instanceof RawSql) {
                     $qbkey = $qbkey['condition'];
 
@@ -3166,7 +3173,7 @@ class BaseBuilder
      */
     protected function compileOrderBy(): string
     {
-        if (is_array($this->QBOrderBy) && ! empty($this->QBOrderBy)) {
+        if (is_array($this->QBOrderBy) && $this->QBOrderBy !== []) {
             foreach ($this->QBOrderBy as &$orderBy) {
                 if ($orderBy['escape'] !== false && ! $this->isLiteral($orderBy['field'])) {
                     $orderBy['field'] = $this->db->protectIdentifiers($orderBy['field']);
@@ -3207,6 +3214,10 @@ class BaseBuilder
     {
         if (! is_object($object)) {
             return $object;
+        }
+
+        if ($object instanceof RawSql) {
+            throw new InvalidArgumentException('RawSql "' . $object . '" cannot be used here.');
         }
 
         $array = [];
@@ -3255,7 +3266,7 @@ class BaseBuilder
     {
         $str = trim($str);
 
-        if (empty($str)
+        if ($str === ''
             || ctype_digit($str)
             || (string) (float) $str === $str
             || in_array(strtoupper($str), ['TRUE', 'FALSE'], true)
@@ -3367,16 +3378,16 @@ class BaseBuilder
                 : '';
             $this->pregOperators = [
                 '\s*(?:<|>|!)?=\s*', // =, <=, >=, !=
-                '\s*<>?\s*', // <, <>
-                '\s*>\s*', // >
-                '\s+IS NULL', // IS NULL
-                '\s+IS NOT NULL', // IS NOT NULL
-                '\s+EXISTS\s*\(.*\)', // EXISTS(sql)
+                '\s*<>?\s*',         // <, <>
+                '\s*>\s*',           // >
+                '\s+IS NULL',             // IS NULL
+                '\s+IS NOT NULL',         // IS NOT NULL
+                '\s+EXISTS\s*\(.*\)',     // EXISTS (sql)
                 '\s+NOT EXISTS\s*\(.*\)', // NOT EXISTS(sql)
-                '\s+BETWEEN\s+', // BETWEEN value AND value
-                '\s+IN\s*\(.*\)', // IN(list)
-                '\s+NOT IN\s*\(.*\)', // NOT IN (list)
-                '\s+LIKE\s+\S.*(' . $_les . ')?', // LIKE 'expr'[ ESCAPE '%s']
+                '\s+BETWEEN\s+',          // BETWEEN value AND value
+                '\s+IN\s*\(.*\)',         // IN (list)
+                '\s+NOT IN\s*\(.*\)',     // NOT IN (list)
+                '\s+LIKE\s+\S.*(' . $_les . ')?',     // LIKE 'expr'[ ESCAPE '%s']
                 '\s+NOT LIKE\s+\S.*(' . $_les . ')?', // NOT LIKE 'expr'[ ESCAPE '%s']
             ];
         }
@@ -3391,21 +3402,25 @@ class BaseBuilder
     /**
      * Returns the SQL string operator from where key
      *
-     * @return array<int, string>|false
-     * @phpstan-return list<string>|false
+     * @return false|list<string>
      */
     private function getOperatorFromWhereKey(string $whereKey)
     {
         $whereKey = trim($whereKey);
 
         $pregOperators = [
-            '\s*(?:<|>|!)?=', // =, <=, >=, !=
-            '\s*<>?',         // <, <>
-            '\s*>',           // >
-            '\s+IS NULL',     // IS NULL
-            '\s+IS NOT NULL', // IS NOT NULL
-            '\s+LIKE',        // LIKE
-            '\s+NOT LIKE',    // NOT LIKE
+            '\s*(?:<|>|!)?=',         // =, <=, >=, !=
+            '\s*<>?',                 // <, <>
+            '\s*>',                   // >
+            '\s+IS NULL',             // IS NULL
+            '\s+IS NOT NULL',         // IS NOT NULL
+            '\s+EXISTS\s*\(.*\)',     // EXISTS (sql)
+            '\s+NOT EXISTS\s*\(.*\)', // NOT EXISTS (sql)
+            '\s+BETWEEN\s+',          // BETWEEN value AND value
+            '\s+IN\s*\(.*\)',         // IN (list)
+            '\s+NOT IN\s*\(.*\)',     // NOT IN (list)
+            '\s+LIKE',                // LIKE
+            '\s+NOT LIKE',            // NOT LIKE
         ];
 
         return preg_match_all(
