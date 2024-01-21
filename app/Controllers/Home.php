@@ -10,12 +10,22 @@ class Home extends BaseController
 {
     public function index()
     {
-        return redirect()->to('kontena');
+        helper('form');
+
+        $data['title'] = 'Kontena';
+        // dd($data);
+
+        return view('auth/choose', $data);
     }
     
     public function home()
     {
         return redirect()->to('http://tzmadinah.rf.gd');
+    }
+
+    public function jipya()
+    {
+        return redirect()->to('http://jipya.kontena.rf.gd');
     }
 
     public function data()

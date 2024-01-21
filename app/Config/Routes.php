@@ -7,6 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('home', 'Home::home');
+$routes->get('jipya', 'Home::jipya');
 $routes->get('data', 'Home::data');
 $routes->get('test', 'Home::test');
 
