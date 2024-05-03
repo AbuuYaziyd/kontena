@@ -53,7 +53,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div><hr>
     <?php if (session('role') == 'admin') : ?>
       <?= $this->include('data/admin') ?>
     <?php endif ?>
