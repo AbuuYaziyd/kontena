@@ -38,9 +38,9 @@
                         <div class="col-md-4">
                             <label>Mafikio </label>
                             <select class="custom-select rounded-0" name="fikia">
-                                <option value="DAR" <?= 'mafikio' == 'DAR' ? 'selected' : '' ?>> DAR</option>
-                                <option value="ZNZ" <?= 'mafikio' == 'ZNZ' ? 'selected' : '' ?>>ZNZ</option>
-                                <option value="PBA" <?= 'mafikio' == 'PBA' ? 'selected' : '' ?>>PBA</option>
+                                <option value="DAR" <?= $box['fikia'] == 'DAR' ? 'selected' : '' ?>> DAR</option>
+                                <option value="ZNZ" <?= $box['fikia'] == 'ZNZ' ? 'selected' : '' ?>>ZNZ</option>
+                                <option value="PBA" <?= $box['fikia'] == 'PBA' ? 'selected' : '' ?>>PBA</option>
                             </select>
                         </div>
                         <div class="col-md-4">
