@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="<?= base_url('plugins/fontawesome-free/css/all.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('asset/css/adminlte.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/adminlte.min.css') ?>">
 </head>
 
 <body class="hold-transition layout-top-nav">
@@ -34,8 +34,6 @@
                 </div>
             </div>
         </div>
-        <aside class="control-sidebar control-sidebar-dark">
-        </aside>
         <footer class="main-footer">
             <div class="float-right d-none d-sm-inline">
                 <a href="https://abouyaziyd.rf.gd" target="_blank"> <strong>aBy Solutions</strong></a>
@@ -44,10 +42,10 @@
             Haki zote zimehifadhiwa.
         </footer>
     </div>
-    <script src="<?= base_url('plugins/jquery/jquery.min.js') ?>"></script>
-    <script src="<?= base_url('plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-    <script src="<?= base_url('asset/js/adminlte.min.js') ?>"></script>
-    <script src="<?= base_url('asset/js/demo.js') ?>"></script>
+    <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/adminlte.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/demo.js') ?>"></script>
 </body>
 
 </html>

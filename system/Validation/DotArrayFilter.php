@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is part of CodeIgniter 4 framework.
  *
@@ -44,7 +46,7 @@ final class DotArrayFilter
                 $segments
             );
 
-            $result = array_merge_recursive($result, self::filter($segments, $array));
+            $result = array_replace_recursive($result, self::filter($segments, $array));
         }
 
         return $result;

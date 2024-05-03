@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="sw">
 
@@ -7,86 +6,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta name="description" content="Umoja wa Watanzania Chuo Kikuu cha Kiislamu Madina">
-    <meta name="keywords"
-        content="Umoja wa Watanzania Chuo Kikuu cha Kiislamu Madina">
+    <meta name="keywords" content="Umoja wa Watanzania Chuo Kikuu cha Kiislamu Madina">
     <meta name="author" content="abouyaziyd">
     <title><?= APP_NAME ?> | <?= $title ?></title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="<?= base_url('plugins/fontawesome-free/css/all.min.css') ?>">
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('asset/img/logo.svg') ?>">
-    <link rel="stylesheet" href="<?= base_url('asset/css/adminlte.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/fontawesome-free/css/all.min.css') ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/img/logo.svg') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/adminlte.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') ?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <?= $this->renderSection('styles') ?>
 </head>
 
 <body class="hold-transition layout-top-nav">
     <div class="wrapper">
-
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
-                <a href="<?= base_url('home') ?>" class="navbar-brand" target="_blank">
-                    <img src="<?= base_url('asset/img/logo.svg') ?>" alt="kontena" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <a href="<?= base_url() ?>" class="navbar-brand">
+                    <img src="<?= base_url('assets/img/logo.svg') ?>" alt="kontena" class="brand-image img-circle elevation-3" style="opacity: .8">
                     <span class="brand-text font-weight-light"><?= APP_NAME ?></span>
                 </a>
-
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                     <?php if (!session('isLoggedIn')) : ?>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="<?= base_url('kontena') ?>" class="nav-link">Kontena</a>
-                        </li>
-                    </ul>
+                        <!-- <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="<?= base_url('kontena') ?>" class="nav-link">Kontena</a>
+                            </li>
+                        </ul> -->
                     <?php else : ?>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="<?= base_url('malipo') ?>" class="nav-link">Admin</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="<?= base_url('data') ?>" class="nav-link">Data</a>
-                        </li>
-                    </ul>
+                        <!-- <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="<?= base_url('malipo') ?>" class="nav-link">Admin</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="<?= base_url('data') ?>" class="nav-link">Data</a>
+                            </li>
+                        </ul> -->
                     <?php endif ?>
                     <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
                         <li class="nav-item">
                             <?php if (session('isLoggedIn') != true) : ?>
-                            <a href="<?= base_url('malipo') ?>" class="btn btn-sm btn-warning">
-                            <i class="fas fa-credit-card"></i> Admin</a>
-                            </a>
+                                <a href="<?= base_url('login') ?>" class="btn btn-sm btn-warning">
+                                    Ingia <i class="fas fa-sign-in-alt"></i> </a>
+                                </a>
                             <?php else : ?>
-                            <a href="<?= base_url('logout') ?>" class="btn btn-sm btn-danger">
-                            <i class="fas fa-sign-out-alt"></i> Ondoka</a>
-                            </a>
+                                <a href="<?= base_url('logout') ?>" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-sign-out-alt"></i> Ondoka</a>
+                                </a>
                             <?php endif ?>
                         </li>
                     </ul>
                 </div>
+            </div>
         </nav>
-        
         <div class="content-wrapper">
             <section class="content-header">
                 <div class="container-fluid">
-                    <div class="row mb-2"><div class="col-sm-6"></div></div>
+                    <div class="row mb-2">
+                        <div class="col-sm-6"></div>
+                    </div>
                 </div>
             </section>
 
             <?= $this->renderSection('content') ?>
-
         </div>
-
-        <?= $this->include('layouts/footer') ?>
-
-
-    <script src="<?= base_url('plugins/jquery/jquery.min.js') ?>"></script>
-    <script src="<?= base_url('plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+    </div>
+    <?= $this->include('layouts/footer') ?>
+    <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= base_url('asset/js/adminlte.min.js') ?>"></script>
-    <script src="<?= base_url('plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
+    <script src="<?= base_url('assets/plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
     <script>
         var Toast = Swal.mixin({
             toast: false,
@@ -104,7 +98,7 @@
             <?php endif ?>
             });
     </script>
-    
+
     <?= $this->renderSection('scripts') ?>
 </body>
 

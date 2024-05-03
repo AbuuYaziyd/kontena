@@ -3,124 +3,117 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Data;
 use App\Models\Kontena;
 use App\Models\Malipo;
 use App\Models\Setting;
+use App\Models\User;
 
 class MalipoController extends BaseController
 {
-    public function index()
-    {
-        // dd(session('role'));
-        helper('form');
+    // public function index()
+    // {
+    //     // dd(session('role'));
+    //     helper('form');
 
-        $set = new Setting();
-        $kont = new Kontena();
+    //     $kont = new Kontena();
 
-        
-        // $data['title'] = 'Kontena';
-        // $data['nje'] = $kont->where('jamia', 'mgeni')->findAll();
-        // $data['ndani'] = $kont->where('jamia!=', 'mgeni')->findAll();
-        // $data['out'] = $kont->where('jamia', 'mgeni')->countAllResults();
-        // $data['in'] = $kont->where('jamia!=', 'mgeni')->countAllResults();
-        // $data['data'] = $set->where('set', 'kontena')->first();
-        $data['total'] = $kont->where('idadi>=', 0)->countAllResults();
-        // $data['baki'] = $kont->where('paid<jumla')->countAllResults();
-        $data['maliza'] = $kont->where(['paid=jumla', 'paid>'=>0])->countAllResults();
-        $data['comp'] = $kont->where(['paid=jumla', 'paid>'=>0])->findAll();
-        $data['mishkila'] = $kont->where(['idadi'=>0])->findAll();
-        // $data['box'] = $kont->selectSum('idadi')->get()->getRow()->idadi;
+    //     // $data['title'] = 'Kontena';
+    //     // $data['nje'] = $kont->where('jamia', 'mgeni')->findAll();
+    //     // $data['ndani'] = $kont->where('jamia!=', 'mgeni')->findAll();
+    //     // $data['out'] = $kont->where('jamia', 'mgeni')->countAllResults();
+    //     // $data['in'] = $kont->where('jamia!=', 'mgeni')->countAllResults();
+    //     // $data['data'] = $set->where('set', 'kontena')->first();
+    //     $data['total'] = $kont->where('idadi>=', 0)->countAllResults();
+    //     // $data['baki'] = $kont->where('paid<jumla')->countAllResults();
+    //     $data['maliza'] = $kont->where(['paid=jumla', 'paid>'=>0])->countAllResults();
+    //     $data['comp'] = $kont->where(['paid=jumla', 'paid>'=>0])->findAll();
+    //     $data['mishkila'] = $kont->where(['idadi'=>0])->findAll();
+    //     // $data['box'] = $kont->selectSum('idadi')->get()->getRow()->idadi;
 
-        $data['title'] = 'Kontena';
-        $data['users'] = $kont->where('jumla>paid')->findAll();
-        // $data['comp'] = $kont->where(['paid=jumla', 'paid>'=>0])->findAll();
-        $data['data'] = $set->where('set', 'kontena')->first();
-        // $data['total'] = $kont->countAll();
-        $data['baki'] = $kont->where('paid<jumla')->countAllResults();
-        // $data['maliza'] = $kont->where('paid=jumla')->countAllResults();
-        $data['box'] = $kont->selectSum('idadi')->get()->getRow()->idadi;
-        $data['admin'] = $kont->where('role', 'admin')->get()->getFirstRow();
-        // dd($data);
+    //     $data['title'] = 'Kontena';
+    //     $data['users'] = $kont->where('jumla>paid')->findAll();
+    //     // $data['comp'] = $kont->where(['paid=jumla', 'paid>'=>0])->findAll();
+    //     // $data['total'] = $kont->countAll();
+    //     $data['baki'] = $kont->where('paid<jumla')->countAllResults();
+    //     // $data['maliza'] = $kont->where('paid=jumla')->countAllResults();
+    //     $data['box'] = $kont->selectSum('idadi')->get()->getRow()->idadi;
+    //     $data['admin'] = $kont->where('role', 'admin')->get()->getFirstRow();
+    //     // dd($data);
 
-        return view('malipo/index', $data);
-    }
+    //     return view('malipo/index', $data);
+    // }
 
-    public function make($id)
+    public function user($id)
     {
         helper('form');
 
-        $set = new Setting();
-        $kont = new Kontena();
+        $dt = new Data();
+        $usr = new User();
 
-        $data['title'] = 'Kontena Malipo';
-        $data['data'] = $set->where('set', 'kontena')->first();
-        $data['kont'] = $kont->find($id);
+        $user = $usr->find($id);
+
+        $data['title'] = 'Malipo ya Kontena';
+        $data['user'] = $user;
+        $data['data'] = $dt;
+        $data['kont'] = $dt->where('user_id', $id)->first();
+        $data['box'] = $dt->where('user_id', $id)->findAll();
+        $data['sum'] = $dt->where('user_id', $id)->selectSum('paid')->get()->getRow()->paid;
+        $data['chenji'] = $dt->where(['user_id' => $id, 'paid>' => 0, 'paid<' => session('price')])->first()['paid']??0;
         // dd($data);
 
-        return view('malipo/make', $data);
+        return view('malipo/user', $data);
     }
 
-    public function risiti($id)
-    {
-        $set = new Setting();
-        $malipo = new Malipo();
-        $kont = new Kontena();
-
-        $data['kontena'] = $set->where('set', 'kontena')->first();
-        $data['malipo'] = $malipo->where('user_id', $id)->findAll();
-        $data['user'] = $kont->find($id);
-        // dd($data);
-
-        return view('malipo/risiti', $data);
-    }
     public function edit($id)
     {
         // dd($this->request->getVar());
-        $malipo = new Malipo();
-        $kont = new Kontena();
-        $set = new Setting();
-
-        // Invoice 4mula
-        $invc = $id.date('s');
-        $invc = "KONT" . date("mhi") . sprintf('%05s', $invc);
-        $price = $set->find(1)['price'];
-        // dd($price); 
-
-        $user = $malipo->where('user_id', $id)->orderBy('id', 'desc')->first();
-        // dd($user);
-
-        if ($this->request->getVar('leo')) {
-            $dt = [
-                'user_id' => $id,
-                'lengo' => strtoupper($this->request->getVar('lengo')),
-                'amount' => $this->request->getVar('leo'),
-                'total' => $this->request->getVar('leo')+($user['total']??0),
-                'amount' => $this->request->getVar('leo'),
-                'receipt' => $invc,
-            ];
-            // dd($dt);
-
-            $malipo->save($dt);
-        }
-
-        $d = [
-            'idadi' => $this->request->getVar('idadi'),
-            'jumla' => $price * $this->request->getVar('idadi'),
-        ];
+        $dt = new Data();
         
-        if ($this->request->getVar('leo')) {
-            $d = [
-                'idadi' => $this->request->getVar('idadi'),
-                'jumla' => $price * $this->request->getVar('idadi'),
-                'paid' => $this->request->getVar('leo')+($user['total']??0),
-                'risiti' => $invc,
-            ];
+        $pesa = $this->request->getVar('pesa');
+        $chenji = $this->request->getVar('chenji');
+
+        if ($chenji > 0) {
+            $pesa = $pesa + $chenji;
+            $futa_chenji = $dt->where(['paid' => $chenji, 'user_id' => $id])->first();
+            // dd($futa_chenji);
+
+            $data = ['paid' => 0];
+            // dd($data);
+
+            $dt->update($futa_chenji['id'], $data);
         }
-        // dd($d);
 
-        $kont->update($id, $d);
+        $no_box_paid = intval($pesa / session('price'));
+        $remain = $pesa % session('price');
+        // dd($no_box_paid, $remain, $pesa);
 
-        return redirect()->to('malipo')
+        if ($no_box_paid > 0) {
+            $total_boxes = $dt->where(['user_id' => $id, 'paid' => 0])->findAll($no_box_paid);
+            // dd($total_boxes);
+
+            foreach ($total_boxes as $d) {
+                $data = ['paid' => session('price')];
+
+                $dt->update($d['id'], $data);
+            }
+            // dd($data);
+        }
+
+        if ($remain != 0) {
+            $data = ['paid' => $remain];
+
+            $chenji = $dt->where(['user_id' => $id, 'paid' => 0])->first();
+
+            $dt->update($chenji['id'], $data);
+            // dd($data);
+
+            return redirect()->to('malipo/user/' . $id)
+            ->with('toast', 'success')
+            ->with('message', 'Malipo ya Kontena yamehifadhiwa Kikamilifu! Chenji ilobaki ni: ' . $remain . 'SAR');
+        } 
+
+        return redirect()->to('malipo/user/' . $id)
         ->with('toast', 'success')
         ->with('message', 'Malipo ya Kontena yamehifadhiwa Kikamilifu!');
     }

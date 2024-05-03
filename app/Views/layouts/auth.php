@@ -11,21 +11,21 @@
     <meta name="author" content="abouyaziyd">
     <title><?= APP_NAME ?> | <?= $title ?></title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="<?= base_url('plugins/fontawesome-free/css/all.min.css') ?>">
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('asset/img/logo.png') ?>">
-    <link rel="stylesheet" href="<?= base_url('plugins/icheck-bootstrap/icheck-bootstrap.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('asset/css/adminlte.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/fontawesome-free/css/all.min.css') ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/img/logo.png') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/adminlte.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') ?>">
 </head>
 
 <body class="hold-transition login-page">
 
     <?= $this->renderSection('content') ?>
 
-    <script src="<?= base_url('plugins/jquery/jquery.min.js') ?>"></script>
-    <script src="<?= base_url('plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-    <script src="<?= base_url('asset/js/adminlte.min.js') ?>"></script>
-    <script src="<?= base_url('plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
+    <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/adminlte.min.js') ?>"></script>
+    <script src="<?= base_url('assets/plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
     <script>
         var Toast = Swal.mixin({
             toast: false,

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is part of CodeIgniter 4 framework.
  *
@@ -131,7 +133,7 @@ if (! function_exists('entities_to_ascii')) {
     {
         if (preg_match_all('/\&#(\d+)\;/', $str, $matches)) {
             for ($i = 0, $s = count($matches[0]); $i < $s; $i++) {
-                $digits = $matches[1][$i];
+                $digits = (int) $matches[1][$i];
                 $out    = '';
                 if ($digits < 128) {
                     $out .= chr($digits);
@@ -341,7 +343,7 @@ if (! function_exists('word_wrap')) {
         $str = preg_replace('| +|', ' ', $str);
 
         // Standardize newlines
-        if (strpos($str, "\r") !== false) {
+        if (str_contains($str, "\r")) {
             $str = str_replace(["\r\n", "\r"], "\n", $str);
         }
 
@@ -701,8 +703,6 @@ if (! function_exists('excerpt')) {
      * @param string $phrase   Phrase that will be searched for.
      * @param int    $radius   The amount of characters returned around the phrase.
      * @param string $ellipsis Ending that will be appended
-     *
-     * @return string
      *
      * If no $phrase is passed, will generate an excerpt of $radius characters
      * from the beginning of $text.

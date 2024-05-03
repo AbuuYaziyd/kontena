@@ -72,35 +72,6 @@ class KontenaController extends BaseController
         }
     }
 
-    public function sasisha($id)
-    {
-        // dd($this->request->getVar());
-        $kont = new Kontena();
-
-        $data = [
-            'iqama' => $this->request->getVar('iqama'),
-            'mhusika' => strtoupper($this->request->getVar('mhusika')),
-            'jamia' => $this->request->getVar('jamia'),
-            'idadi' => $this->request->getVar('idadi'),
-            'fikia' => $this->request->getVar('fikia'),
-            'mpokeaji' => strtoupper($this->request->getVar('mpokeaji')),
-            'simu1' => $this->request->getVar('simu1'),
-            'simu2' => $this->request->getVar('simu2'),
-            'simu3' => $this->request->getVar('simu3'),
-            'jumla' => $this->request->getVar('price') * $this->request->getVar('idadi'),
-        ];
-
-        // dd($data);
-
-        $ok = $kont->update($id, $data);
-
-        if ($ok) {
-            return redirect()->to('kontena')
-            ->with('toast', 'success')
-            ->with('message', 'Umesasisha Maelezo ya Kontena Kikamilifu!');
-        }
-    }
-
     public function edited($id)
     {
         // dd($this->request->getVar());
@@ -277,18 +248,6 @@ class KontenaController extends BaseController
 
             return redirect()->back()->with('errors', $this->validator->getErrors())->withInput();
         }
-    }
-
-    public function print($id)
-    {
-        $kont = new Kontena();
-        
-        $user = $kont->find($id);
-        $data['user'] = $user;
-        $data['title'] = 'Box Paper';
-        // dd($data);
-
-        return view('kontena/print', $data);
     }
 
     public function count()

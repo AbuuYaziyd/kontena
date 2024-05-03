@@ -6,32 +6,24 @@ use CodeIgniter\Model;
 
 class Kontena extends Model
 {
-    protected $DBGroup          = 'default';
     protected $table            = 'kontena';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'iqama',
-        'mhusika',
-        'role',
-        'jamia',
-        'idadi',
-        'fikia',
-        'mpokeaji',
-        'nchi',
-        'password',
-        'simu1',
-        'simu2',
-        'simu3',
-        'jumla',
-        'paid',
-        'mwaka',
-        'risiti',
+        'title',
+        'year',
+        'price',
+        'count',
     ];
+
+    protected bool $allowEmptyInserts = false;
+    protected bool $updateOnlyChanged = true;
+
+    protected array $casts = [];
+    protected array $castHandlers = [];
 
     // Dates
     protected $useTimestamps = false;

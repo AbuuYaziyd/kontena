@@ -2,9 +2,10 @@
 
 namespace App\Controllers;
 
+use App\Models\Admin;
+use App\Models\Data;
 use App\Models\Kontena;
-use App\Models\Setting;
-use CodeIgniter\Config\Services;
+use App\Models\User;
 
 class Home extends BaseController
 {
@@ -12,20 +13,25 @@ class Home extends BaseController
     {
         helper('form');
 
+
+        $dt = new Data();
+        $knt = new Kontena();
+
+        $session = session();
+
+        $kontena = $knt->where('status', 1)->first();
+
+        $sess_dt = [
+            'price' => $kontena['price'],
+        ];
+
+        $session->set($sess_dt);
+
         $data['title'] = 'Kontena';
+        $data['kont'] = $knt->where('status', 1)->findAll();
         // dd($data);
 
-        return view('auth/choose', $data);
-    }
-    
-    public function home()
-    {
-        return redirect()->to('http://tzmadinah.rf.gd');
-    }
-
-    public function jipya()
-    {
-        return redirect()->to('http://jipya.kontena.rf.gd');
+        return view('home/index', $data);
     }
 
     public function data()
@@ -34,10 +40,9 @@ class Home extends BaseController
         helper('form');
 
         $kont = new Kontena();
-        $set = new Setting();
         
         $data['title'] = 'Kontena';
-        $data['data'] = $set->where('set', 'kontena')->first();
+        // $data['data'] = $set->where('set', 'kontena')->first();
         $data['total'] = $kont->countAll();
         $data['baki'] = $kont->where('paid<jumla')->countAllResults();
         $data['maliza'] = $kont->where('paid=jumla')->countAllResults();
@@ -50,28 +55,11 @@ class Home extends BaseController
 
     public function test()
     {
-        // dd('ytyu');
+        $dt = new user();
 
-        $email = \Config\Services::email();
-        $email = Services::email();
+        $us = $dt->findAll();
+        dd($us);
 
-        // $filename = base_url('asset/img/logo.svg');
-        // $email->attach($filename);
-
-        $email->setTo('someone@example.com');
-        // $cid = $email->setAttachmentCID($filename);
-        $email->setSubject('Email Test ');
-        // $email->setMessage('Testing the email class.<img src="cid:' . $cid . '" alt="photo1">');
-        // $email->setMessage('');
-
-        $email->send(false);
-
-        dd($email->printDebugger());
-
-        // if($email->send()){
-        //     dd('Email was Sent!');
-        // } else {
-        //     dd('Email was not sent!');
-        // }
+        dd('test');
     }
 }

@@ -17,7 +17,7 @@
           <a href="<?= base_url('kontena') ?>" class="btn btn-danger btn-block"> No: 1</a>
         </div>
         <div class="col-6">
-          <a href="<?= base_url('jipya') ?>" class="btn btn-primary btn-block" target="_blank"> No: 2</a>
+          <a href="<?= base_url('jipya') ?>" class="btn btn-primary btn-block"> No: 2</a>
         </div>
       </div>
     </div>
