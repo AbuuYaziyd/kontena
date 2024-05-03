@@ -1,4 +1,4 @@
-name: 🚀 Publish Website to CPanel
+name: 🚀 Publish Website to CPanel - Kontena
 on:
   push:
     branches:
@@ -24,4 +24,4 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /box.tzmadinah.rf.gd/htdocs/
+          server-dir: /madina-kontena.rf.gd/htdocs/
