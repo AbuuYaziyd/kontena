@@ -36,7 +36,7 @@ $kt = $knt->where('status', 1)->findAll();
                         <h3>
                             <?= $data->waliomaliza($dt['id']) ?>
                             <sub style="font-size: 20px"> <i class="fas fa-thumbs-up"></i></sub></h3>
-                        <p>Waliolipa</p>
+                        <p>Zilizolipiwa</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-box-open"></i>

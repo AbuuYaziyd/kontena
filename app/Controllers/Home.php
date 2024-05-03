@@ -34,25 +34,6 @@ class Home extends BaseController
         return view('home/index', $data);
     }
 
-    public function data()
-    {
-        // dd($this->request->getVar());
-        helper('form');
-
-        $kont = new Kontena();
-        
-        $data['title'] = 'Kontena';
-        // $data['data'] = $set->where('set', 'kontena')->first();
-        $data['total'] = $kont->countAll();
-        $data['baki'] = $kont->where('paid<jumla')->countAllResults();
-        $data['maliza'] = $kont->where('paid=jumla')->countAllResults();
-        $data['box'] = $kont->selectSum('idadi')->get()->getRow()->idadi;
-        $data['kont'] = $kont->find(1);
-        // dd($data);
-
-        return view('kontena/found', $data);
-    }
-
     public function test()
     {
         $dt = new user();
