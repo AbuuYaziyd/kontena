@@ -51,7 +51,7 @@ class DataTable extends Migration
                 'null' => true,
             ],
             'code' => [
-                'type'       => 'VARCHAR',
+                'type'       => 'INT',
                 'constraint' => 255,
                 'null' => true,
             ],

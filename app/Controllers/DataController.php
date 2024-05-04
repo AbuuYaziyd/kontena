@@ -168,14 +168,30 @@ class DataController extends BaseController
         $dt = new Data();
 
         $box = $dt->where('user_id', session('id'))->findAll();
+        // dd($box);
 
         foreach ($box as $d) {
-            $code = $dt->code($d['id'], session('id'));
+            $m = ($d['fikia'] == 'DAR' ? 1 : ($d['fikia'] == 'ZNZ' ? 2 : 3));
+            // dd($m);
+
+            $code = $dt->where('code!=', null)->orderBy('code', 'desc')->first();
+            // dd($code);
+            if ($code != null) {
+                $code = substr($code['code'], 1);
+                $code = $code + 1;
+                $code = $m . sprintf('%03s', $code);
+                // dd($code);
+            } else {
+                $code = $m . sprintf('%03s', 1);
+                // dd($code);
+            }
+            // $code = $dt->code($d['id'], session('id'));
             $data = ['code' => $code];
+            // dd($data);
 
             $dt->update($d['id'], $data);
         }
-        // dd($code);
+        // dd($data);
 
         return redirect()->back();
     }

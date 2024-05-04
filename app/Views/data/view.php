@@ -37,7 +37,7 @@
                         </div>
                         <div class="col-md-4">
                             <label>Mafikio </label>
-                            <select class="custom-select rounded-0" name="fikia">
+                            <select class="custom-select rounded-0" name="fikia" <?= $box['code'] != null ? 'disabled' : '' ?>>
                                 <option value="DAR" <?= $box['fikia'] == 'DAR' ? 'selected' : '' ?>> DAR</option>
                                 <option value="ZNZ" <?= $box['fikia'] == 'ZNZ' ? 'selected' : '' ?>>ZNZ</option>
                                 <option value="PBA" <?= $box['fikia'] == 'PBA' ? 'selected' : '' ?>>PBA</option>
@@ -57,7 +57,7 @@
                             <button type="submit" class="btn btn-block btn-success btn-lg">Hifadhi Data</button>
                         <?php else : ?>
                             <div class="col-md-6">
-                                <a href="<?= base_url('data/delete/' . $box['id']) ?>" id="delete" class="btn btn-block btn-danger btn-lg">Futa Box</a>
+                                <a href="<?= base_url('data/delete/' . $box['id']) ?>" id="delete" class="btn btn-block btn-danger btn-lg mb-2">Futa Box</a>
                             </div>
                             <div class="col-md-6">
                                 <button type="submit" class="btn btn-block btn-<?= $box['paid'] != session('price') ? 'warning' : 'success' ?> btn-lg">Hifadhi Data</button>

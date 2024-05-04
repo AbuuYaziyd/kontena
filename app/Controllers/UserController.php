@@ -35,9 +35,9 @@ class UserController extends BaseController
         $usr = new User();
 
         $data = [
-            'iqama' => strtoupper($this->request->getVar('iqama')),
+            'name' => strtoupper($this->request->getVar('name')),
             'phone' => $this->request->getVar('phone'),
-            'name' => $this->request->getVar('name'),
+            'iqama' => $this->request->getVar('iqama'),
         ];
 
         // dd($data);

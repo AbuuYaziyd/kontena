@@ -19,7 +19,7 @@
                     <div class="row mb-4">
                         <div class="col-md-4">
                             <label>Mafikio</label>
-                            <select name="fikia" class="custom-select" disabled>
+                            <select name="fikia" class="custom-select">
                                 <option value="DAR" <?= $user['fikia'] == 'DAR' ? 'selected' : '' ?>>DAR</option>
                                 <option value="ZNZ" <?= $user['fikia'] == 'ZNZ' ? 'selected' : '' ?>>ZNZ</option>
                                 <option value="PBA" <?= $user['fikia'] == 'PBA' ? 'selected' : '' ?>>PBA</option>

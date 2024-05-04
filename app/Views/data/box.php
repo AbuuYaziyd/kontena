@@ -22,7 +22,7 @@
       </div>
       <hr>
     <?php endif ?>
-    <?php if ($boxCount < $kontena['count']) : ?>
+    <?php if ($boxCount < $kontena['count'] && count($code) > 0) : ?>
       <div class="row">
         <div class="col-12">
           <a href="<?= base_url('data/add-box') ?>" id="add">
