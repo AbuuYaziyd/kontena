@@ -21,24 +21,43 @@
         </div>
       </div>
       <hr>
-    <?php endif ?>
-    <?php if ($boxCount < $kontena['count'] && count($code) > 0) : ?>
-      <div class="row">
-        <div class="col-12">
-          <a href="<?= base_url('data/add-box') ?>" id="add">
-            <div class="small-box bg-primary">
-              <div class="inner">
-                <h3>Box<sub style="font-size: 20px"> <i class="fas fa-box"></i></sub></h3>
-                <p>Ongeza Box</p>
+      <?php if ($boxCount < $kontena['count']) : ?>
+        <div class="row">
+          <div class="col-12">
+            <a href="<?= base_url('data/add-box') ?>" id="add">
+              <div class="small-box bg-primary">
+                <div class="inner">
+                  <h3>Box<sub style="font-size: 20px"> <i class="fas fa-box"></i></sub></h3>
+                  <p>Ongeza Box</p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-user-plus"></i>
+                </div>
               </div>
-              <div class="icon">
-                <i class="fas fa-user-plus"></i>
-              </div>
-            </div>
-          </a>
+            </a>
+          </div>
         </div>
-      </div>
-      <hr>
+        <hr>
+      <?php endif ?>
+    <?php else : ?>
+      <?php if ($boxCount < $kontena['count']) : ?>
+        <div class="row">
+          <div class="col-12">
+            <a href="<?= base_url('data/add-box') ?>" id="add">
+              <div class="small-box bg-primary">
+                <div class="inner">
+                  <h3>Box<sub style="font-size: 20px"> <i class="fas fa-box"></i></sub></h3>
+                  <p>Ongeza Box</p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-user-plus"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <hr>
+      <?php endif ?>
     <?php endif ?>
     <div class="row">
       <?php foreach ($data as $key => $dt) : ?>
