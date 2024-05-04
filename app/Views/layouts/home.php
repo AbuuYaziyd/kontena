@@ -93,7 +93,8 @@
             $(document).ready(function() {
                 Toast.fire({
                     icon: '<?= session()->getFlashdata('toast') ?>',
-                    title: '<?= session()->getFlashdata('message') ?>'
+                    title: '<?= session()->getFlashdata('title') ?>',
+                    text: '<?= session()->getFlashdata('message') ?>',
                 })
             <?php endif ?>
             });

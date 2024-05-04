@@ -11,112 +11,87 @@ class AuthController extends BaseController
 {
     public function register()
     {
-        helper('form');
-        
-        $kont = new Kontena();
+        if (session('isLoggedIn')) {
+            return redirect()->to('data');
+        } else {
+            helper('form');
 
-        $data['title'] = 'Jisajili Kontena';
-        $data['kont'] = $kont->where('status', 1)->first();
-        // dd($data);
+            $kont = new Kontena();
 
-        return view('auth/register', $data);
+            $data['title'] = 'Jisajili Kontena';
+            $data['kont'] = $kont->where('status', 1)->first();
+            // dd($data);
+
+            return view('auth/register', $data);   
+        }
     }
 
     public function registerAuth()
     {
-        dd($this->request->getVar());
+        // dd($this->request->getVar());
         helper(['form']);
 
         $rules = [
             'iqama' => [
-                'rules'  => 'required|is_unique[kontena.iqama]|integer',
+                'rules'  => 'required|is_unique[users.iqama]|integer|min_length[10]|max_length[10]|',
                 'errors' => [
                     'required' => 'Iqama Inahitajika!',
                     'integer' => 'Weka namba Tu!',
-                    'is_unique' => 'Tayari Ushatuma Maombi!',
+                    'is_unique' => 'Tayari namba hizi zishatumika!',
+                    'max_length' => 'Namba zisizidi - {param}!',
+                    'min_length' => 'Namba zisipungue - {param}!',
                 ],
             ],
-            'mhusika' => [
+            'name' => [
                 'rules'  => 'required',
                 'errors' => [
-                    'required' => 'Mhusika Anahitajika!',
+                    'required' => 'jina la Mhusika linahitajika!',
                 ],
             ],
             'jamia' => [
                 'rules'  => 'required',
                 'errors' => [
-                    'required' => 'Weka Chuo Unachotoka!',
-                ],
-            ],
-            'idadi' => [
-                'rules'  => 'required',
-                'errors' => [
-                    'required' => 'Weka Idadi ya Box!',
-                ],
-            ],
-            'fikia' => [
-                'rules'  => 'required',
-                'errors' => [
-                    'required' => 'Chagua Mafikio ya box zako!',
-                ],
-            ],
-            'mpokeaji' => [
-                'rules'  => 'required',
-                'errors' => [
-                    'required' => 'Weka Jina kamili la Mpokeaji!',
+                    'required' => 'Weka Chuo Unachosoma!',
                 ],
             ],
             'nchi' => [
                 'rules'  => 'required',
                 'errors' => [
-                    'required' => 'Chagua Nchi yako!',
+                    'required' => 'Chagua Nchi unayotokea!',
                 ],
             ],
-            'simu1' => [
-                'rules'  => 'required|min_length[12]|max_length[12]',
+            'phone' => [
+                'rules'  => 'required|min_length[12]|max_length[12]|is_unique[users.phone]|integer',
                 'errors' => [
                     'required' => 'Simu ya Mhusika Inahitajika!',
+                    'integer' => 'Weka namba Tu!',
                     'max_length' => 'Namba zisizidi - {param}!',
                     'min_length' => 'Namba zisipungue - {param}!',
-                ],
-            ],
-            'simu2' => [
-                'rules'  => 'required|min_length[12]|max_length[12]',
-                'errors' => [
-                    'required' => 'Simu ya Mpokeaji Inahitajika!',
-                    'max_length' => 'Namba zisizidi - {param}!',
-                    'min_length' => 'Namba zisipungue - {param}!',
+                    'is_unique' => 'Tayari namba hii Ishatumika!',
                 ],
             ],
         ];
 
         if ($this->validate($rules)) {
-            $kont = new Kontena();
+            $usr = new User();
 
             $data = [
                 'iqama' => $this->request->getVar('iqama'),
-                'password' => password_hash($this->request->getVar('simu1'), PASSWORD_DEFAULT),
-                'mhusika' => strtoupper($this->request->getVar('mhusika')),
+                'password' => password_hash($this->request->getVar('phone'), PASSWORD_DEFAULT),
+                'name' => strtoupper($this->request->getVar('name')),
                 'jamia' => $this->request->getVar('jamia'),
-                'idadi' => $this->request->getVar('idadi'),
-                'fikia' => $this->request->getVar('fikia'),
-                'mpokeaji' => strtoupper($this->request->getVar('mpokeaji')),
                 'nchi' => $this->request->getVar('nchi'),
-                'simu1' => $this->request->getVar('simu1'),
-                'simu2' => $this->request->getVar('simu2'),
-                'simu3' => $this->request->getVar('simu3'),
-                'jumla' => $this->request->getVar('amount') * $this->request->getVar('idadi'),
-                'mwaka' => date('Y'),
+                'phone' => $this->request->getVar('phone'),
             ];
 
             // dd($data);
 
-            $ok = $kont->save($data);
+            $ok = $usr->save($data);
 
             if ($ok) {
-                return redirect()->to('kontena')
-                ->with('toast', 'success')
-                ->with('message', 'Umetuma Maombi ya Kontena Kikamilifu!');
+                return redirect()->to('login')
+                ->with('toast', 'success')->with('title', 'Timilifu')
+                ->with('msg', 'Umesajiliwa katika Kontena Kikamilifu!');
             }
         } else {
             $data['title'] = 'Sajili Kontena';
@@ -134,7 +109,11 @@ class AuthController extends BaseController
         } else {
             helper(['form']);
             
+            $knt = new Kontena();
+            
             $data['title'] = 'Ingia';
+            $data['kont'] = $knt->where('status', 1)->first();
+
             return view('auth/login', $data);
         }
     }
@@ -175,12 +154,10 @@ class AuthController extends BaseController
                 $session->set($ses_data);
                 return redirect()->to('data');
             } else {
-                $session->setFlashdata('msg', 'Data Hazipo sawa!');
-                return redirect()->to('login')->with('toast', 'error')->with('type', 'error');
+                return redirect()->to('login')->with('toast', 'error')->with('title', 'Samahani')->with('msg', 'Data Hazipo sawa!');
             }
         } else {
-            $session->setFlashdata('msg', 'Data Hazipo sawa!');
-            return redirect()->to('login')->with('toast', 'info')->with('type', 'info');
+            return redirect()->to('login')->with('toast', 'error')->with('title', 'Samahani')->with('msg', 'Data Hazipo sawa!');
         }
     }
     
@@ -199,8 +176,24 @@ class AuthController extends BaseController
         ];
 
         $session->set($sess_dt);
-        // dd(session('boxCount'));
 
         return redirect()->to('/');
+    }
+
+    function forgot()
+    {
+        // dd($this->request->getVar());  
+        $usr = new User(); 
+        
+        $id = $this->request->getVar('user_id');
+        $user = $usr->find($id);
+        // dd($user);
+        $data = ['password' => password_hash($this->request->getVar('phone'), PASSWORD_DEFAULT)];
+        // dd($data);
+
+        $usr->update($id, $data);
+
+        return redirect()->back()->with('toast', 'success')->with('title', 'Timilifu')
+            ->with('message', 'Password Imebadilishwa Kikamilifu!');
     }
 }

@@ -5,7 +5,7 @@
 
 <div class="login-box">
   <?php if (session()->getFlashdata('toast')) : ?>
-    <div class="alert alert-<?= session()->getFlashdata('type') ?>" style="text-align: center;">
+    <div class="alert alert-<?= session()->getFlashdata('toast') ?>" style="text-align: center;">
       <?= session()->getFlashdata('msg') ?>
     </div>
   <?php endif ?>
@@ -55,8 +55,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Je, unahitaji kusajiliwa miongoni mwa watakaosafirisha vitabu kwa Kontena mwaka huu <b><?= date('Y') ?></b>?&hellip;</p>
-        <p>Kama ndio, basi jianadae na Malipo ya Usafirishaji kwa makadirio mwaka huu inaweza kugharimu <b>85 SAR</b> kwa kila box moja!</p>
+        <p>Je, unahitaji kusajiliwa miongoni mwa watakaosafirisha vitabu kwa Kontena mwaka huu <b><?= $kont['year'] ?></b>?&hellip;</p>
+        <p>Kama ndio, basi jianadae na Malipo ya Usafirishaji kwa makadirio mwaka huu inaweza kugharimu <b><?= $kont['price'] ?>SAR</b> kwa kila box moja!</p>
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal">Hapana</button>

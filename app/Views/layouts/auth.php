@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta name="description" content="Umoja wa Watanzania Chuo Kikuu cha Kiislamu Madina">
-    <meta name="keywords"
-        content="Umoja wa Watanzania Chuo Kikuu cha Kiislamu Madina">
+    <meta name="keywords" content="Umoja wa Watanzania Chuo Kikuu cha Kiislamu Madina">
     <meta name="author" content="abouyaziyd">
     <title><?= APP_NAME ?> | <?= $title ?></title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -38,7 +37,8 @@
             $(document).ready(function() {
                 Toast.fire({
                     icon: '<?= session()->getFlashdata('toast') ?>',
-                    title: '<?= session()->getFlashdata('msg') ?>'
+                    title: '<?= session()->getFlashdata('title') ?>'
+                    text: '<?= session()->getFlashdata('msg') ?>'
                 })
             <?php endif ?>
             });

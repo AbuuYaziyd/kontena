@@ -6,7 +6,7 @@
   <div class="container">
     <?php $jumla = session('price') * count($box) ?>
     <div class="row">
-      <div class="col-lg">
+      <div class="col-md-8">
         <div class="card card-<?= $sum < $jumla ? 'danger' : 'primary' ?> card-outline">
           <div class="card-header">
             <h3><b><?= $title ?>:</b> <span class="btn btn-<?= $sum < $jumla ? 'danger' : 'success' ?> float-right"><?= $jumla ?></span></h3>
@@ -44,6 +44,46 @@
                       <input type="number" class="form-control mb-3" name="pesa" placeholder="Alichotoa leo" onkeyup="check();" id="pesa">
                       <input type="hidden" name="chenji" value="<?= $chenji ?>">
                       <button class="btn btn-primary btn-block btn-lg" disabled type="submit" id="submit">Tuma</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </form>
+            <?php endif ?>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-info card-outline">
+          <div class="card-header">
+            <h3><b>Mtumiaji:</b></h3>
+          </div>
+          <div class="card-body">
+            <div class="row" style="text-align: center;">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="exampleInputBorder">WhatsApp</label><br>
+                  <a href="https://wa.me/<?= $user['phone'] ?>" target="_blank" class="btn btn-success btn-block btn-lg"><i class="fab fa-whatsapp"></i></a>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="exampleInputBorder">Simu</label><br>
+                  <a href="tel:<?= $user['phone'] ?>" class="btn btn-primary btn-block btn-lg"><i class="fa fa-phone"></i></a>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <?php if ($sum < $jumla) : ?>
+              <?= form_open('forgot') ?>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <div class="form-group">
+                      <label>Amesahau Password</label>
+                      <input type="number" class="form-control mb-3" name="phone" value="<?= $user['phone'] ?>">
+                      <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                      <input id="password" class="btn btn-warning btn-block btn-lg" value="Badili Password">
                     </div>
                   </div>
                 </div>
@@ -135,6 +175,29 @@
     } else {
       document.getElementById('submit').disabled = true;
     }
-  }
+  };
+
+  $(document).ready(function() {
+    $('#password').click(function(e) {
+      e.preventDefault();
+      // url = $(this).attr('href');
+      let $form = $(this).closest('form');
+      Swal.fire({
+        title: 'Je, Amesahau Password?',
+        text: 'Namba za simu za Mtumiaji ni sahihi? <?= $user['phone'] ?>',
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+        confirmButtonColor: '#3085d6',
+        cancelButtonText: 'Hapana!',
+        confirmButtonText: 'Ndio',
+      }).then(function(result) {
+        if (result.value) {
+          // window.location.href = url;
+          $form.submit();
+        }
+      })
+    });
+  });
 </script>
 <?= $this->endSection() ?>
