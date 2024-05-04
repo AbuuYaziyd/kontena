@@ -88,26 +88,6 @@ class Data extends Model
         return $data;
     }
 
-    function code($id, $user)
-    {
-        $dt = new Data();
-        
-        $fk = $dt->find($id);
-        $query = $dt->where('user_id', $user)->orderBy('id', 'asc')->first()['code'];
-
-        $m = ($fk['fikia'] == 'DAR' ? 1 : ($fk['fikia'] == 'ZNZ' ? 2 : 3));
-
-        if ($query != null) {
-            $code = substr($query, 1);
-            $code = $code + 1;
-            $code = $m . sprintf('%03s', $code);
-        } else {
-            $code = $m . sprintf('%03s', 1);
-        }
-
-        return $code;
-    }
-
     function kontena($id)
     {
         $knt = new Kontena();
