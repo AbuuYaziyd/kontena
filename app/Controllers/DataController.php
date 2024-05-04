@@ -15,7 +15,6 @@ class DataController extends BaseController
         helper('form');
 
         $dt = new Data();
-        // $knt = new Kontena();
 
         $data['title'] = 'Data';
         $data['data'] = $dt;
@@ -24,6 +23,45 @@ class DataController extends BaseController
         // dd($data);
 
         return view('data/index', $data);
+    }
+
+    public function new()
+    {
+        helper('form');
+
+        $knt = new Kontena();
+
+        $data['title'] = 'Sajili Box';
+        $data['knt'] = $knt->where(['status' => 1])->first();
+        // dd($data);
+
+        return view('data/new', $data);
+    }
+
+    public function create()
+    {
+        // dd($this->request->getVar());
+        $dt = new Data();
+
+        for ($i=0; $i < $this->request->getVar('idadi'); $i++) {
+            $data = [
+                'user_id' => session('id'),
+                'kontena_id' => $this->request->getVar('kontena_id'),
+                'mpokeaji' => $this->request->getVar('mpokeaji'),
+                'fikia' => strtoupper($this->request->getVar('fikia')),
+                'phone' => $this->request->getVar('phone'),
+            ];
+            // dd($data);
+
+            $ok = $dt->save($data);
+        }
+
+
+        if ($ok) {
+            return redirect()->to('data')
+            ->with('toast', 'success')->with('title', 'Timilifu')
+            ->with('message', 'Umesajili Box zako Kikamilifu!');
+        }
     }
 
     public function box($knt, $usr)

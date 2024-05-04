@@ -10,21 +10,37 @@
           <span><b>Kontena:</b></span>
         </h1>
         <div class="row">
-          <?php foreach ($knt as $dt) : ?>
+          <?php if (count($knt) > 0) : ?>
+            <?php foreach ($knt as $dt) : ?>
+              <div class="col-md-4">
+                <a href="<?= base_url('data/box/' . $dt['kontena_id'] . '/' . session('id')) ?>">
+                  <div class="small-box bg-info">
+                    <div class="inner">
+                      <h3><?= $data->kontena($dt['kontena_id'])['title'] ?><sub style="font-size: 20px"> <i class="fas fa-box"></i> </sub></h3>
+                      <p>Idadi ya Box Zako: <b><?= $data->box($dt['kontena_id'], session('id')) ?></b></p>
+                    </div>
+                    <div class="icon">
+                      <i class="fas fa-box-open"></i>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            <?php endforeach ?>
+          <?php else : ?>
             <div class="col-md-4">
-              <a href="<?= base_url('data/box/' . $dt['kontena_id'] . '/' . session('id')) ?>">
-                <div class="small-box bg-info">
+              <a href="<?= base_url('data/new') ?>">
+                <div class="small-box bg-purple">
                   <div class="inner">
-                    <h3><?= $data->kontena($dt['kontena_id'])['title'] ?><sub style="font-size: 20px"> <i class="fas fa-box"></i> </sub></h3>
-                    <p>Idadi ya Box Zako: <b><?= $data->box($dt['kontena_id'], session('id')) ?></b></p>
+                    <h3>Sajili<sub style="font-size: 20px"> <i class="fas fa-box"></i> </sub></h3>
+                    <p>Sajili Box Zako</p>
                   </div>
                   <div class="icon">
-                    <i class="fas fa-box-open"></i>
+                    <i class="fas fa-user-plus"></i>
                   </div>
                 </div>
               </a>
             </div>
-          <?php endforeach ?>
+          <?php endif ?>
           <div class="col-md-4">
             <a href="<?= base_url('user/profile') ?>">
               <div class="small-box bg-warning" data-toggle="modal" data-target="#idadi">
@@ -53,7 +69,8 @@
           </div>
         </div>
       </div>
-    </div><hr>
+    </div>
+    <hr>
     <?php if (session('role') == 'admin') : ?>
       <?= $this->include('data/admin') ?>
     <?php endif ?>

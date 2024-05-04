@@ -17,6 +17,8 @@ $routes->post('forgot', 'AuthController::forgot', ['filter' => 'admin']);
 
 $routes->group('data', function ($routes) {
     $routes->get('/', 'DataController::index', ['filter' => 'authGuard']);
+    $routes->get('new', 'DataController::new', ['filter' => 'authGuard']);
+    $routes->post('create', 'DataController::create', ['filter' => 'authGuard']);
     $routes->get('box/(:num)/(:num)', 'DataController::box/$1/$2', ['filter' => 'authGuard']);
     $routes->get('view/(:num)', 'DataController::view/$1', ['filter' => 'authGuard']);
     $routes->get('risiti/(:num)', 'DataController::risiti/$1', ['filter' => 'authGuard']);
