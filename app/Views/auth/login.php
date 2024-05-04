@@ -18,7 +18,7 @@
 
       <?= form_open('login') ?>
       <div class="input-group mb-3">
-        <input type="text" name="iqama" class="form-control" placeholder="Iqama">
+        <input type="number" name="iqama" class="form-control" placeholder="Iqama">
         <div class="input-group-append">
           <div class="input-group-text">
             <span class="fas fa-user"></span>
