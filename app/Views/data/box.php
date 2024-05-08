@@ -4,7 +4,7 @@
 
 <div class="content">
   <div class="container">
-    <?php if (count($code) == count($data)) : ?>
+    <?php if (count($code) == count($data) && count($code) > 0) : ?>
       <div class="row">
         <div class="col-12">
           <a href="<?= base_url('data/coded') ?>">
