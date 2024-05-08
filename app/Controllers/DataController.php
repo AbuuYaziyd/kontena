@@ -228,7 +228,7 @@ class DataController extends BaseController
         
         $find = $dt->where('user_id', $box['user_id'])->findAll();
 
-        if ($find <= 0) {
+        if (count($find) <= 0) {
             $kontena = $knt->where('status', 1)->first();
 
             $session = session();
