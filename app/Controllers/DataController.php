@@ -94,7 +94,6 @@ class DataController extends BaseController
         $data['title'] = 'Maelezo ya Boxi';
         $data['box'] = $box;
         $data['user'] = $user;
-        // dd($data);
 
         return view('data/view', $data);
     }
@@ -220,11 +219,32 @@ class DataController extends BaseController
     public function delete($id)
     {
         $dt = new Data();
+        $knt = new Kontena();
 
         $box = $dt->find($id);
         // dd($box);
 
         $dt->delete($id);
+        
+        $find = $dt->where('user_id', $box['user_id'])->findAll();
+
+        if ($find <= 0) {
+            $kontena = $knt->where('status', 1)->first();
+
+            $session = session();
+            $session->destroy();
+
+            $sess_dt = [
+                'price' => $kontena['price'],
+            ];
+
+            $session->set($sess_dt);
+
+            return redirect()->to('/')
+            ->with('toast', 'success')
+            ->with('title', 'Umefuta Box zote Kikamilifu!')
+            ->with('message', 'INgia Upya Kama unahitaji kusajili tena box kwenye kontena!');
+        }
 
         return redirect()->to('data/box/' . $box['kontena_id'] . '/' . $box['user_id']);
     }

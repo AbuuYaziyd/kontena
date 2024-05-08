@@ -163,7 +163,6 @@ class AuthController extends BaseController
     
     public function Logout()
     {
-        $dt = new Data();
         $knt = new Kontena();
 
         $kontena = $knt->where('status', 1)->first();
