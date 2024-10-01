@@ -6,7 +6,6 @@ use App\Controllers\BaseController;
 use App\Models\Data;
 use App\Models\Kontena;
 use App\Models\User;
-use CodeIgniter\HTTP\ResponseInterface;
 
 class DataController extends BaseController
 {
@@ -23,6 +22,32 @@ class DataController extends BaseController
         // dd($data);
 
         return view('data/index', $data);
+    }
+
+    public function users()
+    {
+        helper('form');
+
+        $usr = new User();
+
+        $data['title'] = 'Data za Watumiaji';
+        $data['users'] = $usr->findAll();
+        // dd($data);
+
+        return view('data/users', $data);
+    }
+
+    public function revert($id)
+    {
+        $usr = new User();
+
+        $user = $usr->find($id);
+        $dt = ['password' => password_hash($user['phone'], PASSWORD_DEFAULT)];
+        // dd($dt);
+
+        $usr->update($id, $dt);
+
+        return redirect()->back()->with('toast', 'success')->with('title', 'Timilifu')->with('message', 'Password Imesasishwa Kikamilifu!');
     }
 
     public function new()

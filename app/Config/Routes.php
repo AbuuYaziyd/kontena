@@ -18,6 +18,8 @@ $routes->post('forgot', 'AuthController::forgot', ['filter' => 'admin']);
 
 $routes->group('data', function ($routes) {
     $routes->get('/', 'DataController::index', ['filter' => 'authGuard']);
+    $routes->get('users', 'DataController::users', ['filter' => 'admin']);
+    $routes->get('revert/(:num)', 'DataController::revert/$1', ['filter' => 'admin']);
     $routes->get('new', 'DataController::new', ['filter' => 'authGuard']);
     $routes->post('create', 'DataController::create', ['filter' => 'authGuard']);
     $routes->get('box/(:num)/(:num)', 'DataController::box/$1/$2', ['filter' => 'authGuard']);

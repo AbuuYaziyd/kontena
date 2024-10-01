@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\Data;
 use App\Models\Kontena;
 use App\Models\User;
 
@@ -123,7 +122,6 @@ class AuthController extends BaseController
         // dd($this->request->getVar());
         $session = session();
         $userModel = new User();
-        $dt = new Data();
         $knt = new Kontena();
 
         $iqama = $this->request->getVar('iqama');
@@ -136,7 +134,6 @@ class AuthController extends BaseController
             $pass = $data['password'];
             $authenticatePassword = password_verify($password, $pass);
             $kontena = $knt->where('status', 1)->first();
-            $boxCount = $dt->countAllResults();
 
             if ($authenticatePassword) {
                 $ses_data = [
