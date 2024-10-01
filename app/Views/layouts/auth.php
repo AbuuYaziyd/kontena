@@ -14,7 +14,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/img/logo.png') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/adminlte.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') ?>">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="hold-transition login-page">
@@ -24,24 +24,19 @@
     <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
     <script src="<?= base_url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/adminlte.min.js') ?>"></script>
-    <script src="<?= base_url('assets/plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
     <script>
-        var Toast = Swal.mixin({
-            toast: false,
-            position: 'center',
-            showConfirmButton: false,
-            timerProgressBar: true,
-            timer: 3000
-        });
         <?php if (session()->getFlashdata('toast')) : ?>
             $(document).ready(function() {
-                Toast.fire({
-                    icon: '<?= session()->getFlashdata('toast') ?>',
-                    title: '<?= session()->getFlashdata('title') ?>'
-                    text: '<?= session()->getFlashdata('msg') ?>'
-                })
-            <?php endif ?>
+                Swal.fire({
+                    position: "center",
+                    icon: "<?= session()->getFlashdata('toast') ?>",
+                    title: "<?= session()->getFlashdata('title') ?>",
+                    text: "<?= session()->getFlashdata('text') ?>",
+                    showConfirmButton: true,
+                    confirmButtonText: 'Sawa',
+                });
             });
+        <?php endif ?>
     </script>
 </body>
 

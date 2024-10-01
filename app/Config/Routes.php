@@ -13,6 +13,7 @@ $routes->post('register', 'AuthController::registerAuth');
 $routes->get('login', 'AuthController::login');
 $routes->post('login', 'AuthController::loginAuth');
 $routes->get('logout', 'AuthController::logout');
+$routes->post('recover', 'AuthController::recoverAuth');
 $routes->get('recover', 'AuthController::recover');
 $routes->post('forgot', 'AuthController::forgot', ['filter' => 'admin']);
 
@@ -44,10 +45,4 @@ $routes->group('user', function ($routes) {
 $routes->group('malipo', function ($routes) {
     $routes->get('user/(:num)', 'MalipoController::user/$1', ['filter' => 'admin']);
     $routes->post('edit/(:num)', 'MalipoController::edit/$1', ['filter' => 'admin']);
-});
-
-$routes->group('kontena', function ($routes) {
-    // $routes->get('/', 'KontenaController::index', ['filter' => 'authGuard']);
-    // $routes->post('find', 'KontenaController::find', ['filter' => 'authGuard']);
-    // $routes->post('edit/(:num)', 'KontenaController::edit/$1', ['filter' => 'authGuard']);
 });

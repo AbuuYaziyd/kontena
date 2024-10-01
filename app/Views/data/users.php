@@ -11,8 +11,8 @@
                         <div class="card-header">
                             <h3>Malipo ya Kontena</h3>
                         </div>
-                        <div class="card-body text-center">
-                            <table class="table table-bordered table-striped dtTable">
+                        <div class="card-body">
+                            <table class="table table-bordered table-striped dtTable text-center">
                                 <thead>
                                     <tr>
                                         <th>Jina</th>

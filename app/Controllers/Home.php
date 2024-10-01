@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\Admin;
 use App\Models\Data;
 use App\Models\Kontena;
 use App\Models\User;
@@ -13,8 +12,6 @@ class Home extends BaseController
     {
         helper('form');
 
-
-        $dt = new Data();
         $knt = new Kontena();
 
         $session = session();

@@ -4,11 +4,6 @@
 <?= $this->section('content') ?>
 
 <div class="login-box">
-  <?php if (session()->getFlashdata('toast')) : ?>
-    <div class="alert alert-<?= session()->getFlashdata('toast') ?>" style="text-align: center;">
-      <?= session()->getFlashdata('msg') ?>
-    </div>
-  <?php endif ?>
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
       <a href="<?= base_url() ?>" class="h1"><b>Tz</b> Kontena</a>

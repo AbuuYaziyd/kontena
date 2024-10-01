@@ -47,7 +47,7 @@ class DataController extends BaseController
 
         $usr->update($id, $dt);
 
-        return redirect()->back()->with('toast', 'success')->with('title', 'Timilifu')->with('message', 'Password Imesasishwa Kikamilifu!');
+        return redirect()->to('data')->with('toast', 'success')->with('title', 'Timilifu')->with('text', 'Password mpya ni: ' . $user['phone']);
     }
 
     public function new()
@@ -85,7 +85,7 @@ class DataController extends BaseController
         if ($ok) {
             return redirect()->to('data')
             ->with('toast', 'success')->with('title', 'Timilifu')
-            ->with('message', 'Umesajili Box zako Kikamilifu!');
+            ->with('text', 'Umesajili Box zako Kikamilifu!');
         }
     }
 
@@ -168,7 +168,7 @@ class DataController extends BaseController
         if ($ok) {
             return redirect()->to('data')
             ->with('toast', 'success')
-            ->with('message', 'Umesasisha Maelezo Kikamilifu!');
+            ->with('text', 'Umesasisha Maelezo Kikamilifu!');
         }
     }
 
@@ -238,7 +238,7 @@ class DataController extends BaseController
 
         return redirect()->back()
             ->with('toast', 'success')
-            ->with('message', 'Umeongeza Box Kikamilifu!');
+            ->with('text', 'Umeongeza Box Kikamilifu!');
     }
 
     public function delete($id)
@@ -268,7 +268,7 @@ class DataController extends BaseController
             return redirect()->to('/')
             ->with('toast', 'success')
             ->with('title', 'Umefuta Box zote Kikamilifu!')
-            ->with('message', 'INgia Upya Kama unahitaji kusajili tena box kwenye kontena!');
+            ->with('text', 'INgia Upya Kama unahitaji kusajili tena box kwenye kontena!');
         }
 
         return redirect()->to('data/box/' . $box['kontena_id'] . '/' . $box['user_id']);

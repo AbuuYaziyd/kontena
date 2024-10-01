@@ -21,22 +21,27 @@
 <script>
   $(function() {
     $(".dtTable").DataTable({
-    dom: '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rt<"row"<"col"i><"col"p>>',
-    buttons:  [
-            'colvis',
-            {
-                extend: 'print',
-                exportOptions: {
-                    columns: ':visible'
-                }
-            },
-        ],
-    language: {"url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/sw.json"},
-    columnDefs: [{ "type": "html-num", "targets": 0 }],
-    responsive: true,
-    searching: true, 
-    lengthChange: false,
-    autoWidth: true,
+      dom: '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rt<"row"<"col"i><"col"p>>',
+      buttons: [
+        'colvis',
+        {
+          extend: 'print',
+          exportOptions: {
+            columns: ':visible'
+          }
+        },
+      ],
+      "language": {
+        "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/sw.json"
+      },
+      columnDefs: [{
+        "type": "html-num",
+        "targets": 0
+      }],
+      responsive: false,
+      searching: true,
+      lengthChange: false,
+      autoWidth: true,
     })
   });
 </script>

@@ -90,7 +90,7 @@ class AuthController extends BaseController
             if ($ok) {
                 return redirect()->to('login')
                 ->with('toast', 'success')->with('title', 'Timilifu')
-                ->with('msg', 'Umesajiliwa katika Kontena Kikamilifu!');
+                ->with('text', 'Umesajiliwa katika Kontena Kikamilifu!');
             }
         } else {
             $data['title'] = 'Sajili Kontena';
@@ -151,10 +151,10 @@ class AuthController extends BaseController
                 $session->set($ses_data);
                 return redirect()->to('data');
             } else {
-                return redirect()->to('login')->with('toast', 'error')->with('title', 'Samahani')->with('msg', 'Data Hazipo sawa!');
+                return redirect()->to('login')->with('toast', 'error')->with('title', 'Samahani')->with('text', 'Data Hazipo sawa!');
             }
         } else {
-            return redirect()->to('login')->with('toast', 'error')->with('title', 'Samahani')->with('msg', 'Data Hazipo sawa!');
+            return redirect()->to('login')->with('toast', 'error')->with('title', 'Samahani')->with('text', 'Data Hazipo sawa!');
         }
     }
     
@@ -174,6 +174,31 @@ class AuthController extends BaseController
         $session->set($sess_dt);
 
         return redirect()->to('/');
+    }
+
+    public function recoverAuth()
+    {
+        // dd($this->request->getVar());
+
+        $usr = new User();
+
+        $iqama = $this->request->getVar('iqama');
+        $nchi = $this->request->getVar('nchi');
+        $jamia = $this->request->getVar('jamia');
+
+        $user = $usr->where(['iqama' => $iqama, 'nchi' => $nchi, 'jamia' => $jamia])->first();
+        // dd($user);
+
+        if (!$user) {
+            return redirect()->back()->with('toast', 'error')->with('title', 'Samahani')->with('text', 'Maelezo ya mtumiaji hayapo sawa!');
+        } else {
+            $dt = ['password' => password_hash($user['phone'], PASSWORD_DEFAULT)];
+            // dd($dt);
+
+            $usr->update($user['id'], $dt);
+
+            return redirect()->to('login')->with('toast', 'success')->with('title', 'Timilifu')->with('text', 'Password yako ya sasa ni:' . $user['phone']);
+        }
     }
 
     public function recover()

@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/plugins/fontawesome-free/css/all.min.css') ?>">
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/img/logo.svg') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/adminlte.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') ?>">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?= $this->renderSection('styles') ?>
 </head>
 
@@ -76,28 +75,29 @@
             <?= $this->renderSection('content') ?>
         </div>
     </div>
-    <?= $this->include('layouts/footer') ?>
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-inline">
+            <a href="https://abouyaziyd.rf.gd" target="_blank"> <strong>Abou Yaziyd</strong></a>
+        </div>
+        <strong>Hakimiliki &copy; <?= date('Y'); ?> <a href="<?= base_url('home') ?>"><?= APP_NAME ?></a>.</strong>
+        Haki zote zimehifadhiwa.
+    </footer>
     <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
     <script src="<?= base_url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= base_url('asset/js/adminlte.min.js') ?>"></script>
-    <script src="<?= base_url('assets/plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
     <script>
-        var Toast = Swal.mixin({
-            toast: false,
-            position: 'center',
-            showConfirmButton: false,
-            timerProgressBar: true,
-            timer: 3000
-        });
         <?php if (session()->getFlashdata('toast')) : ?>
             $(document).ready(function() {
-                Toast.fire({
-                    icon: '<?= session()->getFlashdata('toast') ?>',
-                    title: '<?= session()->getFlashdata('title') ?>',
-                    text: '<?= session()->getFlashdata('message') ?>',
-                })
-            <?php endif ?>
+                Swal.fire({
+                    position: "center",
+                    icon: "<?= session()->getFlashdata('toast') ?>",
+                    title: "<?= session()->getFlashdata('title') ?>",
+                    text: "<?= session()->getFlashdata('text') ?>",
+                    showConfirmButton: false,
+                    timer: 3000
+                });
             });
+        <?php endif ?>
     </script>
 
     <?= $this->renderSection('scripts') ?>
