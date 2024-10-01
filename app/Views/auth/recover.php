@@ -52,7 +52,7 @@
       </form>
       <hr>
       <div class="text-center">
-        Umekumbuka Password! <a href="<?= base_url('recover') ?>">Ingia</a>
+        Umekumbuka Password! <a href="<?= base_url('login') ?>">Ingia</a>
       </div>
     </div>
   </div>
