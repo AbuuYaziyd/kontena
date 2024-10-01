@@ -179,6 +179,21 @@ class AuthController extends BaseController
         return redirect()->to('/');
     }
 
+    public function recover()
+    {
+        if (session('isLoggedIn') == true) {
+            return redirect()->to('data');
+        } else {
+            helper(['form']);
+
+            $knt = new Kontena();
+
+            $data['title'] = 'Umesahau Password?';
+
+            return view('auth/recover', $data);
+        }
+    }
+
     function forgot()
     {
         // dd($this->request->getVar());  

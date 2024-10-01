@@ -13,6 +13,7 @@ $routes->post('register', 'AuthController::registerAuth');
 $routes->get('login', 'AuthController::login');
 $routes->post('login', 'AuthController::loginAuth');
 $routes->get('logout', 'AuthController::logout');
+$routes->get('recover', 'AuthController::recover');
 $routes->post('forgot', 'AuthController::forgot', ['filter' => 'admin']);
 
 $routes->group('data', function ($routes) {
