@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= APP_NAME ?> | 404 Kurasa Haijapatikana!</title>
+    <title><?= env('APP_NAME') ?> | 404 Kurasa Haijapatikana!</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="<?= base_url('plugins/fontawesome-free/css/all.min.css') ?>">
@@ -38,7 +38,7 @@
             <div class="float-right d-none d-sm-inline">
                 <a href="https://abouyaziyd.rf.gd" target="_blank"> <strong>aBy Solutions</strong></a>
             </div>
-            <strong>Hakimiliki &copy; <?php echo date('Y'); ?> <a href="<?= base_url() ?>"><?php echo APP_NAME ?></a>.</strong>
+            <strong>Hakimiliki &copy; <?php echo date('Y'); ?> <a href="<?= base_url() ?>"><?= env('APP_NAME') ?></a>.</strong>
             Haki zote zimehifadhiwa.
         </footer>
     </div>

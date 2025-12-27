@@ -42,7 +42,6 @@ $RECYCLE.BIN/
 # These should never be under version control,
 # as it poses a security risk.
 .env
-.htaccess
 .vagrant
 Vagrantfile
 
@@ -125,3 +124,11 @@ nb-configuration.xml
 /results/
 /phpunit*.xml
 /.phpunit.*.cache
+
+#-------------------------
+# Fresh Start
+#-------------------------
+.htaccess
+writable/*
+public/*
+# manifest.json

@@ -25,42 +25,6 @@
                     <img src="<?= base_url('assets/img/logo.svg') ?>" alt="kontena" class="brand-image img-circle elevation-3" style="opacity: .8">
                     <span class="brand-text font-weight-light"><?= APP_NAME ?></span>
                 </a>
-                <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
-                    <?php if (!session('isLoggedIn')) : ?>
-                        <!-- <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a href="<?= base_url('kontena') ?>" class="nav-link">Kontena</a>
-                            </li>
-                        </ul> -->
-                    <?php else : ?>
-                        <!-- <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a href="<?= base_url('malipo') ?>" class="nav-link">Admin</a>
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a href="<?= base_url('data') ?>" class="nav-link">Data</a>
-                            </li>
-                        </ul> -->
-                    <?php endif ?>
-                    <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-                        <li class="nav-item">
-                            <?php if (session('isLoggedIn') != true) : ?>
-                                <a href="<?= base_url('login') ?>" class="btn btn-sm btn-warning">
-                                    Ingia <i class="fas fa-sign-in-alt"></i> </a>
-                                </a>
-                            <?php else : ?>
-                                <a href="<?= base_url('logout') ?>" class="btn btn-sm btn-danger">
-                                    <i class="fas fa-sign-out-alt"></i> Ondoka</a>
-                                </a>
-                            <?php endif ?>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </nav>
         <div class="content-wrapper">

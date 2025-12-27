@@ -8,7 +8,7 @@
     <meta name="description" content="Umoja wa Watanzania Chuo Kikuu cha Kiislamu Madina">
     <meta name="keywords" content="Umoja wa Watanzania Chuo Kikuu cha Kiislamu Madina">
     <meta name="author" content="abouyaziyd">
-    <title><?= APP_NAME ?> | <?= $title ?></title>
+    <title><?= env('APP_NAME') ?> | <?= $title ?></title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/fontawesome-free/css/all.min.css') ?>">
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/img/logo.png') ?>">
