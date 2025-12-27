@@ -90,7 +90,7 @@ class AuthController extends BaseController
             if ($ok) {
                 return redirect()->to('login')
                 ->with('toast', 'success')->with('title', 'Timilifu')
-                ->with('text', 'Umesajiliwa katika Kontena Kikamilifu!');
+                ->with('text', 'Umesajiliwa katika Kontena Kikamilifu! Kuingia kwenye system Tumia Iqama na password ni NAMBA ZAKO ZA SIMU');
             }
         } else {
             $data['title'] = 'Sajili Kontena';
