@@ -60,7 +60,7 @@ class AuthController extends BaseController
                 ],
             ],
             'phone' => [
-                'rules'  => 'required|min_length[12]|max_length[12]|is_unique[users.phone]|integer',
+                'rules'  => 'required|min_length[10]|max_length[10]|is_unique[users.phone]|integer',
                 'errors' => [
                     'required' => 'Simu ya Mhusika Inahitajika!',
                     'integer' => 'Weka namba Tu!',
