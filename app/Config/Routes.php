@@ -12,12 +12,12 @@ $routes->get('register', 'AuthController::register');
 $routes->post('register', 'AuthController::registerAuth');
 $routes->get('login', 'AuthController::login');
 $routes->post('login', 'AuthController::loginAuth');
-$routes->get('logout', 'AuthController::logout');
-$routes->post('recover', 'AuthController::recoverAuth');
 $routes->get('recover', 'AuthController::recover');
-$routes->post('password', 'AuthController::password', ['filter' => 'auth']);
+$routes->post('recover', 'AuthController::recoverAuth');
 $routes->get('change', 'AuthController::change', ['filter' => 'auth']);
+$routes->post('password', 'AuthController::password', ['filter' => 'auth']);
 $routes->post('forgot', 'AuthController::forgot', ['filter' => 'admin']);
+$routes->get('logout', 'AuthController::logout');
 
 $routes->group('data', function ($routes) {
     $routes->get('/', 'DataController::index', ['filter' => 'auth']);

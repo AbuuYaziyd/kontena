@@ -157,23 +157,20 @@ class AuthController extends BaseController
             return redirect()->to('login')->with('toast', 'error')->with('title', 'Samahani')->with('text', 'Data Hazipo sawa!');
         }
     }
-    
-    public function Logout()
+
+    public function recover()
     {
-        $knt = new Kontena();
+        if (session('isLoggedIn') == true) {
+            return redirect()->to('data');
+        } else {
+            helper(['form']);
 
-        $kontena = $knt->where('status', 1)->first();
+            $knt = new Kontena();
 
-        $session = session();
-        $session->destroy();
+            $data['title'] = 'Umesahau Password?';
 
-        $sess_dt = [
-            'price' => $kontena['price'],
-        ];
-
-        $session->set($sess_dt);
-
-        return redirect()->to('/');
+            return view('auth/recover', $data);
+        }
     }
 
     public function recoverAuth()
@@ -201,18 +198,39 @@ class AuthController extends BaseController
         }
     }
 
-    public function recover()
+    public function change()
     {
-        if (session('isLoggedIn') == true) {
-            return redirect()->to('data');
+        helper(['form']);
+
+        $data['title'] = 'Badili Password';
+
+        return view('auth/change', $data);
+    }
+
+    public function password()
+    {
+        // dd($this->request->getVar());
+
+        $usr = new User();
+
+        $old = $this->request->getVar('old');
+        $new = $this->request->getVar('new');
+
+        $user = $usr->find(session('id'));
+        // dd($user);
+
+        $authenticatePassword = password_verify($old, $new);
+        // dd($authenticatePassword);
+
+        if (!$authenticatePassword) {
+            return redirect()->back()->with('toast', 'error')->with('title', 'Samahani')->with('text', 'Data hazipo sawa!');
         } else {
-            helper(['form']);
+            $dt = ['password' => password_hash($new, PASSWORD_DEFAULT)];
+            // dd($dt);
 
-            $knt = new Kontena();
+            // $usr->update($user['id'], $dt);
 
-            $data['title'] = 'Umesahau Password?';
-
-            return view('auth/recover', $data);
+            return redirect()->to('data')->with('toast', 'success')->with('title', 'Timilifu')->with('text', 'Password Imebadilishwa Kikamilifu!');
         }
     }
 
@@ -231,5 +249,23 @@ class AuthController extends BaseController
 
         return redirect()->back()->with('toast', 'success')->with('title', 'Timilifu')
             ->with('message', 'Password Imebadilishwa Kikamilifu!');
+    }
+
+    public function Logout()
+    {
+        $knt = new Kontena();
+
+        $kontena = $knt->where('status', 1)->first();
+
+        $session = session();
+        $session->destroy();
+
+        $sess_dt = [
+            'price' => $kontena['price'],
+        ];
+
+        $session->set($sess_dt);
+
+        return redirect()->to('/');
     }
 }
