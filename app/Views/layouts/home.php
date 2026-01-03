@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/plugins/fontawesome-free/css/all.min.css') ?>">
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/img/logo.svg') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/adminlte.min.css') ?>">
+    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?= $this->renderSection('styles') ?>
 </head>

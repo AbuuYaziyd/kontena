@@ -15,6 +15,8 @@ $routes->post('login', 'AuthController::loginAuth');
 $routes->get('logout', 'AuthController::logout');
 $routes->post('recover', 'AuthController::recoverAuth');
 $routes->get('recover', 'AuthController::recover');
+$routes->post('password', 'AuthController::password', ['filter' => 'auth']);
+$routes->get('change', 'AuthController::change', ['filter' => 'auth']);
 $routes->post('forgot', 'AuthController::forgot', ['filter' => 'admin']);
 
 $routes->group('data', function ($routes) {
