@@ -228,7 +228,7 @@ class AuthController extends BaseController
             $dt = ['password' => password_hash($new, PASSWORD_DEFAULT)];
             // dd($dt);
 
-            // $usr->update($user['id'], $dt);
+            $usr->update($user['id'], $dt);
 
             return redirect()->to('data')->with('toast', 'success')->with('title', 'Timilifu')->with('text', 'Password Imebadilishwa Kikamilifu!');
         }
