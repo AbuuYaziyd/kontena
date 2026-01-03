@@ -63,7 +63,7 @@
                         <span class="badge badge-danger badge-sm"> <?= session('errors')['phone'] ?></span>
                     <?php endif ?>
                     <div class="input-group mb-3">
-                        <input class="form-control" type="number" name="phone" value="<?= old('phone') ?>" placeholder="255123456789">
+                        <input class="form-control" type="number" name="phone" value="<?= old('phone') ?>" placeholder="0713102030">
                     </div>
                 </div>
             </div>
