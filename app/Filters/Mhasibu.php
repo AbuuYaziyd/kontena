@@ -34,7 +34,7 @@ class Mhasibu implements FilterInterface
             return redirect()
                 ->back()
                 ->with('toast', 'error')
-                ->with('message', 'Mhasibu pekee!');;
+                ->with('title', 'Mhasibu pekee!');;
         }
     }
 

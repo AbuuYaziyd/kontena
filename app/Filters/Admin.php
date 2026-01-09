@@ -34,7 +34,7 @@ class Admin implements FilterInterface
             return redirect()
                 ->back()
                 ->with('toast', 'error')
-                ->with('message', 'Wahusika pekee!');;
+                ->with('title', 'Wahusika pekee!');;
         }
     }
 
