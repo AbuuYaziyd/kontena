@@ -22,6 +22,7 @@ $routes->get('logout', 'AuthController::logout');
 $routes->group('data', function ($routes) {
     $routes->get('/', 'DataController::index', ['filter' => 'auth']);
     $routes->get('users', 'DataController::users', ['filter' => 'admin']);
+    $routes->get('user/(:num)', 'DataController::user/$1', ['filter' => 'admin']);
     $routes->get('revert/(:num)', 'DataController::revert/$1', ['filter' => 'admin']);
     $routes->get('new', 'DataController::new', ['filter' => 'auth']);
     $routes->post('create', 'DataController::create', ['filter' => 'auth']);

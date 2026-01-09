@@ -37,6 +37,27 @@ class DataController extends BaseController
         return view('data/users', $data);
     }
 
+    public function user($id)
+    {
+        helper('form');
+
+        $dt = new Data();
+        $usr = new User();
+
+        $user = $usr->find($id);
+
+        $data['title'] = 'Malipo ya Kontena';
+        $data['user'] = $user;
+        $data['data'] = $dt;
+        $data['kont'] = $dt->where('user_id', $id)->first();
+        $data['box'] = $dt->where('user_id', $id)->findAll();
+        $data['sum'] = $dt->where('user_id', $id)->selectSum('paid')->get()->getRow()->paid;
+        $data['chenji'] = $dt->where(['user_id' => $id, 'paid>' => 0, 'paid<' => session('price')])->first()['paid'] ?? 0;
+        // dd($data);
+
+        return view('data/user', $data);
+    }
+
     public function revert($id)
     {
         $usr = new User();

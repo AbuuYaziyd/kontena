@@ -27,7 +27,7 @@
                                             <td> <?= $dt['name'] ?></td>
                                             <td><?= $dt['phone'] ?></td>
                                             <td><?= $dt['iqama'] ?></td>
-                                            <td><a href="<?= base_url('data/revert/' . $dt['id']) ?>" class="btn btn-danger btn-sm"><i class="fas fa-lock"></i></a></td>
+                                            <td><a href="<?= base_url('data/user/' . $dt['id']) ?>" class="btn btn-danger btn-sm"><i class="fas fa-user"></i></a></td>
                                         </tr>
                                     <?php endforeach ?>
                                 </tbody>
