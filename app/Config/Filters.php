@@ -4,6 +4,7 @@ namespace Config;
 
 use App\Filters\Admin;
 use App\Filters\Auth;
+use App\Filters\Mhasibu;
 use CodeIgniter\Config\Filters as BaseFilters;
 use CodeIgniter\Filters\Cors;
 use CodeIgniter\Filters\CSRF;
@@ -38,6 +39,7 @@ class Filters extends BaseFilters
         'performance'   => PerformanceMetrics::class,
         'auth'          => Auth::class,
         'admin'         => Admin::class,
+        'mhasibu'       => Mhasibu::class,
     ];
 
     /**

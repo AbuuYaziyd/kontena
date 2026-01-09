@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class Admin implements FilterInterface
+class Mhasibu implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.
@@ -30,11 +30,11 @@ class Admin implements FilterInterface
                 ->to('login');
         }
 
-        if (session('role') != 'admin') {
+        if (session('role') != 'mhasibu') {
             return redirect()
                 ->back()
                 ->with('toast', 'error')
-                ->with('message', 'Wahusika pekee!');;
+                ->with('message', 'Mhasibu pekee!');;
         }
     }
 
