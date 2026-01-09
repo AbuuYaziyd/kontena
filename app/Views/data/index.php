@@ -71,7 +71,7 @@
       </div>
     </div>
     <hr>
-    <?php if (session('role') == 'admin') : ?>
+    <?php if (session('role') == 'admin' || session('role') == 'mhasibu') : ?>
       <?= $this->include('data/admin') ?>
     <?php endif ?>
   </div>
@@ -93,21 +93,6 @@
         window.location.href = '<?= base_url('change') ?>';
       }
     });
-    // Swal.fire({
-    //   title: 'Una uhakika unahitaji kufuta Box?',
-    //   text: "Ukishafuta huwezi kurejesha data tena!",
-    //   icon: 'warning',
-    //   showCancelButton: true,
-    //   cancelButtonColor: '#3085d6',
-    //   confirmButtonColor: '#d33',
-    //   reverseButtons: false,
-    //   cancelButtonText: 'Hapana!',
-    //   confirmButtonText: 'Futa',
-    // }).then(function(result) {
-    //   if (result.value) {
-    //     window.location.href = url;
-    //   }
-    // })
   });
 </script>
 <?= $this->endSection() ?>

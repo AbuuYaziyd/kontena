@@ -30,7 +30,7 @@ class Admin implements FilterInterface
                 ->to('login');
         }
 
-        if (session('role') != 'admin') {
+        if (session('role') != 'admin' && session('role') != 'mhasibu') {
             return redirect()
                 ->back()
                 ->with('toast', 'error')

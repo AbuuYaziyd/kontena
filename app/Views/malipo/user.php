@@ -40,7 +40,6 @@
                   <div class="form-group">
                     <div class="form-group">
                       <label>Malipo</label>
-                      <span class="float-right">Chenji: <b><?= $chenji ?>SAR</b></span><br>
                       <input type="number" class="form-control mb-3" name="pesa" placeholder="Alichotoa leo" onkeyup="check();" id="pesa">
                       <input type="hidden" name="chenji" value="<?= $chenji ?>">
                       <button class="btn btn-primary btn-block btn-lg" disabled type="submit" id="submit">Tuma</button>
