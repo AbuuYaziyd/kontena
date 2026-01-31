@@ -51,4 +51,12 @@ class User extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    function malipoJamia($id) {
+        $dt = new Data();
+
+        $sum = $dt->where('mhasibu_id', $id)->selectSum('paid')->get()->getRow()->paid;
+
+        return $sum;
+    }
 }

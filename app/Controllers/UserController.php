@@ -38,6 +38,7 @@ class UserController extends BaseController
             'name' => strtoupper($this->request->getVar('name')),
             'phone' => $this->request->getVar('phone'),
             'iqama' => $this->request->getVar('iqama'),
+            'jamia' => $this->request->getVar('jamia'),
         ];
 
         // dd($data);
@@ -97,9 +98,11 @@ class UserController extends BaseController
         $kn = new Kontena();
 
         $data['title'] = 'Mtumiaji';
-        $data['users'] = $usr->findAll();
-        $data['data'] = $dt;
+        $data['users'] = $dt->select('user_id')->distinct()->findAll();
+        $data['wahasibu'] = $usr->where('role', 'mhasibu')->findAll();
+        $data['usr'] = $usr;
         $data['current'] = $kn->where('status', 1)->first();
+        $data['sum'] = $dt->selectSum('paid')->get()->getRow()->paid;
         $data['knt'] = $dt->where(['user_id' => session('id')])->distinct()->select('kontena_id')->findAll();
         // dd($data);
 
