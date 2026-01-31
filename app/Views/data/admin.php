@@ -3,12 +3,15 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h1><b>Admin:</b><a href="<?= base_url('user/admin') ?>" class="btn btn-lg btn-warning float-right"><i class="fa fa-cog fa-spin"></i></a></h1>
+          <h1>
+            <b>Admin:</b>
+            <!-- <a href="<?= base_url('user/admin') ?>" class="btn btn-lg btn-warning float-right"><i class="fa fa-cog fa-spin"></i></a> -->
+          </h1>
           <div class="row">
             <div class="col-lg">
               <div class="card card-primary card-outline">
                 <div class="card-header">
-                  <h3><b>Malipo ya Kontena</b> </h3>
+                  <h3><b>Malipo ya Kontena</b> <a href="<?= base_url('data/users') ?>" class="btn btn-outline-danger float-right"><i class="fa fa-users"></i></a></h3>
                 </div>
                 <div class="card-body">
                   <table class="table table-bordered table-striped dtTable">
