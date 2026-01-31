@@ -43,6 +43,7 @@ $routes->group('user', function ($routes) {
     $routes->post('edit/(:num)', 'UserController::edit/$1', ['filter' => 'auth']);
     $routes->get('receiver', 'UserController::receiver', ['filter' => 'auth']);
     $routes->post('receiver/(:num)', 'UserController::receiverEdit/$1', ['filter' => 'auth']);
+    $routes->get('admin', 'UserController::admin', ['filter' => 'admin']);
 });
 
 $routes->group('malipo', function ($routes) {

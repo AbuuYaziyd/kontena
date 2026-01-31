@@ -57,7 +57,10 @@ class MalipoController extends BaseController
             // dd($total_boxes);
 
             foreach ($total_boxes as $d) {
-                $data = ['paid' => session('price')];
+                $data = [
+                    'paid' => session('price'),
+                    'mhasibu_id' => session('id'),
+                    ];
 
                 $dt->update($d['id'], $data);
             }

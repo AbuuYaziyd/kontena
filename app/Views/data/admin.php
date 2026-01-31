@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h1><b>Admin:</b><a href="#" class="btn btn-lg btn-warning float-right"><i class="fa fa-cog"></i></a></h1>
+          <h1><b>Admin:</b><a href="<?=  base_url('user/admin') ?>" class="btn btn-lg btn-warning float-right"><i class="fa fa-cog fa-spin"></i></a></h1>
           <div class="row">
             <div class="col-lg">
               <div class="card card-primary card-outline">

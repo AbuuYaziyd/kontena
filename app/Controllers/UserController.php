@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Data;
+use App\Models\Kontena;
 use App\Models\User;
 
 class UserController extends BaseController
@@ -85,5 +86,24 @@ class UserController extends BaseController
         }
 
         return redirect()->to('data')->with('toast', 'success')->with('message', 'Umesasisha Data zako Kikamilifu!');
+    }
+
+    public function admin()
+    {
+        helper('form');
+
+        $usr = new User();
+        $dt = new Data();
+        $kn = new Kontena();
+
+        $data['title'] = 'Mtumiaji';
+        $data['users'] = $usr->findAll();
+        $data['data'] = $dt;
+        $data['current'] = $kn->where('status', 1)->first();
+        $data['users'] = $dt->select('user_id')->distinct()->findAll();
+        $data['knt'] = $dt->where(['user_id' => session('id')])->distinct()->select('kontena_id')->findAll();
+        // dd($data);
+
+        return view('user/admin', $data);
     }
 }

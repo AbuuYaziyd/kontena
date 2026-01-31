@@ -15,6 +15,7 @@ class Data extends Model
     protected $allowedFields    = [
         'user_id',
         'kontena_id',
+        'mhasibu_id',
         'mpokeaji',
         'phone',
         'fikia',
