@@ -85,7 +85,7 @@ class Data extends Model
     {
         $dt = new Data();
         $data = $dt->where(['kontena_id' => $id, 'user_id' => $user])->countAllResults();
-        return $data;
+        return intval($data);
     }
 
     function kontena($id)

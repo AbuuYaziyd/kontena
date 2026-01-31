@@ -9,7 +9,7 @@
                 <div class="col-lg">
                     <div class="card card-primary card-outline">
                         <div class="card-header">
-                            <h3>Malipo ya Kontena</h3>
+                            <h3><b>Watumiaji</b></h3>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered table-striped dtTable text-center">
@@ -18,7 +18,7 @@
                                         <th>Jina</th>
                                         <th>Simu</th>
                                         <th>Iqama</th>
-                                        <th>Password</th>
+                                        <th>Fungua</th>
                                     </tr>
                                 </thead>
                                 <tbody>
