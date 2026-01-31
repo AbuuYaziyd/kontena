@@ -100,7 +100,6 @@ class UserController extends BaseController
         $data['users'] = $usr->findAll();
         $data['data'] = $dt;
         $data['current'] = $kn->where('status', 1)->first();
-        $data['users'] = $dt->select('user_id')->distinct()->findAll();
         $data['knt'] = $dt->where(['user_id' => session('id')])->distinct()->select('kontena_id')->findAll();
         // dd($data);
 

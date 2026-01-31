@@ -10,31 +10,15 @@
           <span><b>Kontena:</b></span><a href="<?= base_url('logout') ?>" class="btn btn-lg btn-outline-danger float-right" id="logout"> <i class="fas fa-sign-out-alt"></i> Ondoka</a>
         </h1>
         <div class="row">
-          <?php if (count($knt) > 0) : ?>
-            <?php foreach ($knt as $dt) : ?>
-              <div class="col-md-4">
-                <a href="<?= base_url('data/box/' . $dt['kontena_id'] . '/' . session('id')) ?>">
-                  <div class="small-box bg-info">
-                    <div class="inner">
-                      <h3><?= $data->kontena($dt['kontena_id'])['title'] ?><sub style="font-size: 20px"> <i class="fas fa-box"></i> </sub></h3>
-                      <p>Idadi ya Box Zako: <b><?= $data->box($dt['kontena_id'], session('id')) ?></b></p>
-                    </div>
-                    <div class="icon">
-                      <i class="fas fa-box-open"></i>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            <?php endforeach ?>
             <div class="col-md-4">
               <a href="<?= base_url('user/profile') ?>">
                 <div class="small-box bg-warning" data-toggle="modal" data-target="#idadi">
                   <div class="inner">
-                    <h3>Kuhusu<sub style="font-size: 20px"> <i class="fas fa-shipping-fast"></i></sub></h3>
-                    <p>Data za Mtumiaji</p>
+                    <h3>Malipo<sub style="font-size: 20px"> <i class="fas fa-wallet"></i></sub></h3>
+                    <p>Data za Waliolipa</p>
                   </div>
                   <div class="icon">
-                    <i class="fas fa-user"></i>
+                    <i class="fas fa-credit-card"></i>
                   </div>
                 </div>
               </a>
@@ -43,30 +27,15 @@
               <a href="<?= base_url('user/receiver') ?>">
                 <div class="small-box bg-dark">
                   <div class="inner">
-                    <h3>Mpokeaji<sub style="font-size: 20px"> <i class="fas fa-boxes"></i></sub></h3>
-                    <p>Maelezo ya Mpokeaji</p>
+                    <h3>Viongozi<sub style="font-size: 20px"> <i class="fas fa-user-cog"></i></sub></h3>
+                    <p>Viongozi wote wa Kontena</p>
                   </div>
                   <div class="icon">
-                    <i class="fas fa-people-carry"></i>
+                    <i class="fas fa-user-cog"></i>
                   </div>
                 </div>
               </a>
             </div>
-          <?php else : ?>
-            <div class="col-md-4">
-              <a href="<?= base_url('data/new') ?>">
-                <div class="small-box bg-purple">
-                  <div class="inner">
-                    <h3>Sajili<sub style="font-size: 20px"> <i class="fas fa-box"></i> </sub></h3>
-                    <p>Sajili Box Zako</p>
-                  </div>
-                  <div class="icon">
-                    <i class="fas fa-user-plus"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-          <?php endif ?>
         </div>
       </div>
     </div>
