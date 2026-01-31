@@ -17,17 +17,26 @@
                 <?= form_open('user/edit/' . session('id')) ?>
                 <div class="card-body">
                     <div class="row mb-4">
-                        <div class="col-md-4">
+                        <div class="col-md-3 mb-2">
+                            <label>Mhusika</label>
+                            <input class="form-control" type="text" name="name" value="<?= $user['name'] ?>">
+                        </div>
+                        <div class="col-md-3 mb-2">
                             <label>Namba ya Iqama</label>
                             <input class="form-control" type="number" maxlength="10" value="<?= $user['iqama'] ?>" name="iqama">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3 mb-2">
                             <label>Namba ya Simu</label>
                             <input class="form-control" type="number" name="phone" value="<?= $user['phone'] ?>">
                         </div>
-                        <div class="col-md-4">
-                            <label>Jina la Mhusika</label>
-                            <input class="form-control" type="text" name="name" value="<?= $user['name'] ?>">
+                        <div class="col-md-3 mb-2">
+                            <label>Jamia</label>
+                            <select name="jamia" class="custom-select">
+                                <option value="IUM" <?= $user['jamia'] == 'IUM' ? 'selected' : '' ?>>Jamia Islamia</option>
+                                <option value="JED" <?= $user['jamia'] == 'JED' ? 'selected' : '' ?>>Jamia Malik Abdul-Aziz</option>
+                                <option value="IMS" <?= $user['jamia'] == 'IMS' ? 'selected' : '' ?>>Jamia Imam</option>
+                                <option value="MSU" <?= $user['jamia'] == 'MSU' ? 'selected' : '' ?>>Jamia Malik saud</option>
+                            </select>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-block btn-primary btn-lg">Hifadhi</button>

@@ -8,7 +8,7 @@
         </div>
         <div class="card-body">
             <div class="text-center"><span>Gharama ya Box: <b><?= $kont['price'] ?>SAR</b></span></div>
-            
+
             <hr>
             <?php $validation = \Config\Services::validation() ?>
             <?= form_open('register') ?>
@@ -53,6 +53,9 @@
                         <select name="jamia" class="custom-select">
                             <option selected disabled>Chagua Jamia</option>
                             <option value="IUM">Jamia Islamia</option>
+                            <option value="JED">Jamia Malik Abdul-Aziz</option>
+                            <option value="IMS">Jamia Imam</option>
+                            <option value="MSU">Jamia Malik saud</option>
                             <option value="OTHER">Jamia Nyengine</option>
                         </select>
                     </div>
