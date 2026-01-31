@@ -59,4 +59,17 @@ class User extends Model
 
         return $sum;
     }
+
+    function data($id){
+        $dt = new Data();
+        $usr = new User();
+
+        $data['box'] = $dt->where('user_id', $id)->countAllResults();
+        $data['paid'] = $dt->where(['user_id' => $id, 'paid' => 80])->countAllResults();
+        $data['sum'] = $dt->where('user_id', $id)->selectSum('paid')->get()->getRow()->paid;
+        $data['user'] = $usr->find($id);
+        // dd($data);
+
+        return $data;
+    }
 }

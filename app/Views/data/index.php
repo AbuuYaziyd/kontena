@@ -11,13 +11,13 @@
         </h1>
         <div class="row">
           <?php if (count($knt) > 0) : ?>
-            <?php foreach ($knt as $dt) : ?>
+            <?php foreach ($knt as $kn) : ?>
               <div class="col-md-4">
-                <a href="<?= base_url('data/box/' . $dt['kontena_id'] . '/' . session('id')) ?>">
+                <a href="<?= base_url('data/box/' . $kn['kontena_id'] . '/' . session('id')) ?>">
                   <div class="small-box bg-info">
                     <div class="inner">
-                      <h3><?= $data->kontena($dt['kontena_id'])['title'] ?><sub style="font-size: 20px"> <i class="fas fa-box"></i> </sub></h3>
-                      <p>Idadi ya Box Zako: <b><?= $data->box($dt['kontena_id'], session('id')) ?></b></p>
+                      <h3><?= $dt->kontena($kn['kontena_id'])['title'] ?><sub style="font-size: 20px"> <i class="fas fa-box"></i> </sub></h3>
+                      <p>Idadi ya Box Zako: <b><?= $dt->box($kn['kontena_id'], session('id'))['box'] ?></b></p>
                     </div>
                     <div class="icon">
                       <i class="fas fa-box-open"></i>

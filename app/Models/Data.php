@@ -85,8 +85,15 @@ class Data extends Model
     function box($id, $user)
     {
         $dt = new Data();
-        $data = $dt->where(['kontena_id' => $id, 'user_id' => $user])->countAllResults();
-        return intval($data);
+        $usr = new User();
+
+        $data['box'] = $dt->where(['kontena_id' => $id, 'user_id' => $user])->countAllResults();
+        $data['paid'] = $dt->where(['kontena_id' => $id, 'user_id' => $user, 'paid' => 80])->countAllResults();
+        $data['sum'] = $dt->where(['kontena_id' => $id, 'user_id' => $user])->selectSum('paid')->get()->getRow()->paid;
+        $data['user'] = $usr->find($user);
+        // dd($data);
+
+        return $data;
     }
 
     function kontena($id)

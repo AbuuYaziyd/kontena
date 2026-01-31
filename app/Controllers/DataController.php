@@ -17,7 +17,7 @@ class DataController extends BaseController
         $kn = new Kontena();
 
         $data['title'] = 'Data';
-        $data['data'] = $dt;
+        $data['dt'] = $dt;
         $data['current'] = $kn->where('status', 1)->first();
         $data['users'] = $dt->select('user_id')->distinct()->findAll();
         $data['knt'] = $dt->where(['user_id' => session('id')])->distinct()->select('kontena_id')->findAll();
