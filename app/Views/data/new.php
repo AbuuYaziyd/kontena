@@ -19,7 +19,7 @@
                 <?= form_open('data/create') ?>
                 <div class="card-body">
                     <div class="row mb-4">
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-2">
                             <label>Mafikio </label>
                             <select class="custom-select rounded-0" name="fikia">
                                 <option selected disabled>Chagua Mafikio</option>
@@ -28,17 +28,19 @@
                                 <option value="PBA">PBA</option>
                             </select>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-2">
                             <label>Jina la Mpokeaji</label>
                             <input class="form-control" type="text" name="mpokeaji" placeholder="Jina la Mpokeaji">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-2">
                             <label>Namba ya Simu ya Mpokeaji</label>
                             <input class="form-control" type="number" placeholder="255123456789" name="phone">
                         </div>
-                        <div class="col-md-6">
-                            <label>Idadi ya Box</label>
-                            <input class="form-control" type="number" placeholder="3" name="idadi">
+
+                        <div class="col-md-6 mb-2">
+                        
+                            <label>Idadi ya Box | <span class="text-center text-danger"><b>Ukiwa na Box zaidi ya 30 wasiliana na Kamati ya Kontena</b></span></label>
+                            <input class="form-control" type="number" max="30" placeholder="3" name="idadi">
                         </div>
                     </div>
                     <input type="hidden" name="kontena_id" value="<?= $knt['id'] ?>">
