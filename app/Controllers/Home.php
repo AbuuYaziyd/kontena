@@ -13,15 +13,10 @@ class Home extends BaseController
         helper('form');
 
         $knt = new Kontena();
-
         $session = session();
 
         $kontena = $knt->where('status', 1)->first();
-
-        $sess_dt = [
-            'price' => $kontena['price'],
-        ];
-
+        $sess_dt = ['price' => $kontena['price'],];
         $session->set($sess_dt);
 
         $data['title'] = 'Kontena';
