@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <?php if ($box['code'] != null) : ?>
+                        <?php if ($box['code'] != null || $box['paid'] == $kontena['price']) : ?>
                             <button type="submit" class="btn btn-block btn-success btn-lg">Hifadhi Data</button>
                         <?php else : ?>
                             <div class="col-md-6">

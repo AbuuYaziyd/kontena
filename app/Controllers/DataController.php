@@ -135,6 +135,7 @@ class DataController extends BaseController
 
         $dt = new Data();
         $usr = new User();
+        $knt = new Kontena();
 
         $box = $dt->find($id);
         $user = $usr->find($box['user_id']);
@@ -142,6 +143,8 @@ class DataController extends BaseController
         $data['title'] = 'Maelezo ya Boxi';
         $data['box'] = $box;
         $data['user'] = $user;
+        $data['kontena'] = $knt->where('status', 1)->first();
+        // dd($data);
 
         return view('data/view', $data);
     }
