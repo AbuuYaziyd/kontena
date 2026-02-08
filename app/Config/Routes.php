@@ -34,6 +34,7 @@ $routes->group('data', function ($routes) {
     $routes->get('code/(:num)', 'DataController::code/$1', ['filter' => 'auth']);
     $routes->get('coded', 'DataController::coded', ['filter' => 'auth']);
     $routes->get('add-box', 'DataController::add', ['filter' => 'auth']);
+    $routes->post('admin', 'DataController::admin', ['filter' => 'auth']);
     $routes->get('delete/(:num)', 'DataController::delete/$1', ['filter' => 'auth']);
 });
 

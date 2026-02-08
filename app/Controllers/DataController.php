@@ -264,6 +264,37 @@ class DataController extends BaseController
             ->with('text', 'Umeongeza Box Kikamilifu!');
     }
 
+    public function admin()
+    {
+        // dd($this->request->getVar());
+        $dt = new Data();
+        $knt = new Kontena();
+
+        $id = $this->request->getVar('user_id');
+
+        $kontena = $knt->where('status', 1)->first();
+        $user = $dt->where('user_id', $id)->first();
+        // dd($user, $kontena);
+
+        for ($i = 0; $i < $this->request->getVar('box'); $i++) {
+            $data = [
+                'user_id' => session('id'),
+                'kontena_id' => $kontena['id'],
+                'mpokeaji' => $user['mpokeaji'],
+                'phone' => $user['phone'],
+                'fikia' => $user['fikia'],
+            ];
+            // dd($data);
+
+            $ok = $dt->save($data);
+        }
+
+
+        if ($ok) {
+            return redirect()->back()->with('toast', 'success')->with('title', 'Timilifu')->with('text', 'Umesajili Box za Mtumiaji Kikamilifu!');
+        }
+    }
+
     public function delete($id)
     {
         $dt = new Data();

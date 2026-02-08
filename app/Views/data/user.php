@@ -72,6 +72,19 @@
                                 </div>
                             </div>
                             <hr>
+                            <?= form_open('data/admin') ?>
+                                <div class="row">
+                                    <div class="col-12 mb-2">
+                                        <div class="form-group">
+                                            <label for="exampleInputBorder">Ongeza Idadi ya Box |
+                                                <span class="btn btn-danger btn-sm"><?= count($box) ?></span></label><br>
+                                            <input type="number" name="box" class="form-control" placeholder="Ongeza Idadi ya Box za Mtumiaji">
+                                        </div>
+                                        <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block" id="add">Ongeza Box</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -171,6 +184,29 @@
                 title: 'Je, Amesahau Password?',
                 text: 'Namba za simu za Mtumiaji ni sahihi? <?= $user['phone'] ?>',
                 icon: 'warning',
+                showCancelButton: true,
+                cancelButtonColor: '#d33',
+                confirmButtonColor: '#3085d6',
+                cancelButtonText: 'Hapana!',
+                confirmButtonText: 'Ndio',
+            }).then(function(result) {
+                if (result.value) {
+                    // window.location.href = url;
+                    $form.submit();
+                }
+            })
+        });
+    });
+
+    $(document).ready(function() {
+        $('#add').click(function(e) {
+            e.preventDefault();
+            // url = $(this).attr('href');
+            let $form = $(this).closest('form');
+            Swal.fire({
+                title: 'Unahakika?',
+                text: 'Unataka koungeza Box za - <?= $user['name'] ?>',
+                icon: 'question',
                 showCancelButton: true,
                 cancelButtonColor: '#d33',
                 confirmButtonColor: '#3085d6',
