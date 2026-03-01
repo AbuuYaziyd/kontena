@@ -9,7 +9,11 @@
       <div class="col-12">
         <div class="card card-<?= $sum < $jumla ? 'danger' : 'primary' ?> card-outline">
           <div class="card-header">
-            <h3><b><?= $title ?>:</b> <span class="btn btn-<?= $sum < $jumla ? 'danger' : 'success' ?> float-right"><?= $jumla ?></span></h3>
+            <h3><b><?= $title ?>:</b>
+              <span class="btn-group float-right">
+                <span type="button" class="btn btn-<?= $sum < $jumla ? 'danger' : 'success' ?>"><?= $jumla ?></span>
+                <button type="button" class="btn btn-dark"><i class="fa fa-receipt"></i></button>
+            </h3>
           </div>
           <div class="card-body">
             <div class="row" style="text-align: center;">
