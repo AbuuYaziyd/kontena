@@ -6,23 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>
-                    <span><b>Kontena:</b></span><a href="<?= base_url('logout') ?>" class="btn btn-lg btn-outline-danger float-right" id="logout"> <i class="fas fa-sign-out-alt"></i> Ondoka</a>
-                </h1>
                 <div class="row">
-                    <div class="col-md-4">
-                        <a href="<?= base_url('user/profile') ?>">
-                            <div class="small-box bg-warning" data-toggle="modal" data-target="#idadi">
-                                <div class="inner">
-                                    <h3>Malipo<sub style="font-size: 20px"> <i class="fas fa-wallet"></i></sub></h3>
-                                    <p>Data za Waliolipa</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-credit-card"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
                     <div class="col-md-4">
                         <a href="<?= base_url('user/receiver') ?>">
                             <div class="small-box bg-dark">

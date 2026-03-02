@@ -19,8 +19,10 @@ class DataController extends BaseController
 
         $data['title'] = 'Data';
         $data['dt'] = $dt;
+        $data['usr'] = $usr;
         $data['user'] = $usr->find(session('id'));
         $data['current'] = $kn->where('status', 1)->first();
+        $data['wahasibu'] = $usr->where('role', 'mhasibu')->findAll();
         $data['users'] = $dt->select('user_id')->distinct()->findAll();
         $data['knt'] = $dt->where(['user_id' => session('id')])->distinct()->select('kontena_id')->findAll();
         // dd($data);
