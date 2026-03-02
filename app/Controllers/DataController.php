@@ -14,10 +14,12 @@ class DataController extends BaseController
         helper('form');
 
         $dt = new Data();
+        $usr = new User();
         $kn = new Kontena();
 
         $data['title'] = 'Data';
         $data['dt'] = $dt;
+        $data['user'] = $usr->find(session('id'));
         $data['current'] = $kn->where('status', 1)->first();
         $data['users'] = $dt->select('user_id')->distinct()->findAll();
         $data['knt'] = $dt->where(['user_id' => session('id')])->distinct()->select('kontena_id')->findAll();
@@ -329,5 +331,23 @@ class DataController extends BaseController
         }
 
         return redirect()->to('data/box/' . $box['kontena_id'] . '/' . $box['user_id']);
+    }
+
+    public function risiti($id)
+    {
+        $set = new Kontena();
+        $malipo = new Data();
+        $kont = new User();
+
+        $kontena = $set->where('status', 1)->first();
+        $dt = $malipo->where('user_id', $id)->findAll();
+        $data['kontena'] = $kontena;
+        $data['malipo'] = $dt;
+        $data['user'] = $kont->find($id);
+        $data['paid'] = $malipo->where('user_id', $id)->selectSum('paid')->get()->getRow()->paid;
+        $data['jumla'] = $kontena['price']*count($dt);
+        // dd($data);
+
+        return view('malipo/risiti', $data);
     }
 }

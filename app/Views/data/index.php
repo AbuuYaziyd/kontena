@@ -12,7 +12,7 @@
         <div class="row">
           <?php if (count($knt) > 0) : ?>
             <?php foreach ($knt as $kn) : ?>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <a href="<?= base_url('data/box/' . $kn['kontena_id'] . '/' . session('id')) ?>">
                   <div class="small-box bg-info">
                     <div class="inner">
@@ -26,7 +26,7 @@
                 </a>
               </div>
             <?php endforeach ?>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <a href="<?= base_url('user/profile') ?>">
                 <div class="small-box bg-warning" data-toggle="modal" data-target="#idadi">
                   <div class="inner">
@@ -39,7 +39,7 @@
                 </div>
               </a>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <a href="<?= base_url('user/receiver') ?>">
                 <div class="small-box bg-dark">
                   <div class="inner">
@@ -52,8 +52,35 @@
                 </div>
               </a>
             </div>
+            <?php if ($user['risiti'] != null) : ?>
+              <div class="col-md-3">
+                <a href="<?= base_url('data/risiti/' . session('id')) ?>">
+                  <div class="small-box bg-danger">
+                    <div class="inner">
+                      <h3>Risiti<sub style="font-size: 20px"> <i class="fas fa-receipt"></i></sub></h3>
+                      <p>Risiti ya Malipo</p>
+                    </div>
+                    <div class="icon">
+                      <i class="fas fa-receipt"></i>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            <?php else : ?>
+              <div class="col-md-3">
+                <div class="small-box bg-secondary">
+                  <div class="inner">
+                    <h3>Risiti<sub style="font-size: 20px"> <i class="fas fa-receipt"></i></sub></h3>
+                    <p>Risiti ya Malipo</p>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-receipt"></i>
+                  </div>
+                </div>
+              </div>
+            <?php endif ?>
           <?php else : ?>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <a href="<?= base_url('data/new') ?>">
                 <div class="small-box bg-purple">
                   <div class="inner">

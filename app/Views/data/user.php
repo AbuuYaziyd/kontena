@@ -48,7 +48,12 @@
                 <div class="col-md-8">
                     <div class="card card-<?= $sum < $jumla ? 'danger' : 'primary' ?> card-outline">
                         <div class="card-header">
-                            <h3><b><?= $title ?>:</b> <span class="btn btn-<?= $sum < $jumla ? 'danger' : 'success' ?> float-right"><?= $jumla ?></span></h3>
+                            <h3><b><?= $title ?>:</b>
+                                <span class="btn-group float-right">
+                                    <span type="button" class="btn btn-<?= $sum < $jumla ? 'danger' : 'success' ?>"><?= $jumla ?></span>
+                                    <a href="<?= base_url('data/risiti/' . $user['id']) ?>" class="btn btn-dark"><i class="fa fa-receipt"></i></a>
+                                </span>
+                            </h3>
                         </div>
                         <div class="card-body">
                             <div class="row" style="text-align: center;">
@@ -73,17 +78,17 @@
                             </div>
                             <hr>
                             <?= form_open('data/admin') ?>
-                                <div class="row">
-                                    <div class="col-12 mb-2">
-                                        <div class="form-group">
-                                            <label for="exampleInputBorder">Ongeza Idadi ya Box |
-                                                <span class="btn btn-danger btn-sm"><?= count($box) ?></span></label><br>
-                                            <input type="number" name="box" class="form-control" placeholder="Ongeza Idadi ya Box za Mtumiaji">
-                                        </div>
-                                        <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block" id="add">Ongeza Box</button>
+                            <div class="row">
+                                <div class="col-12 mb-2">
+                                    <div class="form-group">
+                                        <label for="exampleInputBorder">Ongeza Idadi ya Box |
+                                            <span class="btn btn-danger btn-sm"><?= count($box) ?></span></label><br>
+                                        <input type="number" name="box" class="form-control" placeholder="Ongeza Idadi ya Box za Mtumiaji">
                                     </div>
+                                    <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="add">Ongeza Box</button>
                                 </div>
+                            </div>
                             </form>
                         </div>
                     </div>

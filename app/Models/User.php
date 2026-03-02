@@ -20,6 +20,7 @@ class User extends Model
         'nchi',
         'jamia',
         'phone',
+        'risiti',
     ];
 
     protected bool $allowEmptyInserts = false;

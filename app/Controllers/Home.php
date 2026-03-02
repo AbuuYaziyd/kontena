@@ -28,10 +28,21 @@ class Home extends BaseController
 
     public function test()
     {
-        $dt = new user();
+        $usr = new user();
+        $dt = new Data();
 
-        $us = $dt->findAll();
-        dd($us);
+        $us = $dt->where('paid>', 0)->select('user_id')->distinct()->findAll();
+        // $r = $usr->where('risiti!=', null)->findAll();
+        // dd($us, $r);
+
+        foreach ($us as $key => $d) {
+            $data = [
+                'risiti' => $dt->receipt($d['user_id']),
+            ];
+
+            $usr->update($d['user_id'], $data);
+        }
+        // dd($data);
 
         dd('test');
     }

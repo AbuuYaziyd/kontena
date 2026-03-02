@@ -12,7 +12,8 @@
             <h3><b><?= $title ?>:</b>
               <span class="btn-group float-right">
                 <span type="button" class="btn btn-<?= $sum < $jumla ? 'danger' : 'success' ?>"><?= $jumla ?></span>
-                <button type="button" class="btn btn-dark"><i class="fa fa-receipt"></i></button>
+                <a href="<?= base_url('data/risiti/' . $user['id']) ?>" class="btn btn-dark"><i class="fa fa-receipt"></i></a>
+              </span>
             </h3>
           </div>
           <div class="card-body">
