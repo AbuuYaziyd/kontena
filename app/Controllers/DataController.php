@@ -283,7 +283,7 @@ class DataController extends BaseController
 
         for ($i = 0; $i < $this->request->getVar('box'); $i++) {
             $data = [
-                'user_id' => session('id'),
+                'user_id' => $id,
                 'kontena_id' => $kontena['id'],
                 'mpokeaji' => $user['mpokeaji'],
                 'phone' => $user['phone'],
@@ -291,13 +291,11 @@ class DataController extends BaseController
             ];
             // dd($data);
 
-            $ok = $dt->save($data);
+            $dt->save($data);
         }
 
 
-        if ($ok) {
-            return redirect()->back()->with('toast', 'success')->with('title', 'Timilifu')->with('text', 'Umesajili Box za Mtumiaji Kikamilifu!');
-        }
+        return redirect()->back()->with('toast', 'success')->with('title', 'Timilifu')->with('text', 'Umesajili Box za Mtumiaji Kikamilifu!');
     }
 
     public function delete($id)
