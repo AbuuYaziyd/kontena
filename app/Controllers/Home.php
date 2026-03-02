@@ -35,7 +35,7 @@ class Home extends BaseController
         // $r = $usr->where('risiti!=', null)->findAll();
         // dd($us, $r);
 
-        foreach ($us as $key => $d) {
+        foreach ($us as $d) {
             $data = [
                 'risiti' => $dt->receipt($d['user_id']),
             ];
