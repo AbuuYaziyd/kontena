@@ -86,11 +86,11 @@ class MalipoController extends BaseController
 
             return redirect()->to('malipo/user/' . $id)
                 ->with('toast', 'success')
-                ->with('message', 'Malipo ya Kontena yamehifadhiwa Kikamilifu! Chenji ilobaki ni: ' . $remain . 'SAR');
+                ->with('title', 'Malipo ya Kontena yamehifadhiwa Kikamilifu! Chenji ilobaki ni: ' . $remain . 'SAR');
         }
 
         return redirect()->to('malipo/user/' . $id)
             ->with('toast', 'success')
-            ->with('message', 'Malipo ya Kontena yamehifadhiwa Kikamilifu!');
+            ->with('title', 'Malipo ya Kontena yamehifadhiwa Kikamilifu!');
     }
 }
