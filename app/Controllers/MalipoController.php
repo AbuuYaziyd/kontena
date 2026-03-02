@@ -33,6 +33,15 @@ class MalipoController extends BaseController
     {
         // dd($this->request->getVar());
         $dt = new Data();
+        $usr = new User();
+
+        $user = $usr->find($id);
+
+        if ($user['risiti'] == null) {
+            $rst = ['risiti' => $dt->receipt($id)];
+
+            $usr->update($id, $rst);
+        }
 
         $pesa = $this->request->getVar('pesa');
         $chenji = $this->request->getVar('chenji');
