@@ -8,11 +8,6 @@
       <hr>
 
       <div class="row">
-        <?php foreach ($wahasibu as $hsb) : ?>
-          <div class="col-md-3">
-            <a class="btn btn-lg btn-block btn-outline-danger"><?= lang('app.' . $hsb['jamia']) ?>: <?= $usr->malipoJamia($hsb['id']) ?> SAR</a>
-          </div>
-        <?php endforeach ?>
         <div class="col-12">
           <div class="row">
             <?php foreach ($wahasibu as $hsb) : ?>
@@ -25,7 +20,7 @@
                   <div class="icon">
                     <i class="fas fa-credit-card"></i>
                   </div>
-                  <a href="<?= base_url('user/profile') ?>" class="small-box-footer"><?= $hsb['name'] ?></a>
+                  <a href="<?= base_url('malipo/mhasibu/' . $hsb['id']) ?>" class="small-box-footer"><?= $hsb['name'] ?></a>
                 </div>
               </div>
             <?php endforeach ?>

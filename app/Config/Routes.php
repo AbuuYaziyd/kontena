@@ -50,4 +50,5 @@ $routes->group('user', function ($routes) {
 $routes->group('malipo', function ($routes) {
     $routes->get('user/(:num)', 'MalipoController::user/$1', ['filter' => 'mhasibu']);
     $routes->post('edit/(:num)', 'MalipoController::edit/$1', ['filter' => 'mhasibu']);
+    $routes->get('mhasibu/(:num)', 'MalipoController::mhasibu/$1', ['filter' => 'admin']);
 });

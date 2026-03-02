@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Data;
+use App\Models\Kontena;
 use App\Models\User;
 
 class MalipoController extends BaseController
@@ -92,5 +93,25 @@ class MalipoController extends BaseController
         return redirect()->to('malipo/user/' . $id)
             ->with('toast', 'success')
             ->with('title', 'Malipo ya Kontena yamehifadhiwa Kikamilifu!');
+    }
+
+    public function mhasibu($id)
+    {
+        helper('form');
+
+        $dt = new Data();
+        $usr = new User();
+        $kn = new Kontena();
+
+        $data['title'] = 'Data';
+        $data['dt'] = $dt;
+        $data['usr'] = $usr;
+        $data['user'] = $usr->find($id);
+        $data['current'] = $kn->where('status', 1)->first();
+        $data['users'] = $dt->where('mhasibu_id', $id)->select('user_id')->distinct()->findAll();
+        $data['knt'] = $dt->where(['user_id' => session('id')])->distinct()->select('kontena_id')->findAll();
+        // dd($data);
+
+        return view('malipo/mhasibu', $data);
     }
 }
