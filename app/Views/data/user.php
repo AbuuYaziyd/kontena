@@ -1,6 +1,6 @@
 <?php
 $jumla = session('price') * count($box);
-$remain = $jumla-$sum;
+$remain = $jumla - $sum;
 $text = ('السلام عليكم ورحمة الله وبركاته
 أخي: ' . $user['name'] . '
 
