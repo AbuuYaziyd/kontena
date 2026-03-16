@@ -109,7 +109,13 @@ Baarakallahu Fiykum!');
                                 <div class="col-12 mb-2">
                                     <div class="form-group">
                                         <label for="exampleInputBorder">Ongeza Idadi ya Box |
-                                            <span class="btn btn-danger btn-sm"><?= count($box) ?></span></label><br>
+                                            <div class="btn-group">
+                                                <span class="btn btn-danger btn-sm"><?= count($box) ?></span>
+                                                <?php if ($sum <= 0 && count($box) > 5) : ?>
+                                                    <a href="<?= base_url('data/reset/' . $user['id']) ?>" id="trash" class="btn btn-dark btn-sm"><i class="fas fa-trash"></i></a>
+                                                <?php endif ?>
+                                            </div>
+                                        </label><br>
                                         <input type="number" name="box" class="form-control" placeholder="Ongeza Idadi ya Box za Mtumiaji">
                                     </div>
                                     <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
@@ -285,6 +291,27 @@ Baarakallahu Fiykum!');
                 if (result.value) {
                     // window.location.href = url;
                     $form.submit();
+                }
+            })
+        });
+    });
+
+    $(document).ready(function() {
+        $('#trash').click(function(e) {
+            e.preventDefault();
+            url = $(this).attr('href');
+            Swal.fire({
+                title: 'UNAFUTA Box za - <?= $user['name'] ?>?',
+                text: 'Box zote zitafutwa na Kubakishwa box mbili tu!',
+                icon: 'question',
+                showCancelButton: true,
+                cancelButtonColor: '#d33',
+                confirmButtonColor: '#3085d6',
+                cancelButtonText: 'Hapana!',
+                confirmButtonText: 'Ndio',
+            }).then(function(result) {
+                if (result.value) {
+                    window.location.href = url;
                 }
             })
         });

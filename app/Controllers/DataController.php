@@ -362,4 +362,20 @@ class DataController extends BaseController
 
         return redirect()->to($link);
     }
+
+    public function reset($id)
+    {
+        $dt = new Data();
+
+        $box = $dt->where('user_id', $id)->findAll();
+        // dd($box);
+
+        foreach ($box as $key => $d) {
+            if ($key > 1) {
+                $dt->delete($d['id']);
+            }
+        }
+
+        return redirect()->to('data/user/' . $id);
+    }
 }

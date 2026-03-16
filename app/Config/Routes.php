@@ -37,6 +37,7 @@ $routes->group('data', function ($routes) {
     $routes->post('admin', 'DataController::admin', ['filter' => 'auth']);
     $routes->post('send', 'DataController::send', ['filter' => 'auth']);
     $routes->get('delete/(:num)', 'DataController::delete/$1', ['filter' => 'auth']);
+    $routes->get('reset/(:num)', 'DataController::reset/$1', ['filter' => 'auth']);
 });
 
 $routes->group('user', function ($routes) {
