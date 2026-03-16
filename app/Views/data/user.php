@@ -1,23 +1,23 @@
 <?php 
 $paid = 70;
 $remain = 90;
-$text = ('السلام عليكم ورحمة الله وبركاته<br><br>
-أخي: ' . $user['name'] . '<br>
+$text = ('السلام عليكم ورحمة الله وبركاته
+أخي: ' . $user['name'] . '
 
-لقد سددت: ' . $paid . ' ريالًا حتى الحين، وما زال المبلغ المتبقي ' . $remain . ' ريالًا. <br>
-هل ترغب في تخفيض عدد الكراتين؟<br>
-أو متى تتوقع تسديد المبلغ المتبقي؟<br><br>
+لقد سددت: ' . $paid . ' ريالًا حتى الحين، وما زال المبلغ المتبقي ' . $remain . ' ريالًا. 
+هل ترغب في تخفيض عدد الكراتين؟
+أو متى تتوقع تسديد المبلغ المتبقي؟
 
-بارك الله فيكم!<br><br>
+بارك الله فيكم!
 
 
-Assalaamu Alaikum warahmatullahi Wabarakaatuh! <br><br>
+Assalaamu Alaikum warahmatullahi Wabarakaatuh! 
 
-Ndugu ' . $user['name'] . ' <br>
-Mpaka sasa umelipia kiasi cha riyali  ' . $paid . ', bado kiasi cha riyali ' . $remain . '. <br><br>
+Ndugu ' . $user['name'] . ' 
+Mpaka sasa umelipia kiasi cha riyali  ' . $paid . ', bado kiasi cha riyali ' . $remain . '. 
 
-Je, unahitaji kupunguza idadi ya Box?<br>
-Au unataraji lini kumaliza Malipo?<br><br>
+Je, unahitaji kupunguza idadi ya Box?
+Au unataraji lini kumaliza Malipo?
 
 Baarakallahu Fiykum!');
 
