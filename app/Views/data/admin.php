@@ -58,7 +58,7 @@
                           <td>
                             <div class="btn-group">
                               <a href="<?= base_url('malipo/user/' . $user['id']) ?>" class="btn btn-warning btn-sm"><i class="fas fa-credit-card"></i></a>
-                              <a href="<?= base_url('data/user/' . $user['id']) ?>" class="btn btn-danger btn-sm"><i class="fas fa-user"></i></a>
+                              <a href="<?= base_url('data/user/' . $user['id']) ?>" target="_blank" class="btn btn-danger btn-sm"><i class="fas fa-user"></i></a>
                             </div>
                           </td>
                         </tr>
