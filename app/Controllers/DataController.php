@@ -350,4 +350,16 @@ class DataController extends BaseController
 
         return view('malipo/risiti', $data);
     }
+
+    public function send()
+    {
+        // dd($this->request->getVar());
+
+        $namba = $this->request->getVar('namba');
+        $ujumbe = $this->request->getVar('ujumbe');
+        $link = htmlspecialchars('https://wa.me/'.$namba.'?text='.urlencode($ujumbe));
+        // dd($link);
+
+        return redirect()->to($link);
+    }
 }

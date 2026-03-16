@@ -1,3 +1,27 @@
+<?php 
+$paid = 70;
+$remain = 90;
+$text = ('السلام عليكم ورحمة الله وبركاته<br><br>
+أخي: ' . $user['name'] . '<br>
+
+لقد سددت: ' . $paid . ' ريالًا حتى الحين، وما زال المبلغ المتبقي ' . $remain . ' ريالًا. <br>
+هل ترغب في تخفيض عدد الكراتين؟<br>
+أو متى تتوقع تسديد المبلغ المتبقي؟<br><br>
+
+بارك الله فيكم!<br><br>
+
+
+Assalaamu Alaikum warahmatullahi Wabarakaatuh! <br><br>
+
+Ndugu ' . $user['name'] . ' <br>
+Mpaka sasa umelipia kiasi cha riyali  ' . $paid . ', bado kiasi cha riyali ' . $remain . '. <br><br>
+
+Je, unahitaji kupunguza idadi ya Box?<br>
+Au unataraji lini kumaliza Malipo?<br><br>
+
+Baarakallahu Fiykum!');
+
+?>
 <?= $this->extend('layouts/home') ?>
 
 <?= $this->section('content') ?>
@@ -16,7 +40,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="exampleInputBorder">WhatsApp</label><br>
-                                    <a href="https://wa.me/<?= $user['phone'] ?>" target="_blank" class="btn btn-success btn-block btn-lg"><i class="fab fa-whatsapp"></i></a>
+                                    <button type="button" data-toggle="modal" data-target="#whatsapp" class="btn btn-success btn-block btn-lg"><i class="fab fa-whatsapp"></i></button>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -170,6 +194,43 @@
             </div>
         <?php endif ?>
     </div>
+</div>
+
+<div class="modal fade" id="whatsapp">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Whatsapp | <?= $user['name'] ?></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?= form_open('data/send') ?>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label style="color:red;">Namba ya Simu ianze na 255000000000</label>
+                                <input type="text" name="namba" class="form-control" value="<?= $user['phone'] ?>">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="exampleInputBorder">Ujumbe</label>
+                                <textarea name="ujumbe" cols="10" rows="10" class="form-control"><?= $text ?></textarea>
+                            </div>
+                        </div>
+                        <button id="tuma" class="btn btn-success btn-block btn-lg"><i class="fab fa-whatsapp"></i></button>
+                        </form>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>
 <script>
     var check = function() {
