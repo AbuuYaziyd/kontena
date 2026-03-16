@@ -111,7 +111,7 @@ Baarakallahu Fiykum!');
                                         <label for="exampleInputBorder">Ongeza Idadi ya Box |
                                             <div class="btn-group">
                                                 <span class="btn btn-danger btn-sm"><?= count($box) ?></span>
-                                                <?php if ($sum <= 0 && count($box) > 5) : ?>
+                                                <?php if ($sum <= 0 && count($box) > 2) : ?>
                                                     <a href="<?= base_url('data/reset/' . $user['id']) ?>" id="trash" class="btn btn-dark btn-sm"><i class="fas fa-trash"></i></a>
                                                 <?php endif ?>
                                             </div>
