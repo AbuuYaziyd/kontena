@@ -43,7 +43,7 @@
                         <th>Mhusika</th>
                         <th>Boxi Zote</th>
                         <th>Zilizolipiwa</th>
-                        <th>Malipo</th>
+                        <th>Data</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -55,7 +55,12 @@
                           <td> <?= $user['name'] ?></td>
                           <td> <?= $data['box'] ?></td>
                           <td> <?= $data['paid'] ?></td>
-                          <td><a href="<?= base_url('malipo/user/' . $user['id']) ?>" class="btn btn-warning btn-sm"><i class="fas fa-credit-card"></i></a></td>
+                          <td>
+                            <div class="btn-group">
+                              <a href="<?= base_url('malipo/user/' . $user['id']) ?>" class="btn btn-warning btn-sm"><i class="fas fa-credit-card"></i></a>
+                              <a href="<?= base_url('data/user/' . $user['id']) ?>" class="btn btn-danger btn-sm"><i class="fas fa-user"></i></a>
+                            </div>
+                          </td>
                         </tr>
                       <?php endforeach ?>
                     </tbody>
