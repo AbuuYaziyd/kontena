@@ -1,10 +1,10 @@
-<?php 
-$paid = 70;
-$remain = 90;
+<?php
+$jumla = session('price') * count($box);
+$remain = $jumla-$sum;
 $text = ('السلام عليكم ورحمة الله وبركاته
 أخي: ' . $user['name'] . '
 
-لقد سددت: ' . $paid . ' ريالًا حتى الحين، وما زال المبلغ المتبقي ' . $remain . ' ريالًا. 
+لقد سددت: ' . $sum . ' ريالًا حتى الحين، وما زال المبلغ المتبقي ' . $remain . ' ريالًا. 
 هل ترغب في تخفيض عدد الكراتين؟
 أو متى تتوقع تسديد المبلغ المتبقي؟
 
@@ -14,7 +14,7 @@ $text = ('السلام عليكم ورحمة الله وبركاته
 Assalaamu Alaikum warahmatullahi Wabarakaatuh! 
 
 Ndugu ' . $user['name'] . ' 
-Mpaka sasa umelipia kiasi cha riyali  ' . $paid . ', bado kiasi cha riyali ' . $remain . '. 
+Mpaka sasa umelipia kiasi cha riyali  ' . $sum . ', bado kiasi cha riyali ' . $remain . '. 
 
 Je, unahitaji kupunguza idadi ya Box?
 Au unataraji lini kumaliza Malipo?
@@ -28,7 +28,6 @@ Baarakallahu Fiykum!');
 
 <div class="content">
     <div class="container">
-        <?php $jumla = session('price') * count($box) ?>
         <div class="row">
             <div class="col-md-4">
                 <div class="card card-info card-outline">
@@ -40,7 +39,11 @@ Baarakallahu Fiykum!');
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="exampleInputBorder">WhatsApp</label><br>
-                                    <button type="button" data-toggle="modal" data-target="#whatsapp" class="btn btn-success btn-block btn-lg"><i class="fab fa-whatsapp"></i></button>
+                                    <?php if ($sum < $jumla) : ?>
+                                        <button type="button" data-toggle="modal" data-target="#whatsapp" class="btn btn-success btn-block btn-lg"><i class="fab fa-whatsapp"></i></button>
+                                    <?php else : ?>
+                                        <span class="btn btn-outline-success btn-block btn-lg"><i class="fab fa-whatsapp"></i></span>
+                                    <?php endif ?>
                                 </div>
                             </div>
                             <div class="col-6">
