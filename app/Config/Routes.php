@@ -6,6 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
+$routes->get('locale/(:any)', 'Home::locale/$1');
 $routes->get('test', 'Home::test');
 
 $routes->get('register', 'AuthController::register');

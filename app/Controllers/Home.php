@@ -24,6 +24,16 @@ class Home extends BaseController
         return view('home/index', $data);
     }
 
+    public function locale($locale)
+    {
+        // dd($locale);
+
+        $session = session();
+        $session->remove('lang');
+        $session->set('lang', $locale);
+        return redirect()->back();
+    }
+
     public function test()
     {
         dd('test');

@@ -12,8 +12,11 @@ $kt = $knt->where('status', 1)->findAll();
 
 <?php foreach ($kt as $dt) : ?>
     <div class="col-12">
-        <h1><span class=""><b><?= $dt['title'] ?></b></span>
-            <span class="float-right"><b><?= $dt['year'] ?></b></span>
+        <h1><span class=""><b><?= $dt['title'] ?> | <?= $dt['year'] ?></b></span>
+            <div class="btn-group float-right">
+                <a href="<?= base_url('locale/sw') ?>" class="btn btn-warning btn-lg">Kiswahili</a>
+                <a href="<?= base_url('locale/ar') ?>" class="btn btn-danger btn-lg">العربية</a>
+            </div>
         </h1>
         <div class="row">
             <div class="col-md-3 col-6">
@@ -21,7 +24,7 @@ $kt = $knt->where('status', 1)->findAll();
                     <div class="inner">
                         <h3><?= $data->wanaohitajia($dt['id']) ?><sub style="font-size: 20px"> <i class="fas fa-paper-plane"></i></sub>
                         </h3>
-                        <p>Zinazohitajika</p>
+                        <p><?= lang('app.neededBox') ?></p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-box"></i>
@@ -33,8 +36,9 @@ $kt = $knt->where('status', 1)->findAll();
                     <div class="inner">
                         <h3>
                             <?= $data->waliomaliza($dt['id']) ?>
-                            <sub style="font-size: 20px"> <i class="fas fa-thumbs-up"></i></sub></h3>
-                        <p>Zilizolipiwa</p>
+                            <sub style="font-size: 20px"> <i class="fas fa-thumbs-up"></i></sub>
+                        </h3>
+                        <p><?= lang('app.paidBox') ?></p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-box-open"></i>
