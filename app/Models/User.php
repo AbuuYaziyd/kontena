@@ -61,6 +61,15 @@ class User extends Model
         return $sum;
     }
 
+    function malipoFull()
+    {
+        $dt = new Data();
+
+        $sum = $dt->selectSum('paid')->get()->getRow()->paid;
+
+        return $sum;
+    }
+
     function data($id){
         $dt = new Data();
         $usr = new User();

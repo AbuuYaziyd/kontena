@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/home') ?>
+<?= $this->extend('layouts/app') ?>
 
 <?= $this->section('content') ?>
 
@@ -19,7 +19,7 @@
                     <div class="row mb-4">
                         <div class="col-md-4">
                             <label>Mafikio</label>
-                            <select name="fikia" class="custom-select">
+                            <select name="fikia" class="form-select">
                                 <option value="DAR" <?= $user['fikia'] == 'DAR' ? 'selected' : '' ?>>DAR</option>
                                 <option value="ZNZ" <?= $user['fikia'] == 'ZNZ' ? 'selected' : '' ?>>ZNZ</option>
                                 <option value="PBA" <?= $user['fikia'] == 'PBA' ? 'selected' : '' ?>>PBA</option>
@@ -34,28 +34,11 @@
                             <input class="form-control" type="number" name="phone" value="<?= $user['phone'] ?>">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-block btn-primary btn-lg">Hifadhi</button>
+                    <button type="submit" class="btn w-100 btn-primary btn-lg">Hifadhi</button>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <?php foreach ($box as $key => $dt) : ?>
-            <div class="col-md-3 col-6">
-                <a href="<?= base_url('data/view/' . $dt['id']) ?>">
-                    <div class="small-box bg-<?= $dt['paid'] == 0 ? 'danger' : ($dt['paid'] < session('price') ? 'warning' : 'success') ?>">
-                        <div class="inner">
-                            <h3><?= $dt['code'] ?? $key + 1 ?><sub style="font-size: 20px"> <i class="fas fa-box-open"></i></sub></h3>
-                            <p>Fungua</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-box"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        <?php endforeach ?>
     </div>
 </div>
 

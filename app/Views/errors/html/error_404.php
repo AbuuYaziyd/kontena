@@ -1,51 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="<?= session('lang') ?>" dir="<?= session('lang') != 'ar' ? 'ltr' : 'rtl' ?>">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= env('APP_NAME') ?> | 404 Kurasa Haijapatikana!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="Umoja wa Watanzania Chuo Kikuu cha Kiislamu Madina">
+    <meta name="keywords" content="Umoja wa Watanzania Chuo Kikuu cha Kiislamu Madina">
+    <meta name="author" content="abouyaziyd">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('app-assets/img/logo/logo.svg') ?>">
+    <title><?= lang('app.appName') ?> | Error 404</title>
+    <!-- CSS files -->
+    <link href="<?= base_url('app-assets/css/tabler.min.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('app-assets/css/tabler-flags.min.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('app-assets/css/tabler-payments.min.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('app-assets/css/tabler-vendors.min.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('app-assets/css/demo.min.css') ?>" rel="stylesheet" />
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="<?= base_url('plugins/fontawesome-free/css/all.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/css/adminlte.min.css') ?>">
+        :root {
+            --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+        }
+
+        body {
+            font-feature-settings: "cv03", "cv04", "cv11";
+        }
+    </style>
 </head>
 
-<body class="hold-transition layout-top-nav">
-    <div class="wrapper">
-        <div class="content-wrapper">
-            <div class="content">
-                <div class="container">
-                    <div class="row">
-                        <div class="error-page col-12 px-5 py-5">
-                            <div class="error-content offset-2 px-5 py-5">
-                                <h1 class="headline text-danger display-1"> 404</h1>
-                                <h3><i class="fas fa-exclamation-triangle text-danger"></i> <b>Oops!</b> Ukurasa Haupo.</h3>
-                                <p>
-                                    <?php if (!empty($message) && $message !== '(null)') : ?>
-                                        <?= nl2br(esc($message)) ?>
-                                    <?php else : ?>
-                                        Samahani! Inavoonyesha kurasa unayoitafuta Haipo!
-                                    <?php endif ?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+<body class=" border-top-wide border-primary d-flex flex-column">
+    <script src="./dist/js/demo-theme.min.js?1692870487"></script>
+    <div class="page page-center">
+        <div class="container-tight py-4">
+            <div class="empty">
+                <div class="empty-header" style="font-size: 1200%;"><b>404</b></div>
+                <p class="empty-title">
+                    <?php if (ENVIRONMENT !== 'production') : ?>
+                        <?= nl2br(esc($message)) ?>
+                    <?php else : ?>
+                        <?= lang('app.oops') ?>
+                    <?php endif ?>
+                </p>
+                <p class="empty-subtitle text-secondary">
+                    <?= lang('app.pageNotFound') ?>
+                </p>
+                <div class="empty-action">
+                    <a href="<?= base_url() ?>" class="btn btn-primary">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/arrow-left -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M5 12l14 0" />
+                            <path d="M5 12l6 6" />
+                            <path d="M5 12l6 -6" />
+                        </svg>
+                        <?= lang('app.dashboard') ?>
+                    </a>
                 </div>
             </div>
         </div>
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-inline">
-                <a href="https://abouyaziyd.rf.gd" target="_blank"> <strong>aBy Solutions</strong></a>
-            </div>
-            <strong>Hakimiliki &copy; <?php echo date('Y'); ?> <a href="<?= base_url() ?>"><?= env('APP_NAME') ?></a>.</strong>
-            Haki zote zimehifadhiwa.
-        </footer>
     </div>
-    <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
-    <script src="<?= base_url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/adminlte.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/demo.js') ?>"></script>
+    <!-- Libs JS -->
+    <!-- Tabler Core -->
+    <script src="<?= base_url('app-assets/js/tabler.min.js') ?>" defer></script>
+    <script src="<?= base_url('app-assets/js/demo.min.js') ?>" defer></script>
 </body>
 
 </html>

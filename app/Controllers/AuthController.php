@@ -17,7 +17,7 @@ class AuthController extends BaseController
 
             $kont = new Kontena();
 
-            $data['title'] = 'Jisajili Kontena';
+            $data['title'] = lang('app.signup');
             $data['kont'] = $kont->where('status', 1)->first();
             // dd($data);
 
@@ -30,48 +30,53 @@ class AuthController extends BaseController
         // dd($this->request->getVar());
         helper(['form']);
 
-        $rules = [
-            'iqama' => [
-                'rules'  => 'required|is_unique[users.iqama]|integer|min_length[10]|max_length[10]|',
-                'errors' => [
-                    'required' => 'Iqama Inahitajika!',
-                    'integer' => 'Weka namba Tu!',
-                    'is_unique' => 'Tayari namba hizi zishatumika!',
-                    'max_length' => 'Namba zisizidi - {param}!',
-                    'min_length' => 'Namba zisipungue - {param}!',
-                ],
+        $input = $this->validate(
+            [   //Rules
+                'iqama' => 'required|is_unique[users.iqama]|integer|exact_length[10]',
+                'name' => 'required|min_length[3]',
+                'jamia' => 'required',
+                'nchi' => 'required',
+                'phone' => 'required|min_length[10]|max_length[12]|is_unique[users.phone]|integer',
             ],
-            'name' => [
-                'rules'  => 'required',
-                'errors' => [
-                    'required' => 'jina la Mhusika linahitajika!',
+            [   // Errors
+                'iqama' =>
+                [
+                    'required' => lang('error.required'),
+                    'integer' => lang('error.integer'),
+                    'is_unique' => lang('error.is_unique'),
+                    'exact_length' => lang('error.exact_length'),
                 ],
-            ],
-            'jamia' => [
-                'rules'  => 'required',
-                'errors' => [
-                    'required' => 'Weka Chuo Unachosoma!',
+                'name' =>
+                [
+                    'required' => lang('error.required'),
+                    'min_length' => lang('error.min_length'),
                 ],
-            ],
-            'nchi' => [
-                'rules'  => 'required',
-                'errors' => [
-                    'required' => 'Chagua Nchi unayotokea!',
+                'jamia' =>
+                [
+                    'required' => lang('error.required'),
                 ],
-            ],
-            'phone' => [
-                'rules'  => 'required|min_length[10]|max_length[10]|is_unique[users.phone]|integer',
-                'errors' => [
-                    'required' => 'Simu ya Mhusika Inahitajika!',
-                    'integer' => 'Weka namba Tu!',
-                    'max_length' => 'Namba zisizidi - {param}!',
-                    'min_length' => 'Namba zisipungue - {param}!',
-                    'is_unique' => 'Tayari namba hii Ishatumika!',
+                'nchi' =>
+                [
+                    'required' => lang('error.required'),
                 ],
-            ],
-        ];
+                'phone' => [
+                    'required' => lang('error.required'),
+                    'integer' => lang('error.integer'),
+                    'is_unique' => lang('error.is_unique'),
+                    'max_length' => lang('error.max_length'),
+                    'min_length' => lang('error.min_length'),
+                ],
+            ]
+        );
+        // dd($input);
 
-        if ($this->validate($rules)) {
+        if (!$input) {
+            $data['title'] = 'Sajili Kontena';
+            $data['validation'] = $this->validator->getErrors();
+            // dd($data);
+
+            return redirect()->back()->with('errors', $this->validator->getErrors())->withInput();
+        } else {
             $usr = new User();
 
             $data = [
@@ -89,15 +94,9 @@ class AuthController extends BaseController
 
             if ($ok) {
                 return redirect()->to('login')
-                ->with('toast', 'success')->with('title', 'Timilifu')
-                ->with('text', 'Umesajiliwa katika Kontena Kikamilifu! Kuingia kwenye system Tumia Iqama na password ni NAMBA ZAKO ZA SIMU');
+                    ->with('toast', 'success')->with('title', 'Timilifu')
+                    ->with('text', 'Umesajiliwa katika Kontena Kikamilifu! Kuingia kwenye system Tumia Iqama na password ni NAMBA ZAKO ZA SIMU');
             }
-        } else {
-            $data['title'] = 'Sajili Kontena';
-            $data['validation'] = $this->validator->getErrors();
-            // dd($data);
-
-            return redirect()->back()->with('errors', $this->validator->getErrors())->withInput();
         }
     }
 
@@ -202,7 +201,7 @@ class AuthController extends BaseController
     {
         helper(['form']);
 
-        $data['title'] = 'Badili Password';
+        $data['title'] = lang('app.changePassword');
 
         return view('auth/change', $data);
     }
@@ -255,13 +254,15 @@ class AuthController extends BaseController
     {
         $knt = new Kontena();
 
-        $kontena = $knt->where('status', 1)->first();
+        $kontena = $knt->where('current', 1)->first();
+        $lang = session('lang');
 
         $session = session();
         $session->destroy();
 
         $sess_dt = [
             'price' => $kontena['price'],
+            'lang' => $lang,
         ];
 
         $session->set($sess_dt);

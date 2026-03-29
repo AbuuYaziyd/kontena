@@ -22,7 +22,7 @@ Au unataraji lini kumaliza Malipo?
 Baarakallahu Fiykum!');
 
 ?>
-<?= $this->extend('layouts/home') ?>
+<?= $this->extend('layouts/app') ?>
 
 <?= $this->section('content') ?>
 
@@ -40,16 +40,16 @@ Baarakallahu Fiykum!');
                                 <div class="form-group">
                                     <label for="exampleInputBorder">WhatsApp</label><br>
                                     <?php if ($sum < $jumla) : ?>
-                                        <button type="button" data-toggle="modal" data-target="#whatsapp" class="btn btn-success btn-block btn-lg"><i class="fab fa-whatsapp"></i></button>
+                                        <button type="button" data-toggle="modal" data-target="#whatsapp" class="btn btn-success w-100 btn-lg"><i class="fa fa-whatsapp"></i></button>
                                     <?php else : ?>
-                                        <span class="btn btn-outline-success btn-block btn-lg"><i class="fab fa-whatsapp"></i></span>
+                                        <span class="btn btn-outline-success w-100 btn-lg"><i class="fa fa-whatsapp"></i></span>
                                     <?php endif ?>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="exampleInputBorder">Simu</label><br>
-                                    <a href="tel:<?= $user['phone'] ?>" class="btn btn-primary btn-block btn-lg"><i class="fa fa-phone"></i></a>
+                                    <a href="tel:<?= $user['phone'] ?>" class="btn btn-primary w-100 btn-lg"><i class="fa fa-phone"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@ Baarakallahu Fiykum!');
                                         <label>Amesahau Password</label>
                                         <input type="number" class="form-control mb-3" name="phone" value="<?= $user['phone'] ?>">
                                         <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
-                                        <button type="button" id="password" class="btn btn-warning btn-block btn-lg">Badili Password</button>
+                                        <button type="button" id="password" class="btn btn-warning w-100 btn-lg">Badili Password</button>
                                     </div>
                                 </div>
                             </div>
@@ -76,10 +76,6 @@ Baarakallahu Fiykum!');
                     <div class="card card-<?= $sum < $jumla ? 'danger' : 'primary' ?> card-outline">
                         <div class="card-header">
                             <h3><b><?= $title ?>:</b>
-                                <span class="btn-group float-right">
-                                    <span type="button" class="btn btn-<?= $sum < $jumla ? 'danger' : 'success' ?>"><?= $jumla ?></span>
-                                    <a href="<?= base_url('data/risiti/' . $user['id']) ?>" class="btn btn-dark"><i class="fa fa-receipt"></i></a>
-                                </span>
                             </h3>
                         </div>
                         <div class="card-body">
@@ -87,19 +83,19 @@ Baarakallahu Fiykum!');
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="exampleInputBorder">Kilichobaki</label><br>
-                                        <span class="btn btn-<?= $sum < $jumla ? 'danger' : 'success' ?> btn-block btn-lg"><?= $jumla - $sum ?></span>
+                                        <span class="btn btn-<?= $sum < $jumla ? 'danger' : 'success' ?> w-100 btn-lg"><?= $jumla - $sum ?></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="exampleInputBorder">Alicholipa</label><br>
-                                        <span class="btn btn-primary btn-block btn-lg"><?= $sum ?></span>
+                                        <span class="btn btn-primary w-100 btn-lg"><?= $sum ?></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="exampleInputBorder">Idadi ya Box</label><br>
-                                        <span class="btn btn-warning btn-block btn-lg"><?= count($box) ?></span>
+                                        <span class="btn btn-warning w-100 btn-lg"><?= count($box) ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -110,16 +106,16 @@ Baarakallahu Fiykum!');
                                     <div class="form-group">
                                         <label for="exampleInputBorder">Ongeza Idadi ya Box |
                                             <div class="btn-group">
-                                                <span class="btn btn-danger btn-sm"><?= count($box) ?></span>
+                                                <span class="btn btn-danger btn-sm mb-2"><?= count($box) ?></span>
                                                 <?php if ($sum <= 0 && count($box) > 2) : ?>
                                                     <a href="<?= base_url('data/reset/' . $user['id']) ?>" id="trash" class="btn btn-dark btn-sm"><i class="fas fa-trash"></i></a>
                                                 <?php endif ?>
                                             </div>
                                         </label><br>
-                                        <input type="number" name="box" class="form-control" placeholder="Ongeza Idadi ya Box za Mtumiaji">
+                                        <input type="number" name="box" class="form-control mb-2" placeholder="Ongeza Idadi ya Box za Mtumiaji">
                                     </div>
                                     <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="add">Ongeza Box</button>
+                                    <button type="submit" class="btn btn-primary btn-lg w-100" id="add">Ongeza Box</button>
                                 </div>
                             </div>
                             </form>
@@ -140,39 +136,39 @@ Baarakallahu Fiykum!');
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="exampleInputBorder">Jina la Mhitaji</label><br>
-                                        <span class="btn btn-danger btn-block btn-lg"><?= $user['name'] ?></span>
+                                        <span class="btn btn-danger w-100 btn-lg"><?= $user['name'] ?></span>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-4">
                                     <div class="form-group">
                                         <label for="exampleInputBorder">Mpokeaji</label><br>
-                                        <span class="btn btn-primary btn-block btn-lg"><?= $kont['mpokeaji'] ?? 'N/A' ?></span>
+                                        <span class="btn btn-primary w-100 btn-lg"><?= $kont['mpokeaji'] ?? 'N/A' ?></span>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-4">
                                     <div class="form-group">
                                         <label for="exampleInputBorder">Nchi</label><br>
-                                        <span class="btn btn-warning btn-block btn-lg"><?= $user['nchi'] ?></span>
+                                        <span class="btn btn-warning w-100 btn-lg"><?= $user['nchi'] ?></span>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-4">
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label>Simu Mhusika</label><br>
-                                            <a class="btn btn-danger btn-block btn-lg" href="<?= base_url('malipo/whatsapp/' . preg_replace("/[^0-9]/", "", $user['phone']) . '/' . $kont['id']) ?>"><?= $kont['phone'] ?></a>
+                                            <a class="btn btn-danger w-100 btn-lg" href="<?= base_url('malipo/whatsapp/' . preg_replace("/[^0-9]/", "", $user['phone']) . '/' . $kont['id']) ?>"><?= $kont['phone'] ?></a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-4">
                                     <div class="form-group">
                                         <label for="exampleSelectBorderWidth2">Simu Mpokeaji</label><br>
-                                        <span class="btn btn-info btn-block btn-lg"><?= $kont['phone'] ?></span>
+                                        <span class="btn btn-info w-100 btn-lg"><?= $kont['phone'] ?></span>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-4">
                                     <div class="form-group">
                                         <label for="exampleSelectBorderWidth2"> Mafikio</label><br>
-                                        <span class="btn btn-dark btn-block btn-lg"><?= $kont['fikia'] ?></span>
+                                        <span class="btn btn-dark w-100 btn-lg"><?= $kont['fikia'] ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -180,19 +176,37 @@ Baarakallahu Fiykum!');
                     </div>
                 </div>
             </div>
+            <hr>
             <div class="content">
                 <div class="container">
                     <div class="row">
                         <?php foreach ($box as $key => $dt) : ?>
-                            <div class="col-md-3 col-6">
-                                <a href="<?= base_url('data/view/' . $dt['id']) ?>">
-                                    <div class="small-box bg-<?= $dt['paid'] == 0 ? 'danger' : ($dt['paid'] < session('price') ? 'warning' : 'success') ?>">
-                                        <div class="inner">
-                                            <h3><?= $dt['code'] ?? $key + 1 ?><sub style="font-size: 20px"> <i class="fas fa-box-open"></i></sub></h3>
-                                            <p>Fungua</p>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="fas fa-box"></i>
+                            <div class="col-sm-6 col-lg-3">
+                                <a href="<?= base_url('data/view/' . $dt['id']) ?>" style="text-decoration: none;">
+                                    <div class="card card-sm">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="col-auto">
+                                                    <span class="bg-<?= $dt['paid'] == 0 ? 'danger' : ($dt['paid'] < session('price') ? 'warning' : 'success') ?> text-white avatar">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-package">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" />
+                                                            <path d="M12 12l8 -4.5" />
+                                                            <path d="M12 12l0 9" />
+                                                            <path d="M12 12l-8 -4.5" />
+                                                            <path d="M16 5.25l-8 4.5" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="font-weight-medium">
+                                                        <b><?= $dt['fikia'] ?> | <span class="badge bg-blue text-blue-fg"><?= $dt['code'] ?? $key + 1 ?></span></b>
+                                                    </div>
+                                                    <div class="text-secondary">
+                                                        <b><?= lang('app.openBox') ?></b>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </a>
@@ -230,7 +244,7 @@ Baarakallahu Fiykum!');
                                 <textarea name="ujumbe" cols="10" rows="10" class="form-control"><?= $text ?></textarea>
                             </div>
                         </div>
-                        <button id="tuma" class="btn btn-success btn-block btn-lg"><i class="fab fa-whatsapp"></i></button>
+                        <button id="tuma" class="btn btn-success w-100 btn-lg"><i class="fab fa-whatsapp"></i></button>
                         </form>
                     </div>
                 </div>

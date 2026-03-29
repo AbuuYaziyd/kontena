@@ -103,7 +103,7 @@ class MalipoController extends BaseController
         $usr = new User();
         $kn = new Kontena();
 
-        $data['title'] = 'Data';
+        $data['title'] = lang('app.payments');
         $data['dt'] = $dt;
         $data['usr'] = $usr;
         $data['user'] = $usr->find($id);

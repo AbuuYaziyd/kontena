@@ -24,6 +24,7 @@ class DataController extends BaseController
         $data['current'] = $kn->where('status', 1)->first();
         $data['wahasibu'] = $usr->where('role', 'mhasibu')->findAll();
         $data['users'] = $dt->select('user_id')->distinct()->findAll();
+        $data['kontena'] = $kn->where('current', 1)->first();
         $data['knt'] = $dt->where(['user_id' => session('id')])->distinct()->select('kontena_id')->findAll();
         // dd($data);
 
@@ -160,7 +161,7 @@ class DataController extends BaseController
 
         $box = $dt->find($id);
 
-        $data['title'] = 'Karatasi ya Box';
+        $data['title'] = lang('app.receipt');
         $data['box'] = $box;
         $data['user'] = $usr->find($box['user_id']);
         // dd($data);
@@ -342,6 +343,7 @@ class DataController extends BaseController
         $kontena = $set->where('status', 1)->first();
         $dt = $malipo->where('user_id', $id)->findAll();
         $data['kontena'] = $kontena;
+        $data['title'] = lang('app.receipt');
         $data['malipo'] = $dt;
         $data['user'] = $kont->find($id);
         $data['paid'] = $malipo->where('user_id', $id)->selectSum('paid')->get()->getRow()->paid;

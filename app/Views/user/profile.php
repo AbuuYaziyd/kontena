@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/home') ?>
+<?= $this->extend('layouts/app') ?>
 
 <?= $this->section('content') ?>
 
@@ -31,15 +31,15 @@
                         </div>
                         <div class="col-md-3 mb-2">
                             <label>Jamia</label>
-                            <select name="jamia" class="custom-select">
-                                <option value="IUM" <?= $user['jamia'] == 'IUM' ? 'selected' : '' ?>>Jamia Islamia</option>
-                                <option value="JED" <?= $user['jamia'] == 'JED' ? 'selected' : '' ?>>Jamia Malik Abdul-Aziz</option>
-                                <option value="IMS" <?= $user['jamia'] == 'IMS' ? 'selected' : '' ?>>Jamia Imam</option>
-                                <option value="MSU" <?= $user['jamia'] == 'MSU' ? 'selected' : '' ?>>Jamia Malik saud</option>
+                            <select name="jamia" class="form-select">
+                                <option value="IUM" <?= $user['jamia'] == 'IUM' ? 'selected' : '' ?>><?= lang('app.IUM') ?></option>
+                                <option value="JED" <?= $user['jamia'] == 'JED' ? 'selected' : '' ?>><?= lang('app.JED') ?></option>
+                                <option value="IMS" <?= $user['jamia'] == 'IMS' ? 'selected' : '' ?>><?= lang('app.IMS') ?></option>
+                                <option value="MSU" <?= $user['jamia'] == 'MSU' ? 'selected' : '' ?>><?= lang('app.MSU') ?></option>
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-block btn-primary btn-lg">Hifadhi</button>
+                    <button type="submit" class="btn w-100 btn-primary btn-lg"><?= lang('app.submit') ?></button>
                     </form>
                 </div>
             </div>

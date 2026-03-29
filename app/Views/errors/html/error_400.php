@@ -1,84 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title><?= lang('Errors.badRequest') ?></title>
+<!doctype html>
+<html lang="<?= session('lang') ?>" dir="<?= session('lang') != 'ar' ? 'ltr' : 'rtl' ?>">
 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="Umoja wa Watanzania Chuo Kikuu cha Kiislamu Madina">
+    <meta name="keywords" content="Umoja wa Watanzania Chuo Kikuu cha Kiislamu Madina">
+    <meta name="author" content="abouyaziyd">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('app-assets/img/logo/logo.svg') ?>">
+    <title><?= lang('app.appName') ?> | Error 400</title>
+    <!-- CSS files -->
+    <link href="<?= base_url('app-assets/css/tabler.min.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('app-assets/css/tabler-flags.min.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('app-assets/css/tabler-payments.min.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('app-assets/css/tabler-vendors.min.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('app-assets/css/demo.min.css') ?>" rel="stylesheet" />
     <style>
-        div.logo {
-            height: 200px;
-            width: 155px;
-            display: inline-block;
-            opacity: 0.08;
-            position: absolute;
-            top: 2rem;
-            left: 50%;
-            margin-left: -73px;
+        @import url('https://rsms.me/inter/inter.css');
+
+        :root {
+            --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
         }
+
         body {
-            height: 100%;
-            background: #fafafa;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            color: #777;
-            font-weight: 300;
-        }
-        h1 {
-            font-weight: lighter;
-            letter-spacing: normal;
-            font-size: 3rem;
-            margin-top: 0;
-            margin-bottom: 0;
-            color: #222;
-        }
-        .wrap {
-            max-width: 1024px;
-            margin: 5rem auto;
-            padding: 2rem;
-            background: #fff;
-            text-align: center;
-            border: 1px solid #efefef;
-            border-radius: 0.5rem;
-            position: relative;
-        }
-        pre {
-            white-space: normal;
-            margin-top: 1.5rem;
-        }
-        code {
-            background: #fafafa;
-            border: 1px solid #efefef;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            display: block;
-        }
-        p {
-            margin-top: 1.5rem;
-        }
-        .footer {
-            margin-top: 2rem;
-            border-top: 1px solid #efefef;
-            padding: 1em 2em 0 2em;
-            font-size: 85%;
-            color: #999;
-        }
-        a:active,
-        a:link,
-        a:visited {
-            color: #dd4814;
+            font-feature-settings: "cv03", "cv04", "cv11";
         }
     </style>
 </head>
-<body>
-<div class="wrap">
-    <h1>400</h1>
 
-    <p>
-        <?php if (ENVIRONMENT !== 'production') : ?>
-            <?= nl2br(esc($message)) ?>
-        <?php else : ?>
-            <?= lang('Errors.sorryBadRequest') ?>
-        <?php endif; ?>
-    </p>
-</div>
+<body class=" border-top-wide border-primary d-flex flex-column">
+    <script src="./dist/js/demo-theme.min.js?1692870487"></script>
+    <div class="page page-center">
+        <div class="container-tight py-4">
+            <div class="empty">
+                <div class="empty-header" style="font-size: 1200%;"><b>400</b></div>
+                <p class="empty-title">
+                    <?php if (ENVIRONMENT !== 'production') : ?>
+                        <?= nl2br(esc($message)) ?>
+                    <?php else : ?>
+                        <?= lang('Errors.sorryBadRequest') ?>
+                    <?php endif ?>
+                </p>
+                <p class="empty-subtitle text-secondary">
+                    <?= lang('app.pageNotFound') ?>
+                </p>
+                <div class="empty-action">
+                    <a href="<?= base_url() ?>" class="btn btn-primary">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/arrow-left -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M5 12l14 0" />
+                            <path d="M5 12l6 6" />
+                            <path d="M5 12l6 -6" />
+                        </svg>
+                        <?= lang('app.dashboard') ?>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Libs JS -->
+    <!-- Tabler Core -->
+    <script src="<?= base_url('app-assets/js/tabler.min.js') ?>" defer></script>
+    <script src="<?= base_url('app-assets/js/demo.min.js') ?>" defer></script>
 </body>
+
 </html>

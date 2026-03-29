@@ -40,6 +40,7 @@ class Filters extends BaseFilters
         'auth'          => Auth::class,
         'admin'         => Admin::class,
         'mhasibu'       => Mhasibu::class,
+
     ];
 
     /**

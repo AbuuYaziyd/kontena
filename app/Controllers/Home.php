@@ -13,11 +13,13 @@ class Home extends BaseController
         $knt = new Kontena();
         $session = session();
 
-        $kontena = $knt->where('status', 1)->first();
+        $kontena = $knt->where('current', 1)->first();
         $sess_dt = ['price' => $kontena['price'],];
         $session->set($sess_dt);
+        // dd(session('lang'));
 
-        $data['title'] = 'Kontena';
+        $data['title'] = lang('app.welcome');
+        $data['kontena'] = $kontena;
         $data['kont'] = $knt->where('status', 1)->findAll();
         // dd($data);
 
@@ -36,6 +38,8 @@ class Home extends BaseController
 
     public function test()
     {
+
+        return view('errors/html/test');
         dd('test');
     }
 }
