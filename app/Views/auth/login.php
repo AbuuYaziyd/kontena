@@ -19,9 +19,6 @@
     <div class="mb-2">
       <label class="form-label">
         <?= lang('app.password') ?>
-        <span class="form-label-description">
-          <a href="<?= base_url('recover') ?>"><?= lang('app.forgotPassword') ?></a>
-        </span>
       </label>
       <div class="input-group input-group-flat">
         <input type="password" name="password" class="form-control" placeholder="<?= lang('app.password') ?>">
@@ -40,6 +37,9 @@
         </span></div>
     </div>
   </div>
+</div>
+<div class="text-center text-secondary mt-3">
+  <a href="<?= base_url('recover') ?>" tabindex="-1"><?= lang('app.forgotPassword') ?></a>
 </div>
 
 <div class="modal modal-blur fade" id="register" tabindex="-1" role="dialog" aria-hidden="true">

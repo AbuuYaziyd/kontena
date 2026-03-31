@@ -43,6 +43,18 @@
     <!-- Tabler Core -->
     <script src="<?= base_url('app-assets/js/tabler.min.js') ?>" defer></script>
     <script src="<?= base_url('app-assets/js/demo.min.js') ?>" defer></script>
+    <script>
+        <?php if (session()->getFlashdata('toast')) : ?>
+            Swal.fire({
+                position: "center",
+                icon: "<?= session()->getFlashdata('toast') ?>",
+                title: "<?= session()->getFlashdata('title') ?>",
+                text: "<?= session()->getFlashdata('text') ?>",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        <?php endif ?>
+    </script>
 </body>
 
 </html>

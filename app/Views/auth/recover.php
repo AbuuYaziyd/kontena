@@ -3,61 +3,71 @@
 
 <?= $this->section('content') ?>
 
-<div class="login-box">
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="<?= base_url() ?>" class="h1"><b>Tz</b> Kontena</a>
-    </div>
-    <div class="card-body">
-      <p class="login-box-msg"><?= $title ?></p>
-
-      <?= form_open('recover') ?>
-      <div class="input-group mb-3">
-        <select name="jamia" class="custom-select">
-          <option selected disabled>Chagua Jamia</option>
-          <option value="IUM">Jamia Islamia</option>
-          <option value="OTHER">Jamia Nyengine</option>
+<div class="text-center mb-4">
+  <a href="<?= base_url() ?>" class="navbar-brand navbar-brand-autodark">
+    <img src="<?= base_url('app-assets/img/logo/logo.png') ?>" width="100" height="100" alt="Tabler">
+  </a>
+</div>
+<div class="card card-md">
+  <div class="card-body">
+    <h2 class="h2 text-center mb-4"><?= $title ?></h2>
+    <?= form_open('login') ?>
+    <div class="mb-3">
+      <label class="form-label">
+        <?= lang('app.country') ?>
+        <?php if (isset(session('errors')['nchi'])) : ?>
+          <span class="badge bg-red text-red-fg"><?= session('errors')['nchi'] ?></span>
+        <?php endif ?>
+      </label>
+      <div class="input-group input-group-flat">
+        <select name="nchi" class="form-select">
+          <option selected disabled><?= lang('app.select') ?></option>
+          <option value="tz"><?= lang('app.tz') ?></option>
+          <option value="ke"><?= lang('app.ke') ?></option>
+          <option value="ug"><?= lang('app.ug') ?></option>
+          <option value="rw"><?= lang('app.rw') ?></option>
+          <option value="br"><?= lang('app.br') ?></option>
+          <option value="cn"><?= lang('app.cn') ?></option>
+          <option value="zm"><?= lang('app.zm') ?></option>
+          <option value="mz"><?= lang('app.mz') ?></option>
         </select>
-        <div class="input-group-append">
-          <div class="input-group-text">
-            <span class="fas fa-university"></span>
-          </div>
-        </div>
-      </div>
-      <div class="input-group mb-3">
-        <select name="nchi" class="custom-select">
-          <option selected disabled>Chagua Nchi</option>
-          <option value="TZ">Tanzania</option>
-          <option value="JR">Nchi Jirani</option>
-        </select>
-        <div class="input-group-append">
-          <div class="input-group-text">
-            <span class="fas fa-globe"></span>
-          </div>
-        </div>
-      </div>
-      <div class="input-group mb-3">
-        <input type="number" name="iqama" class="form-control" placeholder="Iqama">
-        <div class="input-group-append">
-          <div class="input-group-text">
-            <span class="fas fa-credit-card"></span>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <button type="submit" class="btn btn-lg btn-dark btn-block">Tuma</button>
-        </div>
-      </div>
-      </form>
-      <hr>
-      <div class="text-center">
-        Umekumbuka Password! <a href="<?= base_url('login') ?>">Ingia</a>
       </div>
     </div>
+    <div class="mb-3">
+      <label class="form-label">
+        <?= lang('app.uni') ?>
+        <?php if (isset(session('errors')['jamia'])) : ?>
+          <span class="badge bg-red text-red-fg"><?= session('errors')['jamia'] ?></span>
+        <?php endif ?>
+      </label>
+      <div class="input-group input-group-flat">
+        <select name="jamia" class="form-select">
+          <option selected disabled><?= lang('app.select') ?></option>
+          <option value="IUM"><?= lang('app.IUM') ?></option>
+          <option value="JED"><?= lang('app.JED') ?></option>
+          <option value="IMS"><?= lang('app.IMS') ?></option>
+          <option value="MSU"><?= lang('app.MSU') ?></option>
+          <option value="OTHER"><?= lang('app.OTHER') ?></option>
+        </select>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">
+        <?= lang('app.iqama') ?>
+        <?php if (isset(session('errors')['iqama'])) : ?>
+          <span class="badge bg-red text-red-fg"><?= session('errors')['iqama'] ?></span>
+        <?php endif ?>
+      </label>
+      <input type="number" name="iqama" class="form-control" placeholder="<?= lang('app.iqama') ?>">
+    </div>
+    <div class="form-footer">
+      <button type="submit" class="btn btn-primary w-100"><?= lang('app.submit') ?></button>
+    </div>
+    </form>
   </div>
 </div>
-<script>
-  url = window.open(url)
-</script>
+<div class="text-center text-secondary mt-3">
+  <a href="<?= base_url('login') ?>" tabindex="-1"><?= lang('app.login') ?></a>
+</div>
+
 <?= $this->endSection() ?>

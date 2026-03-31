@@ -166,7 +166,7 @@ class AuthController extends BaseController
 
             $knt = new Kontena();
 
-            $data['title'] = 'Umesahau Password?';
+            $data['title'] = lang('app.forgotPassword');
 
             return view('auth/recover', $data);
         }
@@ -174,7 +174,7 @@ class AuthController extends BaseController
 
     public function recoverAuth()
     {
-        // dd($this->request->getVar());
+        dd($this->request->getVar());
 
         $usr = new User();
 
