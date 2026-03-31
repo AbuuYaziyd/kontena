@@ -45,7 +45,7 @@ abstract class BaseController extends Controller
         $language->setLocale($session->lang);
 
         if (session('lang') == null) {
-            session()->set('lang', 'sw');
+            session()->set('lang', 'ar');
         }
         
         // $this->session = service('session');
