@@ -127,6 +127,7 @@ class DataController extends BaseController
         $data['title'] = 'Data za Boxi';
         $data['data'] = $dt->where(['kontena_id' => $knt, 'user_id' => $usr])->findAll();
         $data['code'] = $dt->where(['user_id' => $usr, 'paid' => session('price'), 'code' => null])->findAll();
+        $data['coded'] = $dt->where(['user_id' => $usr, 'paid' => session('price'), 'code!=' => null])->findAll();
         $data['boxCount'] = $dt->countAllResults();
         $data['kontena'] = $kt->where('status', 1)->first();
         // dd($data);

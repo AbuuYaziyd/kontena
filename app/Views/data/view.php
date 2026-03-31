@@ -82,13 +82,13 @@
                         </div>
                         <div class="row">
                             <?php if ($box['code'] != null || $box['paid'] == $kontena['price']) : ?>
-                                <button type="submit" class="btn btn-block btn-primary btn-lg"><?= lang('app.submit') ?></button>
+                                <button type="submit" class="btn w-100 btn-primary btn-lg"><?= lang('app.submit') ?></button>
                             <?php else : ?>
                                 <div class="col-md-6">
-                                    <a href="<?= base_url('data/delete/' . $box['id']) ?>" id="delete" class="btn btn-block btn-danger btn-lg mb-2"><?= lang('app.delete') ?></a>
+                                    <a href="<?= base_url('data/delete/' . $box['id']) ?>" id="delete" class="btn w-100 btn-danger btn-lg mb-2"><?= lang('app.delete') ?></a>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="submit" class="btn btn-block btn-<?= $box['paid'] != session('price') ? 'warning' : 'primary' ?> btn-lg"><?= lang('app.submit') ?></button>
+                                    <button type="submit" class="btn w-100 btn-<?= $box['paid'] != session('price') ? 'warning' : 'primary' ?> btn-lg"><?= lang('app.submit') ?></button>
                                 </div>
                             <?php endif ?>
                         </div>

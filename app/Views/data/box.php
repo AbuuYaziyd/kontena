@@ -91,13 +91,14 @@
       <hr>
       <div class="row">
         <?php foreach ($data as $key => $dt) : ?>
-          <div class="col-sm-6 col-lg-3">
+          <?php $color = ($dt['paid'] == 0 ? 'danger' : ($dt['paid'] < session('price') ? 'warning' : 'success')) ?>
+          <div class="col-sm-6 col-lg-3 mb-2">
             <a href="<?= base_url('data/view/' . $dt['id']) ?>" style="text-decoration: none;">
               <div class="card card-sm">
                 <div class="card-body">
                   <div class="row align-items-center">
                     <div class="col-auto">
-                      <span class="bg-<?= $dt['paid'] == 0 ? 'danger' : ($dt['paid'] < session('price') ? 'warning' : 'success') ?> text-white avatar">
+                      <span class="bg-<?= $color ?> text-white avatar">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-package">
                           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                           <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" />
@@ -110,7 +111,7 @@
                     </div>
                     <div class="col">
                       <div class="font-weight-medium">
-                        <b><?= $dt['fikia'] ?> | <span class="badge bg-blue text-blue-fg"><?= $dt['code'] ?? $key + 1 ?></span></b>
+                        <b><?= $dt['fikia'] ?> | <span class="badge bg-<?= $color ?> text-<?= $color ?>-fg"><?= $dt['code'] ?? $key + 1 ?></span></b>
                       </div>
                       <div class="text-secondary">
                         <b><?= lang('app.openBox') ?></b>

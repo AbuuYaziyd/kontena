@@ -10,7 +10,39 @@
         <div class="col-12">
           <div class="row row-cards">
             <div class="col-sm-6 col-lg-3">
-              <?php if (count($knt) > 0) : ?>
+              <?php if (count($knt)) : ?>
+                <a href="<?= base_url('data/box/' . $kontena['id'] . '/' . session('id')) ?>" style="text-decoration: none;">
+                  <div class="card card-sm">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <span class="bg-primary text-white avatar">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-packages">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <path d="M7 16.5l-5 -3l5 -3l5 3v5.5l-5 3l0 -5.5" />
+                              <path d="M2 13.5v5.5l5 3" />
+                              <path d="M7 16.545l5 -3.03" />
+                              <path d="M17 16.5l-5 -3l5 -3l5 3v5.5l-5 3l0 -5.5" />
+                              <path d="M12 19l5 3" />
+                              <path d="M17 16.5l5 -3" />
+                              <path d="M12 13.5v-5.5l-5 -3l5 -3l5 3v5.5" />
+                              <path d="M7 5.03v5.455" />
+                              <path d="M12 8l5 -3" />
+                            </svg>
+                          </span>
+                        </div>
+                        <div class="col">
+                          <div class="font-weight-medium">
+                            <b><?= $dt->kontena($kontena['id'])['year'] ?> | <span class="badge bg-blue text-blue-fg"><?= $dt->box($kontena['id'], session('id'))['box'] ?></span></b>
+                          </div>
+                          <div class="text-secondary">
+                            <b><?= lang('app.yourBoxCount') ?></b>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
               <?php else : ?>
                 <a href="<?= base_url('data/new') ?>" style="text-decoration: none;">
                   <div class="card card-sm">
@@ -46,40 +78,6 @@
                   </div>
                 </a>
               <?php endif ?>
-              <?php foreach ($knt as $kn) : ?>
-                <a href="<?= base_url('data/box/' . $kn['kontena_id'] . '/' . session('id')) ?>" style="text-decoration: none;">
-                  <div class="card card-sm">
-                    <div class="card-body">
-                      <div class="row align-items-center">
-                        <div class="col-auto">
-                          <span class="bg-primary text-white avatar">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-packages">
-                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                              <path d="M7 16.5l-5 -3l5 -3l5 3v5.5l-5 3l0 -5.5" />
-                              <path d="M2 13.5v5.5l5 3" />
-                              <path d="M7 16.545l5 -3.03" />
-                              <path d="M17 16.5l-5 -3l5 -3l5 3v5.5l-5 3l0 -5.5" />
-                              <path d="M12 19l5 3" />
-                              <path d="M17 16.5l5 -3" />
-                              <path d="M12 13.5v-5.5l-5 -3l5 -3l5 3v5.5" />
-                              <path d="M7 5.03v5.455" />
-                              <path d="M12 8l5 -3" />
-                            </svg>
-                          </span>
-                        </div>
-                        <div class="col">
-                          <div class="font-weight-medium">
-                            <b><?= $dt->kontena($kn['kontena_id'])['year'] ?> | <span class="badge bg-blue text-blue-fg"><?= $dt->box($kn['kontena_id'], session('id'))['box'] ?></span></b>
-                          </div>
-                          <div class="text-secondary">
-                            <b><?= lang('app.yourBoxCount') ?></b>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              <?php endforeach ?>
             </div>
             <div class="col-sm-6 col-lg-3">
               <a href="<?= base_url('user/profile') ?>" style="text-decoration: none;">
