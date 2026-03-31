@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/home') ?>
+<?= $this->extend('layouts/app') ?>
 
 <?= $this->section('content') ?>
 
@@ -21,7 +21,7 @@
                     <div class="row mb-4">
                         <div class="col-md-6 mb-2">
                             <label>Mafikio </label>
-                            <select class="custom-select rounded-0" name="fikia">
+                            <select class="form-select rounded-0" name="fikia">
                                 <option selected disabled>Chagua Mafikio</option>
                                 <option value="DAR">DAR</option>
                                 <option value="ZNZ">ZNZ</option>
@@ -45,7 +45,7 @@
                     </div>
                     <input type="hidden" name="kontena_id" value="<?= $knt['id'] ?>">
                     <div class="row">
-                        <button type="submit" class="btn btn-block btn-success btn-lg">Hifadhi</button>
+                        <button type="submit" class="btn btn-block btn-primary btn-lg">Hifadhi</button>
                     </div>
                     </form>
                 </div>

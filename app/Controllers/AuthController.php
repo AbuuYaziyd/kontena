@@ -109,7 +109,7 @@ class AuthController extends BaseController
             
             $knt = new Kontena();
             
-            $data['title'] = 'Ingia';
+            $data['title'] = lang('app.login');
             $data['kont'] = $knt->where('status', 1)->first();
 
             return view('auth/login', $data);

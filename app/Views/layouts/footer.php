@@ -4,8 +4,8 @@
             <div class="col-lg-auto ms-lg-auto">
                 <ul class="list-inline list-inline-dots mb-0">
                     <li class="list-inline-item">
-                        <a href="https://abouyaziyd.rf.gd" target="_blank" class="link-secondary" rel="noopener">
-                            abouyaziyd
+                        <a href="<?= base_url() ?>" class="link-secondary" rel="noopener">
+                            <?= lang('app.appFullName') ?>
                         </a>
                     </li>
                 </ul>

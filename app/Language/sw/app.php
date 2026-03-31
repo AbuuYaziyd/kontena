@@ -64,7 +64,7 @@ return [
     'gharama' => 'Gharama za Kusajili Box ni: ',
     'regQn1' => 'Je, unahitaji kusajiliwa miongoni mwa watakaosafirisha vitabu kwa Kontena mwaka huu',
     'regQn2' => 'Kama ndio, basi jianadae na Malipo ya Usafirishaji kwa makadirio mwaka huu inaweza kugharimu',
-    'regQn1' => 'kwa kila box moja!',
+    'regQn3' => 'kwa kila box moja!',
     'SAR' => 'SAR',
     'oldPassword' => 'Password ya Zamani',
     'newPassord' => 'Password Mpya',
@@ -85,4 +85,6 @@ return [
     'mz' => 'Msumbiji',
     'oops' => 'Looh! Umepata ukurasa wa hitilafu hivi punde',
     'pageNotFound' => 'Samahani lakini ukurasa unaoutafuta haukupatikana',
+    'new' => 'Mpya',
+    'startHere' => 'Anza Hapa',
 ];
