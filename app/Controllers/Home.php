@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\Kontena;
-use App\Models\User;
 
 class Home extends BaseController
 {
@@ -39,16 +38,6 @@ class Home extends BaseController
 
     public function test()
     {
-        $usr = new User();
-        
-        $users = $usr->where('jamia', null)->findAll();
-
-        foreach ($users as $u) {
-            $dt = ['jamia' => 'OTHER'];
-            $usr->update($u['id'], $dt);
-        }
-        // dd($users);
-
         dd('test');
     }
 }
