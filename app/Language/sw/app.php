@@ -23,6 +23,8 @@ return [
     'free' => 'Free',
     'umoja' => 'Umoja wa wanafunzi wa Tanzania IUM',
     'status' => 'Hali',
+    'done' => 'Timilifu',
+    'successfully' => 'Kazi imefanyika kikamilifu!',
 
     // Auth
     'iqama' => 'Iqama',

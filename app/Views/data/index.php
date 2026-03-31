@@ -209,5 +209,25 @@
   <?php endif ?>
 </div>
 </div>
+<script type="text/javascript">
+  $("#other").modal("show")
+</script>
+<div class="modal modal-blur fade" id="other" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><?= lang('app.appFullName') ?> | <?= lang('app.signup') ?></h5>
+      </div>
+      <div class="modal-body">
+        <p><?= lang('app.regQn1') ?> <b><?= 54424 ?></b></p>
+        <p><?= lang('app.regQn2') ?> <b><?= 4534 ?><?= lang('app.SAR') ?></b> <?= lang('app.regQn3') ?></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn me-auto" data-bs-dismiss="modal"><?= lang('app.no') ?></button>
+        <a href="<?= base_url('register') ?>" class="btn btn-primary"><?= lang('app.yesRegister') ?></a>
+      </div>
+    </div>
+  </div>
+</div>
 <?= $this->endSection() ?>
 <?= $this->include('layouts/table') ?>

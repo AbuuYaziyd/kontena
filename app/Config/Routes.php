@@ -19,6 +19,8 @@ $routes->get('change', 'AuthController::change', ['filter' => 'auth']);
 $routes->post('password', 'AuthController::password', ['filter' => 'auth']);
 $routes->post('forgot', 'AuthController::forgot', ['filter' => 'admin']);
 $routes->get('logout', 'AuthController::logout');
+$routes->get('update', 'AuthController::update');
+$routes->post('update', 'AuthController::upt');
 
 $routes->group('data', function ($routes) {
     $routes->get('/', 'DataController::index', ['filter' => 'auth']);

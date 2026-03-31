@@ -139,16 +139,20 @@ class AuthController extends BaseController
                     'id' => $data['id'],
                     'name' => $data['name'],
                     'iqama' => $data['iqama'],
-                    'phone' => $data['phone'],
                     'jamia' => $data['jamia'],
                     'nchi' => $data['nchi'],
+                    'phone' => $data['phone'],
                     'role' => $data['role'],
                     'price' => $kontena['price'],
                     'isLoggedIn' => TRUE
                 ];
 
                 $session->set($ses_data);
-                return redirect()->to('data');
+                if ($data['nchi'] != null) {
+                    return redirect()->to('data');
+                } else {
+                    return redirect()->to('update');
+                }
             } else {
                 return redirect()->to('login')->with('toast', 'error')->with('title', 'Samahani')->with('text', 'Data Hazipo sawa!');
             }
@@ -268,5 +272,38 @@ class AuthController extends BaseController
         $session->set($sess_dt);
 
         return redirect()->to('/');
+    }
+
+    function update()
+    {
+        helper('form');
+        $usr = new User();
+
+        $data = $usr->find(session('id'));
+
+        // dd($data);
+        $data['title'] = lang('app.userData');
+        return view('auth/update', $data);
+    }
+
+    public function upt()
+    {
+        // dd($this->request->getVar());
+        $dt = new User();
+        $session = session();
+
+        $ses_data = [
+            'nchi' => $this->request->getVar('nchi'),
+        ];
+        // dd($ses_data);
+
+        $session->set($ses_data);
+
+        $data = ['nchi' => $this->request->getVar('nchi')];
+        // dd($data);
+
+        $dt->update(session('id'), $data);
+
+        return redirect()->to('data')->with('toast', 'success')->with('title', lang('app.done'))->with('text', lang('app.successfully'));
     }
 }
