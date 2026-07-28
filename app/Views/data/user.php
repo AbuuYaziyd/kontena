@@ -20,7 +20,6 @@ Je, unahitaji kupunguza idadi ya Box?
 Au unataraji lini kumaliza Malipo?
 
 Baarakallahu Fiykum!');
-
 ?>
 <?= $this->extend('layouts/app') ?>
 
