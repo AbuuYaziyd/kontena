@@ -84,7 +84,7 @@ class Data extends Model
     {
         $dt = new Data();
 
-        $data = $dt->where(['paid' => session('price'), 'kontena_id' => $id])->countAllResults();
+        $data = $dt->where(['paid' => session('price'), 'kontena_id' => $id])->orWhere('paid', 80)->countAllResults();
         return $data;
     }
 
