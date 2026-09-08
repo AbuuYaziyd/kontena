@@ -146,6 +146,7 @@ $kt = $knt->where('status', 1)->findAll();
                                     <div class="progress progress-separated mb-3">
                                         <div class="progress-bar bg-primary" role="progressbar" style="width: <?= (($data->wanaohitajia($dt['id']) / $dt['count']) * 100) ?>%" aria-label="Regular"></div>
                                         <div class="progress-bar bg-success" role="progressbar" style="width: <?= (($data->waliomaliza($dt['id']) / $dt['count']) * 100) ?>%" aria-label="Shared"></div>
+                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: <?= ((($dt['count'] - $data->boxZote($dt['id'])) / $dt['count']) * 100) ?>%" aria-label="Shared"></div>
                                     </div>
                                     <div class="row">
                                         <div class="col-auto d-flex align-items-center pe-2">
@@ -157,7 +158,7 @@ $kt = $knt->where('status', 1)->findAll();
                                             <span><?= lang('app.paidBox') ?></span>
                                         </div>
                                         <div class="col-auto d-flex align-items-center ps-2">
-                                            <span class="legend me-2"></span>
+                                            <span class="legend me-2 bg-secondary"></span>
                                             <span><?= lang('app.free') ?></span>
                                         </div>
                                     </div>
