@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Kontena;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -43,6 +44,12 @@ abstract class BaseController extends Controller
         $session = \Config\Services::session();
         $language = \Config\Services::language();
         $language->setLocale($session->lang);
+
+        $knt = new Kontena();
+
+        $kontena = $knt->where('current', 1)->first();
+        $sess_dt = ['price' => $kontena['price'],];
+        $session->set($sess_dt);
 
         if (session('lang') == null) {
             session()->set('lang', 'ar');

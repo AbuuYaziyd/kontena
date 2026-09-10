@@ -24,6 +24,7 @@ return [
     'umoja' => 'Umoja wa wanafunzi wa Tanzania IUM',
     'status' => 'Hali',
     'done' => 'Timilifu',
+    'maintainance' => 'Ipo Matengenezoni',
     'successfully' => 'Kazi imefanyika kikamilifu!',
 
     // Auth

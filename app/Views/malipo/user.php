@@ -4,7 +4,7 @@
 
 <div class="content">
   <div class="container">
-    <?php $jumla = session('price') * count($box) ?>
+    <?php $jumla = session('price') * $user['box'] ?>
     <div class="row">
       <div class="container-xl">
         <div class="row g-2 align-items-center">
@@ -18,7 +18,7 @@
           <div class="col-auto ms-auto d-print-none">
             <div class="btn-list">
               <div class="btn-group w-100" role="group">
-                <span class="btn btn-<?= $sum < $jumla ? 'danger' : 'success' ?>"><?= $jumla ?></span>
+                <span class="btn btn-<?= $user['malipo'] < $jumla ? 'danger' : 'success' ?>"><?= $jumla ?></span>
                 <a href="<?= base_url('data/risiti/' . $user['id']) ?>" class="btn btn-dark">
                   <!-- Download SVG icon from http://tabler-icons.io/i/printer -->
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -41,33 +41,32 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="exampleInputBorder">Kilichobaki</label><br>
-                  <span class="btn btn-<?= $sum < $jumla ? 'danger' : 'success' ?> w-100 btn-lg"><?= $jumla - $sum ?></span>
+                  <span class="btn btn-<?= $user['malipo'] < $jumla ? 'danger' : 'success' ?> w-100 btn-lg"><?= $jumla - $user['malipo'] ?></span>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="exampleInputBorder">Alicholipa</label><br>
-                  <span class="btn btn-primary w-100 btn-lg"><?= $sum ?></span>
+                  <span class="btn btn-primary w-100 btn-lg"><?= $user['malipo'] ?></span>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="exampleInputBorder">Idadi ya Box</label><br>
-                  <span class="btn btn-warning w-100 btn-lg"><?= count($box) ?></span>
+                  <span class="btn btn-warning w-100 btn-lg"><?= $user['box'] ?></span>
                 </div>
               </div>
             </div>
             <hr>
-            <?php if ($sum < $jumla) : ?>
+            <?php if ($user['malipo'] < $jumla) : ?>
               <?= form_open('malipo/edit/' . $user['id']) ?>
-              <div class="row">
+              <div class="row text-center">
                 <div class="col-12">
                   <div class="form-group">
                     <div class="form-group">
                       <label>Malipo</label>
                       <input type="number" class="form-control mb-3" name="pesa" placeholder="Alichotoa leo" onkeyup="check();" id="pesa">
-                      <input type="hidden" name="chenji" value="<?= $chenji ?>">
-                      <button class="btn btn-primary w-100 btn-lg" disabled type="submit" id="submit"><?= lang('app.submit') ?></button>
+                      <button class="btn btn-primary w-100 btn-lg" type="submit"><?= lang('app.submit') ?></button>
                     </div>
                   </div>
                 </div>
@@ -80,13 +79,4 @@
     </div>
   </div>
 </div>
-<script>
-  var check = function() {
-    if (document.getElementById('pesa').value >= 1) {
-      document.getElementById('submit').disabled = false;
-    } else {
-      document.getElementById('submit').disabled = true;
-    }
-  };
-</script>
 <?= $this->endSection() ?>

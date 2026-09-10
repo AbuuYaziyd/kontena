@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="<?= base_url('assets/plugins/fontawesome-free/css/all.min.css') ?>">
     <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://use.fontawesome.com/8dd27289c6.js"></script>
     <?= $this->renderSection('styles') ?>
     <style>
         @import url('https://rsms.me/inter/inter.css');

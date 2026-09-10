@@ -29,14 +29,12 @@ $routes->group('data', function ($routes) {
     $routes->get('revert/(:num)', 'DataController::revert/$1', ['filter' => 'admin']);
     $routes->get('new', 'DataController::new', ['filter' => 'auth']);
     $routes->post('create', 'DataController::create', ['filter' => 'auth']);
-    $routes->get('box/(:num)/(:num)', 'DataController::box/$1/$2', ['filter' => 'auth']);
     $routes->get('view/(:num)', 'DataController::view/$1', ['filter' => 'auth']);
     $routes->get('risiti/(:num)', 'DataController::risiti/$1', ['filter' => 'auth']);
     $routes->get('print/(:num)', 'DataController::print/$1', ['filter' => 'auth']);
     $routes->post('edit/(:num)', 'DataController::edit/$1', ['filter' => 'auth']);
     $routes->get('code/(:num)', 'DataController::code/$1', ['filter' => 'auth']);
     $routes->get('coded', 'DataController::coded', ['filter' => 'auth']);
-    $routes->get('add-box', 'DataController::add', ['filter' => 'auth']);
     $routes->post('admin', 'DataController::admin', ['filter' => 'auth']);
     $routes->post('send', 'DataController::send', ['filter' => 'auth']);
     $routes->get('delete/(:num)', 'DataController::delete/$1', ['filter' => 'auth']);
@@ -50,6 +48,8 @@ $routes->group('user', function ($routes) {
     $routes->get('receiver', 'UserController::receiver', ['filter' => 'auth']);
     $routes->post('receiver/(:num)', 'UserController::receiverEdit/$1', ['filter' => 'auth']);
     $routes->get('admin', 'UserController::admin', ['filter' => 'admin']);
+    $routes->get('box/(:num)/(:num)', 'UserController::box/$1/$2', ['filter' => 'auth']);
+    $routes->get('add/(:num)', 'DataController::add/$1', ['filter' => 'auth']);
 });
 
 $routes->group('malipo', function ($routes) {

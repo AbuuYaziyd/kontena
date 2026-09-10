@@ -3,23 +3,21 @@
 namespace App\Controllers;
 
 use App\Models\Kontena;
+use App\Models\User;
 
 class Home extends BaseController
 {
     public function index()
     {
-        helper('form');
-
         $knt = new Kontena();
-        $session = session();
+        $usr = new User();
 
         $kontena = $knt->where('current', 1)->first();
-        $sess_dt = ['price' => $kontena['price'],];
-        $session->set($sess_dt);
-        // dd(session('lang'));
 
         $data['title'] = lang('app.welcome');
         $data['kontena'] = $kontena;
+        $data['box'] = $usr->selectSum('box')->get()->getRow()->box;
+        $data['finish'] = round(($usr->selectSum('malipo')->get()->getRow()->malipo)/100);
         $data['kont'] = $knt->where('status', 1)->findAll();
         // dd($data);
 

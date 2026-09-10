@@ -111,6 +111,9 @@ class AuthController extends BaseController
             
             $data['title'] = lang('app.login');
             $data['kont'] = $knt->where('status', 1)->first();
+            $data['title'] = lang('app.maintainance');
+            
+            return view('home/soon', $data);
 
             return view('auth/login', $data);
         }
@@ -149,7 +152,7 @@ class AuthController extends BaseController
 
                 $session->set($ses_data);
                 if ($data['nchi'] != null) {
-                    return redirect()->to('data');
+                    return redirect()->to('user');
                 } else {
                     return redirect()->to('update');
                 }
@@ -233,7 +236,7 @@ class AuthController extends BaseController
 
             $usr->update($user['id'], $dt);
 
-            return redirect()->to('data')->with('toast', 'success')->with('title', 'Timilifu')->with('text', 'Password Imebadilishwa Kikamilifu!');
+            return redirect()->to('user')->with('toast', 'success')->with('title', 'Timilifu')->with('text', 'Password Imebadilishwa Kikamilifu!');
         }
     }
 
@@ -304,6 +307,6 @@ class AuthController extends BaseController
 
         $dt->update(session('id'), $data);
 
-        return redirect()->to('data')->with('toast', 'success')->with('title', lang('app.done'))->with('text', lang('app.successfully'));
+        return redirect()->to('user')->with('toast', 'success')->with('title', lang('app.done'))->with('text', lang('app.successfully'));
     }
 }

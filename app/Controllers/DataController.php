@@ -117,23 +117,6 @@ class DataController extends BaseController
         }
     }
 
-    public function box($knt, $usr)
-    {
-        helper('form');
-
-        $dt = new Data();
-        $kt = new Kontena();
-
-        $data['title'] = 'Data za Boxi';
-        $data['data'] = $dt->where(['kontena_id' => $knt, 'user_id' => $usr])->findAll();
-        $data['code'] = $dt->where(['user_id' => $usr, 'paid' => session('price'), 'code' => null])->findAll();
-        $data['coded'] = $dt->where(['user_id' => $usr, 'paid' => session('price'), 'code!=' => null])->findAll();
-        $data['boxCount'] = $dt->countAllResults();
-        $data['kontena'] = $kt->where('status', 1)->first();
-        // dd($data);
-
-        return view('data/box', $data);
-    }
 
     public function view($id)
     {
@@ -250,27 +233,6 @@ class DataController extends BaseController
         // dd($data);
 
         return redirect()->back();
-    }
-
-    public function add()
-    {
-        $dt = new Data();
-
-        $box = $dt->where('user_id', session('id'))->first();
-        $data = [
-            'mpokeaji' => $box['mpokeaji'],
-            'phone' => $box['phone'],
-            'fikia' => $box['fikia'],
-            'user_id' => $box['user_id'],
-            'kontena_id' => $box['kontena_id'],
-        ];
-        // dd($data);
-        
-        $dt->save($data);
-
-        return redirect()->back()
-            ->with('toast', 'success')
-            ->with('text', 'Umeongeza Box Kikamilifu!');
     }
 
     public function admin()

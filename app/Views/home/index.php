@@ -1,14 +1,3 @@
-<?php
-
-use App\Models\Data;
-use App\Models\Kontena;
-
-$data = new Data();
-$knt = new Kontena();
-
-$kt = $knt->where('status', 1)->findAll();
-
-?>
 <?= $this->extend('layouts/app') ?>
 
 <?= $this->section('content') ?>
@@ -16,7 +5,7 @@ $kt = $knt->where('status', 1)->findAll();
 <!-- Page body -->
 <div class="page-body">
     <div class="container-xl">
-        <?php foreach ($kt as $dt) : ?>
+        <?php foreach ($kont as $dt) : ?>
             <div class="row row-deck row-cards">
                 <div class="col-12">
                     <div class="row row-cards">
@@ -42,7 +31,7 @@ $kt = $knt->where('status', 1)->findAll();
                                         </div>
                                         <div class="col">
                                             <div class="font-weight-medium">
-                                                <b><?= $data->wanaohitajia($dt['id']) ?></b>
+                                                <b><?= $box ?></b>
                                             </div>
                                             <div class="text-secondary">
                                                 <b><?= lang('app.neededBox') ?></b>
@@ -71,7 +60,7 @@ $kt = $knt->where('status', 1)->findAll();
                                         </div>
                                         <div class="col">
                                             <div class="font-weight-medium">
-                                                <b><?= $data->waliomaliza($dt['id']) ?></b>
+                                                <b><?= $finish ?></b>
                                             </div>
                                             <div class="text-secondary">
                                                 <b><?= lang('app.paidBox') ?></b>
@@ -98,7 +87,7 @@ $kt = $knt->where('status', 1)->findAll();
                                         </div>
                                         <div class="col">
                                             <div class="font-weight-medium">
-                                                <b><?= $dt['count'] - $data->boxZote($dt['id']) ?></b>
+                                                <b><?= $dt['count'] - $box ?></b>
                                             </div>
                                             <div class="text-secondary">
                                                 <b><?= lang('app.remainedBox') ?></b>
@@ -144,9 +133,9 @@ $kt = $knt->where('status', 1)->findAll();
                                 <div class="card-body">
                                     <p class="mb-3"><?= lang('app.boxInfo') ?> <strong><?= $dt['count'] ?> </strong></p>
                                     <div class="progress progress-separated mb-3">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: <?= (($data->wanaohitajia($dt['id']) / $dt['count']) * 100) ?>%" aria-label="Regular"></div>
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: <?= (($data->waliomaliza($dt['id']) / $dt['count']) * 100) ?>%" aria-label="Shared"></div>
-                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: <?= ((($dt['count'] - $data->boxZote($dt['id'])) / $dt['count']) * 100) ?>%" aria-label="Shared"></div>
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: <?= (($box / $dt['count']) * 100) ?>%" aria-label="Regular"></div>
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: <?= (($finish / $dt['count']) * 100) ?>%" aria-label="Shared"></div>
+                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: <?= ((($dt['count'] - $box) / $dt['count']) * 100) ?>%" aria-label="Shared"></div>
                                     </div>
                                     <div class="row">
                                         <div class="col-auto d-flex align-items-center pe-2">

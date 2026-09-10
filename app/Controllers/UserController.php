@@ -11,7 +11,18 @@ class UserController extends BaseController
 {
     public function index()
     {
-        $data['title'] = 'Mtumiaji';
+        $kon = new Kontena();
+        $usr = new User();
+
+        $data['title'] = lang('app.user');
+        $data['usr'] = $usr;
+        $data['kontena'] = $kon->where('current', 1)->first();
+        $data['box'] = $usr->selectSum('box')->get()->getRow()->box;
+        $data['user'] = $usr->find(session('id'));
+        $data['users'] = $usr->where('box>', 0)->findAll();
+        $data['wahasibu'] = $usr->where('role', 'mhasibu')->findAll();
+        $data['finish'] = round(($usr->selectSum('malipo')->get()->getRow()->malipo) / 100);
+        // dd($data);
         
         return view('user/index', $data);
     }
@@ -107,5 +118,33 @@ class UserController extends BaseController
         // dd($data);
 
         return view('user/admin', $data);
+    }
+
+    public function box($usr_id)
+    {
+        helper('form');
+
+        $usr = new User();
+        $kt = new Kontena();
+
+        $data['title'] = 'Data za Boxi';
+        $data['user'] = $usr->find($usr_id);
+        $data['kontena'] = $kt->where('status', 1)->first();
+        // dd($data);
+
+        return view('user/box', $data);
+    }
+
+    public function add($id)
+    {
+        $usr = new User();
+
+        $user = $usr->find($id);
+        $data = ['box' => $user['box'] + 1];
+        // dd($data);
+
+        $dt->update($id, $data);
+
+        return redirect()->back()->with('toast', 'success')->with('text', 'Umeongeza Box Kikamilifu!');
     }
 }

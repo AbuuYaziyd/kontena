@@ -20,7 +20,15 @@ class User extends Model
         'nchi',
         'jamia',
         'phone',
+        'malipo',
         'risiti',
+        'kontena_id',
+        'mhasibu_id',
+        'mpokeaji',
+        'fikia',
+        'simu',
+        'box',
+        'code',
     ];
 
     protected bool $allowEmptyInserts = false;
