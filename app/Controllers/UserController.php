@@ -67,13 +67,18 @@ class UserController extends BaseController
         $usr = new User();
 
         $id = $this->request->getVar('id');
+        $user = $usr->find($id);
+        // dd($id, $user);
+
         $data = [
             'name' => strtoupper($this->request->getVar('name')),
             'phone' => $this->request->getVar('phone'),
             'iqama' => $this->request->getVar('iqama'),
             'jamia' => $this->request->getVar('jamia'),
+            'mpokeaji' => $this->request->getVar('mpokeaji'),
+            'simu' => $this->request->getVar('simu'),
+            'box' => intval($user['box']) + intval($this->request->getVar('box') ?? 0),
         ];
-
         // dd($data);
 
         $usr->update($id, $data);

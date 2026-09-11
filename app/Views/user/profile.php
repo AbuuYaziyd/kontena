@@ -47,8 +47,8 @@
                             <input class="form-control" type="number" name="simu" value="<?= $user['simu'] ?>">
                         </div>
                         <div class="col-md-3 mb-2">
-                            <label><?= lang('app.box') ?></label>
-                            <input class="form-control" type="number" name="box" value="<?= $user['box'] ?>" <?= $kontena['count'] == $boxes ? 'disabled' : '' ?> max="<?= $kontena['count'] - ($boxes + $user['box']) ?>">
+                            <label><?= lang('app.box') ?> | <span class="badge bg-primary text-success-fg"><?= $user['box'] ?></span></label>
+                            <input class="form-control" type="number" name="box" placeholder="1" <?= $kontena['count'] == $boxes ? 'disabled' : '' ?> max="<?= $kontena['count'] - ($boxes + $user['box']) ?>">
                         </div>
                         <div class="col-md-3 mb-2">
                             <label><?= lang('app.fikia') ?></label>
