@@ -35,7 +35,6 @@ $routes->group('data', function ($routes) {
     $routes->get('code/(:num)', 'DataController::code/$1', ['filter' => 'auth']);
     $routes->get('coded', 'DataController::coded', ['filter' => 'auth']);
     $routes->post('admin', 'DataController::admin', ['filter' => 'auth']);
-    $routes->post('send', 'DataController::send', ['filter' => 'auth']);
     $routes->get('delete/(:num)', 'DataController::delete/$1', ['filter' => 'auth']);
     $routes->get('reset/(:num)', 'DataController::reset/$1', ['filter' => 'auth']);
 });
@@ -48,6 +47,7 @@ $routes->group('user', function ($routes) {
     $routes->get('admin', 'UserController::admin', ['filter' => 'admin']);
     $routes->get('box/(:num)/(:num)', 'UserController::box/$1/$2', ['filter' => 'auth']);
     $routes->get('risiti/(:num)', 'UserController::risiti/$1', ['filter' => 'auth']);
+    $routes->post('send', 'UserController::send', ['filter' => 'auth']);
 });
 
 $routes->group('malipo', function ($routes) {

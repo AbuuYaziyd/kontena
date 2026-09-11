@@ -136,4 +136,16 @@ class UserController extends BaseController
 
         return view('user/risiti', $data);
     }
+
+    public function send()
+    {
+        // dd($this->request->getVar());
+
+        $namba = $this->request->getVar('namba');
+        $ujumbe = $this->request->getVar('ujumbe');
+        $link = htmlspecialchars('https://wa.me/' . $namba . '?text=' . urlencode($ujumbe));
+        // dd($link);
+
+        return redirect()->to($link);
+    }
 }

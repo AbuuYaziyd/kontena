@@ -78,7 +78,14 @@
                       </td>
                       <td>
                         <div class="btn-group">
-                          <a href="<?= base_url('user/page/' . $us['id']) ?>" class="btn btn-outline-success w-100"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp">
+                          <?php $rem = ($us['box'] * session('price')) - $us['malipo']; $ujumbe = htmlspecialchars('Assalaamu Alaikum warahmatullahi Wabarakaatuh!%0A%0A
+                             Ndugu ' . $us['name'] . '%0A
+                             Mpaka sasa umelipia kiasi cha *riyali ' . $us['malipo'] . '*, bado kiasi cha *riyali ' . $rem . '*.%0A%0A
+                             
+                             *Je, unahitaji kupunguza Box?*%0A
+                             *Au unataraji lini kumaliza Malipo?*%0A%0A
+                             Baarakallahu Fiykum!'); ?>
+                          <a href="https://wa.me/<?= str_replace(' ', '', $us['phone']) ?>?text=<?= $ujumbe ?>" class="btn btn-outline-success" target="_blank" data-bs-target="#send"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp">
                               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                               <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
                               <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
@@ -103,6 +110,44 @@
                         </div>
                       </td>
                     </tr>
+                    <div class="modal modal-blur fade" id="send" tabindex="-1" role="dialog" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <?= form_open('user/send') ?>
+                            <?php
+                            $rem = ($us['box'] * session('price')) - $us['malipo'];
+                            $ujumbe = 'Assalaamu Alaikum warahmatullahi Wabarakaatuh!
+                             Ndugu ' . $us['name'] . '
+                             Mpaka sasa umelipia kiasi cha *riyali ' . $us['malipo'] . '*, bado kiasi cha *riyali ' . $rem . '*.
+                             
+                             *Je, unahitaji kupunguza Box?*
+                             *Au unataraji lini kumaliza Malipo?*
+                             Baarakallahu Fiykum!';
+                            $namba = preg_replace("/[^0-9]/", "", $us['phone']); ?>
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-12 mb-2">
+                                  <div class="form-group">
+                                    <label style="color:red;">Namba ya Simu ianze na 255000000000</label>
+                                    <input type="text" name="namba" class="form-control" value="<?= $namba ?>">
+                                  </div>
+                                </div>
+                                <div class="col-12 mb-2">
+                                  <div class="form-group">
+                                    <label for="exampleInputBorder">Ujumbe</label>
+                                    <textarea name="ujumbe" cols="10" rows="10" class="form-control"><?= $ujumbe ?></textarea>
+                                  </div>
+                                </div>
+                                <button id="<?= $key + 1 ?>" href="https://wa.me/'.<?= $namba ?>.'?text='.<?= rawurlencode($ujumbe) ?>" class="btn btn-success btn-block btn-lg"><i class="nav-icon fas fa-paper-plane"></i> Tuma Ujumbe!</button>
+                                </form>
+                              </div>
+                            </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   <?php endforeach ?>
                 </tbody>
               </table>

@@ -11,7 +11,7 @@
           <div class="col">
             <!-- Page pre-title -->
             <h2 class="page-title">
-              <b><?= $title ?></b>
+              <b><?= $user['name'] ?></b>
             </h2>
           </div>
           <!-- Page title actions -->
@@ -19,7 +19,7 @@
             <div class="btn-list">
               <div class="btn-group w-100" role="group">
                 <span class="btn btn-<?= $user['malipo'] < $jumla ? 'danger' : 'success' ?>"><?= $jumla ?></span>
-                <a href="<?= base_url('data/risiti/' . $user['id']) ?>" class="btn btn-dark">
+                <a href="<?= base_url('user/risiti/' . $user['id']) ?>" class="btn btn-dark">
                   <!-- Download SVG icon from http://tabler-icons.io/i/printer -->
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
