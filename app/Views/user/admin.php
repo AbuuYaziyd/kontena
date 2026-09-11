@@ -78,13 +78,15 @@
                       </td>
                       <td>
                         <div class="btn-group">
-                          <?php $rem = ($us['box'] * session('price')) - $us['malipo']; $ujumbe = htmlspecialchars('Assalaamu Alaikum warahmatullahi Wabarakaatuh!%0A%0A
-                             Ndugu ' . $us['name'] . '%0A
-                             Mpaka sasa umelipia kiasi cha *riyali ' . $us['malipo'] . '*, bado kiasi cha *riyali ' . $rem . '*.%0A%0A
-                             
-                             *Je, unahitaji kupunguza Box?*%0A
-                             *Au unataraji lini kumaliza Malipo?*%0A%0A
-                             Baarakallahu Fiykum!'); ?>
+<?php
+$rem = ($us['box'] * session('price')) - $us['malipo']; $ujumbe = htmlspecialchars('
+Assalaamu Alaikum warahmatullahi Wabarakaatuh!%0A%0A
+Ndugu ' . $us['name'] . '%0A
+Mpaka sasa umelipia kiasi cha *riyali ' . $us['malipo'] . '*, bado kiasi cha *riyali ' . $rem . '*.%0A%0A
+*Je, unahitaji kupunguza Box?*%0A
+*Au unataraji lini kumaliza Malipo?*%0A%0A
+Baarakallahu Fiykum!'); 
+?>
                           <a href="https://wa.me/<?= str_replace(' ', '', $us['phone']) ?>?text=<?= $ujumbe ?>" class="btn btn-outline-success" target="_blank" data-bs-target="#send"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp">
                               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                               <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
