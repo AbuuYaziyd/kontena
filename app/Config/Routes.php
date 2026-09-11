@@ -47,7 +47,6 @@ $routes->group('user', function ($routes) {
     $routes->get('admin', 'UserController::admin', ['filter' => 'admin']);
     $routes->get('box/(:num)/(:num)', 'UserController::box/$1/$2', ['filter' => 'auth']);
     $routes->get('risiti/(:num)', 'UserController::risiti/$1', ['filter' => 'auth']);
-    $routes->post('send', 'UserController::send', ['filter' => 'auth']);
 });
 
 $routes->group('malipo', function ($routes) {
