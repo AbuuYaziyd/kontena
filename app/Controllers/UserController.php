@@ -114,16 +114,21 @@ class UserController extends BaseController
         return view('user/box', $data);
     }
 
-    public function add($id)
+    public function risiti($id)
     {
+        $set = new Kontena();
         $usr = new User();
 
+        $kontena = $set->where('current', 1)->first();
         $user = $usr->find($id);
-        $data = ['box' => $user['box'] + 1];
+
+        $data['title'] = lang('app.receipt');
+        $data['user'] = $user;
+        $data['kontena'] = $kontena;
+        $data['malipo'] = $usr->where('id', $id)->selectSum('malipo')->get()->getRow()->malipo;
+        $data['jumla'] = $kontena['price'] * $user['box'];
         // dd($data);
 
-        $dt->update($id, $data);
-
-        return redirect()->back()->with('toast', 'success')->with('text', 'Umeongeza Box Kikamilifu!');
+        return view('user/risiti', $data);
     }
 }

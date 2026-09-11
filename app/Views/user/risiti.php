@@ -40,24 +40,32 @@
                             <th>#</th>
                             <th><?= lang('app.receiver') ?></th>
                             <th><?= lang('app.phone') ?></th>
-                            <th><?= lang('app.location') ?></th>
+                            <th><?= lang('app.fikia') ?></th>
                             <th><?= lang('app.paid') ?></th>
-                            <th><?= lang('app.total') ?></th>
+                            <th><?= lang('app.status') ?></th>
                         </tr>
                     </thead>
-                    <?php $sum = 0 ?>
                     <?php if ($malipo) : ?>
-                        <?php foreach ($malipo as $key => $dt) : ?>
+                        <?php $finish = floor($user['malipo'] / session('price'));
+                        $remain = $user['malipo'] % session('price') ?>
+                        <?php for ($i = 0; $i < $user['box']; $i++) : ?>
                             <tr>
-                                <td><?= $key + 1 ?></td>
-                                <td><?= $dt['mpokeaji'] ?></td>
-                                <td><?= $dt['phone'] ?></td>
-                                <td><?= $dt['fikia'] ?></td>
-                                <td><?= date('d/m/Y', strtotime($dt['created_at'])) ?></td>
-                                <td><?= $dt['paid'] ?> <?= lang('app.SAR') ?></td>
+                                <td><?= $i + 1 ?></td>
+                                <td><?= $user['mpokeaji'] ?></td>
+                                <td><?= $user['phone'] ?></td>
+                                <td><?= lang('app.' . $user['fikia']) ?></td>
+                                <?php if ($i < $finish) : ?>
+                                    <td><?= session('price') ?> <?= lang('app.SAR') ?></td>
+                                    <td><span class="badge bg-success text-success-fg"><?= lang('app.paid') ?></span></td>
+                                <?php elseif ($remain > 0 && $i == $finish) : ?>
+                                    <td><?= $remain ?> <?= lang('app.SAR') ?></td>
+                                    <td><span class="badge bg-primary text-success-fg"><?= lang('app.notCompleted') ?></span></td>
+                                <?php else : ?>
+                                    <td>0 <?= lang('app.SAR') ?></td>
+                                    <td><span class="badge bg-danger text-success-fg"><?= lang('app.notPaid') ?></span></td>
+                                <?php endif ?>
                             </tr>
-                            <?php $sum = $sum + $dt['paid'] ?>
-                        <?php endforeach ?>
+                        <?php endfor ?>
                     <?php else : ?>
                         <tr>
                             <td colspan="4" style="text-align: center; color:red;"><b>Hakuna Data za Malipo!</b></td>
@@ -65,7 +73,7 @@
                     <?php endif ?>
                     <tr>
                         <td colspan="5" class="strong text-end"><?= lang('app.total') ?></td>
-                        <td><b><?= $sum ?> <?= lang('app.SAR') ?></b></td>
+                        <td><b><?= $user['malipo'] ?> <?= lang('app.SAR') ?></b></td>
                     </tr>
                 </table>
                 <p class="text-secondary text-center mt-5"><?= lang('app.appFullName') ?></p>

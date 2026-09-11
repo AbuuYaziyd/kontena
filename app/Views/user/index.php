@@ -74,7 +74,7 @@
                         </div>
                         <div class="col-sm-6 col-lg-3">
                             <?php if ($user['risiti'] != null) : ?>
-                                <a href="<?= base_url('data/risiti/' . session('id')) ?>" style="text-decoration: none;">
+                                <a href="<?= base_url('user/risiti/' . session('id')) ?>" style="text-decoration: none;">
                                     <div class="card card-sm">
                                         <div class="card-body">
                                             <div class="row align-items-center">

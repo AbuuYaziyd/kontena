@@ -30,7 +30,6 @@ $routes->group('data', function ($routes) {
     $routes->get('new', 'DataController::new', ['filter' => 'auth']);
     $routes->post('create', 'DataController::create', ['filter' => 'auth']);
     $routes->get('view/(:num)', 'DataController::view/$1', ['filter' => 'auth']);
-    $routes->get('risiti/(:num)', 'DataController::risiti/$1', ['filter' => 'auth']);
     $routes->get('print/(:num)', 'DataController::print/$1', ['filter' => 'auth']);
     $routes->post('edit/(:num)', 'DataController::edit/$1', ['filter' => 'auth']);
     $routes->get('code/(:num)', 'DataController::code/$1', ['filter' => 'auth']);
@@ -48,7 +47,7 @@ $routes->group('user', function ($routes) {
     $routes->post('update', 'UserController::update', ['filter' => 'auth']);
     $routes->get('admin', 'UserController::admin', ['filter' => 'admin']);
     $routes->get('box/(:num)/(:num)', 'UserController::box/$1/$2', ['filter' => 'auth']);
-    $routes->get('add/(:num)', 'DataController::add/$1', ['filter' => 'auth']);
+    $routes->get('risiti/(:num)', 'UserController::risiti/$1', ['filter' => 'auth']);
 });
 
 $routes->group('malipo', function ($routes) {
