@@ -62,32 +62,19 @@ class User extends Model
     protected $afterDelete    = [];
 
     function malipoJamia($id) {
-        $dt = new Data();
+        $usr = new User();
 
-        $sum = $dt->where('mhasibu_id', $id)->selectSum('paid')->get()->getRow()->paid;
+        $sum = $usr->where('mhasibu_id', $id)->selectSum('malipo')->get()->getRow()->malipo;
 
         return $sum;
     }
 
     function malipoFull()
     {
-        $dt = new Data();
-
-        $sum = $dt->selectSum('paid')->get()->getRow()->paid;
-
-        return $sum;
-    }
-
-    function data($id){
-        $dt = new Data();
         $usr = new User();
 
-        $data['box'] = $dt->where('user_id', $id)->countAllResults();
-        $data['paid'] = $dt->where(['user_id' => $id, 'paid' => 80])->countAllResults();
-        $data['sum'] = $dt->where('user_id', $id)->selectSum('paid')->get()->getRow()->paid;
-        $data['user'] = $usr->find($id);
-        // dd($data);
+        $sum = $usr->selectSum('malipo')->get()->getRow()->malipo;
 
-        return $data;
+        return $sum;
     }
 }

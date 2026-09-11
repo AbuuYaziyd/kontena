@@ -24,8 +24,8 @@ $routes->post('update', 'AuthController::upt');
 
 $routes->group('data', function ($routes) {
     $routes->get('/', 'DataController::index', ['filter' => 'auth']);
-    $routes->get('users', 'DataController::users', ['filter' => 'admin']);
-    $routes->get('user/(:num)', 'DataController::user/$1', ['filter' => 'admin']);
+    // $routes->get('users', 'DataController::users', ['filter' => 'admin']);
+    // $routes->get('user/(:num)', 'DataController::user/$1', ['filter' => 'admin']);
     $routes->get('revert/(:num)', 'DataController::revert/$1', ['filter' => 'admin']);
     $routes->get('new', 'DataController::new', ['filter' => 'auth']);
     $routes->post('create', 'DataController::create', ['filter' => 'auth']);
@@ -43,10 +43,9 @@ $routes->group('data', function ($routes) {
 
 $routes->group('user', function ($routes) {
     $routes->get('/', 'UserController::index', ['filter' => 'auth']);
+    $routes->get('page/(:num)', 'UserController::page/$1', ['filter' => 'auth']);
     $routes->get('profile', 'UserController::profile', ['filter' => 'auth']);
-    $routes->post('edit/(:num)', 'UserController::edit/$1', ['filter' => 'auth']);
-    $routes->get('receiver', 'UserController::receiver', ['filter' => 'auth']);
-    $routes->post('receiver/(:num)', 'UserController::receiverEdit/$1', ['filter' => 'auth']);
+    $routes->post('update', 'UserController::update', ['filter' => 'auth']);
     $routes->get('admin', 'UserController::admin', ['filter' => 'admin']);
     $routes->get('box/(:num)/(:num)', 'UserController::box/$1/$2', ['filter' => 'auth']);
     $routes->get('add/(:num)', 'DataController::add/$1', ['filter' => 'auth']);

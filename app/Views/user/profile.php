@@ -10,27 +10,27 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-12">
-                            <h2 style="align-items: center;"><b><?= $title ?></b></h2>
+                            <h2 style="align-items: center;"><b><?= lang('app.information') ?></b></h2>
                         </div>
                     </div>
                 </div>
-                <?= form_open('user/edit/' . session('id')) ?>
+                <?= form_open('user/update') ?>
                 <div class="card-body">
                     <div class="row mb-4">
                         <div class="col-md-3 mb-2">
-                            <label>Mhusika</label>
+                            <label><?= lang('app.user') ?></label>
                             <input class="form-control" type="text" name="name" value="<?= $user['name'] ?>">
                         </div>
                         <div class="col-md-3 mb-2">
-                            <label>Namba ya Iqama</label>
+                            <label><?= lang('app.iqama') ?></label>
                             <input class="form-control" type="number" maxlength="10" value="<?= $user['iqama'] ?>" name="iqama">
                         </div>
                         <div class="col-md-3 mb-2">
-                            <label>Namba ya Simu</label>
+                            <label><?= lang('app.phone') ?></label>
                             <input class="form-control" type="number" name="phone" value="<?= $user['phone'] ?>">
                         </div>
                         <div class="col-md-3 mb-2">
-                            <label>Jamia</label>
+                            <label><?= lang('app.jamia') ?></label>
                             <select name="jamia" class="form-select">
                                 <option value="IUM" <?= $user['jamia'] == 'IUM' ? 'selected' : '' ?>><?= lang('app.IUM') ?></option>
                                 <option value="JED" <?= $user['jamia'] == 'JED' ? 'selected' : '' ?>><?= lang('app.JED') ?></option>
@@ -38,7 +38,28 @@
                                 <option value="MSU" <?= $user['jamia'] == 'MSU' ? 'selected' : '' ?>><?= lang('app.MSU') ?></option>
                             </select>
                         </div>
+                        <div class="col-md-3 mb-2">
+                            <label><?= lang('app.mpokeaji') ?></label>
+                            <input class="form-control" type="text" name="mpokeaji" value="<?= $user['mpokeaji'] ?>">
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <label><?= lang('app.mpokeajiPhone') ?></label>
+                            <input class="form-control" type="number" name="simu" value="<?= $user['simu'] ?>">
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <label><?= lang('app.box') ?></label>
+                            <input class="form-control" type="number" name="box" value="<?= $user['box'] ?>" <?= $kontena['count'] == $boxes ? 'disabled' : '' ?> max="<?= $kontena['count'] - ($boxes + $user['box']) ?>">
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <label><?= lang('app.fikia') ?></label>
+                            <select name="jamia" class="form-select">
+                                <option value="DAR" <?= $user['fikia'] == 'DAR' ? 'selected' : '' ?>><?= lang('app.DAR') ?></option>
+                                <option value="ZNZ" <?= $user['fikia'] == 'ZNZ' ? 'selected' : '' ?>><?= lang('app.ZNZ') ?></option>
+                                <option value="PBA" <?= $user['fikia'] == 'PBA' ? 'selected' : '' ?>><?= lang('app.PBA') ?></option>
+                            </select>
+                        </div>
                     </div>
+                    <input type="hidden" name="id" value="<?= $user['id'] ?>">
                     <button type="submit" class="btn w-100 btn-primary btn-lg"><?= lang('app.submit') ?></button>
                     </form>
                 </div>

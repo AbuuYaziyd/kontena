@@ -46,17 +46,14 @@ class MalipoController extends BaseController
     {
         helper('form');
 
-        $dt = new Data();
         $usr = new User();
         $kn = new Kontena();
 
         $data['title'] = lang('app.payments');
-        $data['dt'] = $dt;
         $data['usr'] = $usr;
         $data['user'] = $usr->find($id);
-        $data['current'] = $kn->where('status', 1)->first();
-        $data['users'] = $dt->where('mhasibu_id', $id)->select('user_id')->distinct()->findAll();
-        $data['knt'] = $dt->where(['user_id' => session('id')])->distinct()->select('kontena_id')->findAll();
+        $data['current'] = $kn->where('current', 1)->first();
+        $data['users'] = $usr->where('mhasibu_id', $id)->orderBy('box', 'desc')->findAll();
         // dd($data);
 
         return view('malipo/mhasibu', $data);

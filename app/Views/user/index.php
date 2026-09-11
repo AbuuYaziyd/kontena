@@ -3,7 +3,6 @@
 <?= $this->section('content') ?>
 
 <div class="page-wrapper">
-    <!-- Page body -->
     <div class="page-body">
         <div class="container-xl">
             <div class="row row-deck row-cards">
@@ -11,74 +10,36 @@
                     <div class="row row-cards">
                         <div class="col-sm-6 col-lg-3">
                             <?php $color = ($user['malipo'] == 0 ? 'danger' : ($user['malipo'] < (session('price') * $user['box']) ? 'info' : 'success')) ?>
-                            <?php if ($user['box'] > 0) : ?>
-                                <a href="<?= base_url('user/add/' . $user['id']) ?>" id="add" style="text-decoration: none;">
-                                    <div class="card card-sm">
-                                        <div class="card-body">
-                                            <div class="row align-items-center">
-                                                <div class="col-auto">
-                                                    <span class="bg-<?= $color ?> text-white avatar">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-packages">
-                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                            <path d="M7 16.5l-5 -3l5 -3l5 3v5.5l-5 3l0 -5.5" />
-                                                            <path d="M2 13.5v5.5l5 3" />
-                                                            <path d="M7 16.545l5 -3.03" />
-                                                            <path d="M17 16.5l-5 -3l5 -3l5 3v5.5l-5 3l0 -5.5" />
-                                                            <path d="M12 19l5 3" />
-                                                            <path d="M17 16.5l5 -3" />
-                                                            <path d="M12 13.5v-5.5l-5 -3l5 -3l5 3v5.5" />
-                                                            <path d="M7 5.03v5.455" />
-                                                            <path d="M12 8l5 -3" />
-                                                        </svg>
-                                                    </span>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="font-weight-medium">
-                                                        <b><?= $kontena['year'] ?> | <span class="badge bg-<?= $color ?> text-<?= $color ?>-fg"><?= $user['box'] ?></span></b>
-                                                    </div>
-                                                    <div class="text-secondary">
-                                                        <b><?= lang('app.addBox') ?></b>
-                                                    </div>
-                                                </div>
+                            <div class="card card-sm">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <span class="bg-<?= $color ?> text-white avatar">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-packages">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path d="M7 16.5l-5 -3l5 -3l5 3v5.5l-5 3l0 -5.5" />
+                                                    <path d="M2 13.5v5.5l5 3" />
+                                                    <path d="M7 16.545l5 -3.03" />
+                                                    <path d="M17 16.5l-5 -3l5 -3l5 3v5.5l-5 3l0 -5.5" />
+                                                    <path d="M12 19l5 3" />
+                                                    <path d="M17 16.5l5 -3" />
+                                                    <path d="M12 13.5v-5.5l-5 -3l5 -3l5 3v5.5" />
+                                                    <path d="M7 5.03v5.455" />
+                                                    <path d="M12 8l5 -3" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="font-weight-medium">
+                                                <b><?= $kontena['year'] ?> | <span class="badge bg-<?= $color ?> text-<?= $color ?>-fg"><?= $user['box'] ?></span></b>
+                                            </div>
+                                            <div class="text-secondary">
+                                                <b><?= lang('app.boxes') ?></b>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                            <?php else : ?>
-                                <a href="<?= base_url('data/new') ?>" style="text-decoration: none;">
-                                    <div class="card card-sm">
-                                        <div class="card-body">
-                                            <div class="row align-items-center">
-                                                <div class="col-auto">
-                                                    <span class="bg-yellow text-white avatar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-database-cog">
-                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                            <path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3" />
-                                                            <path d="M4 6v6c0 1.657 3.582 3 8 3c.21 0 .42 -.003 .626 -.01" />
-                                                            <path d="M20 11.5v-5.5" />
-                                                            <path d="M4 12v6c0 1.657 3.582 3 8 3" />
-                                                            <path d="M17.001 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                                            <path d="M19.001 15.5v1.5" />
-                                                            <path d="M19.001 21v1.5" />
-                                                            <path d="M22.032 17.25l-1.299 .75" />
-                                                            <path d="M17.27 20l-1.3 .75" />
-                                                            <path d="M15.97 17.25l1.3 .75" />
-                                                            <path d="M20.733 20l1.3 .75" />
-                                                        </svg>
-                                                    </span>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="font-weight-medium">
-                                                        <b><?= lang('app.addBox') ?> | <span class="badge bg-yellow text-yellow-fg"><?= lang('app.new') ?></span></b>
-                                                    </div>
-                                                    <div class="text-secondary">
-                                                        <b><?= lang('app.startHere') ?></b>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            <?php endif ?>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-sm-6 col-lg-3">
                             <a href="<?= base_url('user/profile') ?>" style="text-decoration: none;">
@@ -86,7 +47,7 @@
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col-auto">
-                                                <span class="bg-green text-white avatar">
+                                                <span class="bg-yellow text-white avatar">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-package-export">
                                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                         <path d="M12 21l-8 -4.5v-9l8 -4.5l8 4.5v4.5" />
@@ -112,42 +73,13 @@
                             </a>
                         </div>
                         <div class="col-sm-6 col-lg-3">
-                            <a href="<?= base_url('user/receiver') ?>" style="text-decoration: none;">
-                                <div class="card card-sm">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <span class="bg-facebook text-white avatar">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-window-maximize">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                        <path d="M3 17a1 1 0 0 1 1 -1h3a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1l0 -3" />
-                                                        <path d="M4 12v-6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-6" />
-                                                        <path d="M12 8h4v4" />
-                                                        <path d="M16 8l-5 5" />
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                            <div class="col">
-                                                <div class="font-weight-medium">
-                                                    <b><?= lang('app.receiver') ?></b>
-                                                </div>
-                                                <div class="text-secondary">
-                                                    <b><?= lang('app.receiverData') ?></b>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
                             <?php if ($user['risiti'] != null) : ?>
                                 <a href="<?= base_url('data/risiti/' . session('id')) ?>" style="text-decoration: none;">
                                     <div class="card card-sm">
                                         <div class="card-body">
                                             <div class="row align-items-center">
                                                 <div class="col-auto">
-                                                    <span class="bg-twitter text-white avatar">
+                                                    <span class="bg-secondary text-white avatar">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-truck-delivery">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                             <path d="M5 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
@@ -197,60 +129,136 @@
                                 </div>
                             <?php endif ?>
                         </div>
+                        <?php if (session('role') == 'admin' || session('role') == 'mhasibu') : ?>
+                            <div class="col-sm-6 col-lg-3">
+                                <a href="<?= base_url('user/admin') ?>" style="text-decoration: none;">
+                                    <div class="card card-sm">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="col-auto">
+                                                    <span class="bg-warning text-white avatar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user-key">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                                            <path d="M6 21v-2a4 4 0 0 1 4 -4h5" />
+                                                            <path d="M18.5 18.5l-3.5 3.5l-1.5 -1.5" />
+                                                            <path d="M18.554 18.414a2 2 0 1 1 2.828 -2.828a2 2 0 0 1 -2.828 2.828" />
+                                                            <path d="M16 19l1 1" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="font-weight-medium">
+                                                        <b><?= lang('app.admin') ?></b>
+                                                    </div>
+                                                    <div class="text-secondary">
+                                                        <b><?= lang('app.settings') ?></b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>
             <hr>
+            <div class="row">
+                <?php $finish = floor($user['malipo'] / session('price'));
+                $remain = $user['malipo'] % session('price'); ?>
+                <?php for ($i = 0; $i < $user['box']; $i++) : ?>
+                    <?php if ($i < $finish) : ?>
+                        <div class="col-sm-6 col-lg-3 mb-2">
+                            <div class="card card-sm">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <span class="bg-success text-white avatar">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-package">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" />
+                                                    <path d="M12 12l8 -4.5" />
+                                                    <path d="M12 12l0 9" />
+                                                    <path d="M12 12l-8 -4.5" />
+                                                    <path d="M16 5.25l-8 4.5" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="font-weight-medium">
+                                                <b><?= $user['fikia'] ?> | <span class="badge bg-success text-success-fg"><?= session('price') ?></span></b>
+                                            </div>
+                                            <div class="text-secondary">
+                                                <b><?= ucwords(strtolower($user['mpokeaji'])) ?></b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php elseif ($remain > 0 && $i == $finish) : ?>
+                        <div class="col-sm-6 col-lg-3 mb-2">
+                            <div class="card card-sm">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <span class="bg-primary text-white avatar">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-package">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" />
+                                                    <path d="M12 12l8 -4.5" />
+                                                    <path d="M12 12l0 9" />
+                                                    <path d="M12 12l-8 -4.5" />
+                                                    <path d="M16 5.25l-8 4.5" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="font-weight-medium">
+                                                <b><?= $user['fikia'] ?> | <span class="badge bg-primary text-primary-fg"><?= $remain ?></span></b>
+                                            </div>
+                                            <div class="text-secondary">
+                                                <b><?= ucwords(strtolower($user['mpokeaji'])) ?></b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php else : ?>
+                        <div class="col-sm-6 col-lg-3 mb-2">
+                            <div class="card card-sm">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <span class="bg-danger text-white avatar">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-package">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" />
+                                                    <path d="M12 12l8 -4.5" />
+                                                    <path d="M12 12l0 9" />
+                                                    <path d="M12 12l-8 -4.5" />
+                                                    <path d="M16 5.25l-8 4.5" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="font-weight-medium">
+                                                <b><?= $user['fikia'] ?> | <span class="badge bg-danger text-danger-fg">0</span></b>
+                                            </div>
+                                            <div class="text-secondary">
+                                                <b><?= ucwords(strtolower($user['mpokeaji'])) ?></b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif ?>
+                <?php endfor ?>
+            </div>
         </div>
     </div>
 </div>
-<div class="content">
-    <?php if (session('role') == 'admin' || session('role') == 'mhasibu') : ?>
-        <?= $this->include('user/admin') ?>
-    <?php endif ?>
-</div>
-</div>
-<script type="text/javascript">
-    $("#other").modal("show")
-</script>
-<div class="modal modal-blur fade" id="other" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title"><?= lang('app.appFullName') ?> | <?= lang('app.signup') ?></h5>
-            </div>
-            <div class="modal-body">
-                <p><?= lang('app.regQn1') ?> <b><?= 54424 ?></b></p>
-                <p><?= lang('app.regQn2') ?> <b><?= 4534 ?><?= lang('app.SAR') ?></b> <?= lang('app.regQn3') ?></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn me-auto" data-bs-dismiss="modal"><?= lang('app.no') ?></button>
-                <a href="<?= base_url('register') ?>" class="btn btn-primary"><?= lang('app.yesRegister') ?></a>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    $(document).ready(function() {
-        $('#add').click(function(e) {
-            e.preventDefault();
-            url = $(this).attr('href');
-            Swal.fire({
-                title: 'Unahitaji kuongeza Box?',
-                text: "Fanya malipo mapema kuepusha Kuzuiwa box zako!",
-                icon: 'warning',
-                showCancelButton: true,
-                cancelButtonColor: '#d33',
-                confirmButtonColor: '#3085d6',
-                cancelButtonText: 'Hapana!',
-                confirmButtonText: 'Ndio',
-            }).then(function(result) {
-                if (result.value) {
-                    window.location.href = url;
-                }
-            })
-        });
-    });
-</script>
 <?= $this->endSection() ?>
-<?= $this->include('layouts/table') ?>

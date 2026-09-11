@@ -27,24 +27,46 @@ class UserController extends BaseController
         return view('user/index', $data);
     }
 
+    public function page($id)
+    {
+        $kon = new Kontena();
+        $usr = new User();
+
+        $data['title'] = lang('app.user');
+        $data['usr'] = $usr;
+        $data['kontena'] = $kon->where('current', 1)->first();
+        $data['box'] = $usr->selectSum('box')->get()->getRow()->box;
+        $data['user'] = $usr->find($id);
+        $data['users'] = $usr->where('box>', 0)->findAll();
+        $data['wahasibu'] = $usr->where('role', 'mhasibu')->findAll();
+        $data['finish'] = round(($usr->selectSum('malipo')->get()->getRow()->malipo) / 100);
+        // dd($data);
+
+        return view('user/index', $data);
+    }
+
     public function profile()
     {
         helper('form');
 
         $usr = new User();
+        $knt = new Kontena();
 
-        $data['title'] = 'Maelezo ya Mtumiaji';
+        $data['title'] = lang('app.user');
         $data['user'] = $usr->find(session('id'));
+        $data['boxes'] = $usr->selectSum('box')->get()->getRow()->box;
+        $data['kontena'] = $knt->where('current', 1)->first();
         // dd($data);
 
         return view('user/profile', $data);
     }
 
-    public function edit($id)
+    public function update()
     {
         // dd($this->request->getVar());
         $usr = new User();
 
+        $id = $this->request->getVar('id');
         $data = [
             'name' => strtoupper($this->request->getVar('name')),
             'phone' => $this->request->getVar('phone'),
@@ -54,50 +76,9 @@ class UserController extends BaseController
 
         // dd($data);
 
-        $ok = $usr->update($id, $data);
+        $usr->update($id, $data);
 
-        if ($ok) {
-            return redirect()->to('data')
-            ->with('toast', 'success')
-            ->with('message', 'Umesasisha Data zako Kikamilifu!');
-        }
-    }
-
-    public function receiver()
-    {
-        helper('form');
-
-        $dt = new Data();
-
-        $data['title'] = 'Maelezo ya Mpokeaji';
-        $data['user'] = $dt->where('user_id', session('id'))->first();
-        $data['box'] = $dt->where('user_id', session('id'))->findAll();
-        // dd($data);
-
-        return view('user/receiver', $data);
-    }
-
-    public function receiverEdit($id)
-    {
-        // dd($this->request->getVar());
-        $dt = new Data();
-
-        $data = [
-            'mpokeaji' => strtoupper($this->request->getVar('mpokeaji')),
-            'phone' => $this->request->getVar('phone'),
-            'fikia' => $this->request->getVar('fikia'),
-        ];
-
-        // dd($data);
-
-        $user = $dt->where('user_id', $id)->findAll();
-        // dd($user);
-
-        foreach ($user as $d) {
-            $dt->update($d['id'], $data);
-        }
-
-        return redirect()->to('data')->with('toast', 'success')->with('message', 'Umesasisha Data zako Kikamilifu!');
+        return redirect()->to('user/page/' . $id)->with('toast', 'success')->with('message', lang('app.successfully'))->with('title', lang('app.done'));
     }
 
     public function admin()
@@ -105,16 +86,14 @@ class UserController extends BaseController
         helper('form');
 
         $usr = new User();
-        $dt = new Data();
         $kn = new Kontena();
 
-        $data['title'] = 'Mtumiaji';
-        $data['users'] = $dt->select('user_id')->distinct()->findAll();
+        $data['title'] = lang('app.admin');
+        $data['users'] = $usr->orderBy('box', 'desc')->findAll();
         $data['wahasibu'] = $usr->where('role', 'mhasibu')->findAll();
         $data['usr'] = $usr;
         $data['current'] = $kn->where('status', 1)->first();
-        $data['sum'] = $dt->selectSum('paid')->get()->getRow()->paid;
-        $data['knt'] = $dt->where(['user_id' => session('id')])->distinct()->select('kontena_id')->findAll();
+        $data['sum'] = $usr->selectSum('malipo')->get()->getRow()->malipo;
         // dd($data);
 
         return view('user/admin', $data);
