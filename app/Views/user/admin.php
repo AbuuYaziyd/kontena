@@ -10,29 +10,33 @@
           <div class="row">
             <?php foreach ($wahasibu as $hsb) : ?>
               <?php $sum = $usr->malipoFull() ?>
-              <div class="col-sm-4">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex align-items-center">
-                      <div class="subheader"><?= lang('app.payments') ?></div>
-                      <div class="ms-auto lh-1">
-                      </div>
-                    </div>
-                    <div class="h1 mb-3"><?= $jm = $usr->malipoJamia($hsb['id']) ?? 0 ?> SAR</div>
-                    <div class="d-flex mb-2">
-                      <div class="ms-auto">
-                      </div>
-                    </div>
-                    <div class="progress progress-sm">
-                      <div class="progress-bar bg-primary" style="width: <?= ($jm / $sum) * 100 ?>%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="<?= ($jm / $sum) * 100 ?>% Complete">
-                        <span class="visually-hidden"></span>
+              <div class="col-md-4">
+                <a href="<?= base_url('malipo/mhasibu/' . $hsb['id']) ?>" style="text-decoration: none;">
+                  <div class="card card-sm">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <span class="bg-primary text-white avatar">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user-screen">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <path d="M19.03 17.818a3 3 0 0 0 1.97 -2.818v-8a3 3 0 0 0 -3 -3h-12a3 3 0 0 0 -3 3v8c0 1.317 .85 2.436 2.03 2.84" />
+                              <path d="M10 14a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                              <path d="M8 21a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
+                            </svg>
+                          </span>
+                        </div>
+                        <div class="col">
+                          <div class="font-weight-medium">
+                            <b><?= lang('app.paid') ?></b> | <span class="badge bg-danger text-success-fg"><?= $jm = $usr->malipoJamia($hsb['id']) ?? 0 ?> SAR</span>
+                          </div>
+                          <div class="text-secondary">
+                            <b><?= $hsb['name'] ?></b>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div class="card-footer">
-                    <a href="<?= base_url('malipo/mhasibu/' . $hsb['id']) ?>" class="btn btn-primary w-100"><?= $hsb['name'] ?></a>
-                  </div>
-                </div>
+                </a>
               </div>
             <?php endforeach ?>
           </div>
@@ -42,8 +46,10 @@
       <div class="row">
         <div class="card">
           <div class="col card-header">
-            <h3><b>Malipo ya Kontena</b>
-            </h3>
+            <h2>
+              <b><?= lang('app.payments') ?></b> |
+              <span class="badge bg-danger text-success-fg"><?= $malipo ?> SAR</span>
+            </h2>
           </div>
           <div class="card-body">
             <div id="table-default" class="table-responsive">
@@ -78,15 +84,16 @@
                       </td>
                       <td>
                         <div class="btn-group">
-<?php
-$rem = ($us['box'] * session('price')) - $us['malipo']; $ujumbe = htmlspecialchars('
+                          <?php
+                          $rem = ($us['box'] * session('price')) - $us['malipo'];
+                          $ujumbe = htmlspecialchars('
 Assalaamu Alaikum warahmatullahi Wabarakaatuh!%0A%0A
 Ndugu ' . $us['name'] . '%0A
 Mpaka sasa umelipia kiasi cha *riyali ' . $us['malipo'] . '*, bado kiasi cha *riyali ' . $rem . '*.%0A%0A
 *Je, unahitaji kupunguza Box?*%0A
 *Au unataraji lini kumaliza Malipo?*%0A%0A
-Baarakallahu Fiykum!'); 
-?>
+Baarakallahu Fiykum!');
+                          ?>
                           <a href="https://wa.me/<?= str_replace(' ', '', $us['phone']) ?>?text=<?= $ujumbe ?>" class="btn btn-outline-success" target="_blank" data-bs-target="#send"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp">
                               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                               <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />

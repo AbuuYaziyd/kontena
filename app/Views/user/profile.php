@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-md-3 mb-2">
                             <label><?= lang('app.box') ?> | <span class="badge bg-primary text-success-fg"><?= $user['box'] ?></span></label>
-                            <input class="form-control" type="number" name="box" placeholder="1" <?= $kontena['count'] == $boxes ? 'disabled' : '' ?> max="<?= $kontena['count'] - ($boxes + $user['box']) ?>">
+                            <input class="form-control" type="number" name="box" placeholder="1" <?= $kontena['count'] == $boxes ? 'disabled' : '' ?>>
                         </div>
                         <div class="col-md-3 mb-2">
                             <label><?= lang('app.fikia') ?></label>

@@ -42,7 +42,7 @@ $routes->group('data', function ($routes) {
 $routes->group('user', function ($routes) {
     $routes->get('/', 'UserController::index', ['filter' => 'auth']);
     $routes->get('page/(:num)', 'UserController::page/$1', ['filter' => 'auth']);
-    $routes->get('profile', 'UserController::profile', ['filter' => 'auth']);
+    $routes->get('profile/(:num)', 'UserController::profile/$1', ['filter' => 'auth']);
     $routes->post('update', 'UserController::update', ['filter' => 'auth']);
     $routes->get('admin', 'UserController::admin', ['filter' => 'admin']);
     $routes->get('box/(:num)/(:num)', 'UserController::box/$1/$2', ['filter' => 'auth']);

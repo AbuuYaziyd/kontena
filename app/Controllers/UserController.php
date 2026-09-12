@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\Data;
 use App\Models\Kontena;
 use App\Models\User;
 
@@ -45,7 +44,7 @@ class UserController extends BaseController
         return view('user/index', $data);
     }
 
-    public function profile()
+    public function profile($id)
     {
         helper('form');
 
@@ -53,7 +52,7 @@ class UserController extends BaseController
         $knt = new Kontena();
 
         $data['title'] = lang('app.user');
-        $data['user'] = $usr->find(session('id'));
+        $data['user'] = $usr->find($id);
         $data['boxes'] = $usr->selectSum('box')->get()->getRow()->box;
         $data['kontena'] = $knt->where('current', 1)->first();
         // dd($data);
@@ -98,7 +97,7 @@ class UserController extends BaseController
         $data['wahasibu'] = $usr->where('role', 'mhasibu')->findAll();
         $data['usr'] = $usr;
         $data['current'] = $kn->where('status', 1)->first();
-        $data['sum'] = $usr->selectSum('malipo')->get()->getRow()->malipo;
+        $data['malipo'] = $usr->selectSum('malipo')->get()->getRow()->malipo;
         // dd($data);
 
         return view('user/admin', $data);

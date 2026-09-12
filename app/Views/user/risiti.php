@@ -7,21 +7,19 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-4">
-                        <p class="h2">
-                            <?= lang('app.appFullName') ?>
-                        </p>
+                        <h2><b><?= lang('app.appFullName') ?></b></h2>
                         <address>
-                            <strong><?= lang('app.appFullName') ?></strong><br>
                             <b><?= lang('app.umoja') ?></b><br>
+                            <b><?= lang('app.IUM') ?></b><br>
                             <?= lang('app.location') ?><br>
-                            <?= lang('app.email') ?>: <a href="mailto:tanzaniamadinah@gmail.com">tanzaniamadina@gmail.com</a>
+                            <a href="mailto:tanzaniamadinah@gmail.com">tanzaniamadina@gmail.com</a>
                         </address>
                     </div>
                     <div class="col-4 text-center">
                         <img src="<?= base_url('app-assets/img/logo/logo.png') ?>" alt="logo" class="brand-image" height="150px">
                     </div>
                     <div class="col-4 text-end">
-                        <p class="h2"><?= lang('app.client') ?></p>
+                        <h2><b><?= lang('app.client') ?></b></h2>
                         <address>
                             <strong><?= $user['name'] ?></strong><br>
                             <strong><?= lang('app.' . $user['jamia']) ?></strong><br>

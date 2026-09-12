@@ -11,7 +11,7 @@
     <link rel="manifest" href="./manifest.json" />
     <meta name="theme-color" content="#06694c">
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('app-assets/img/logo/logo.svg') ?>">
-    <title><?= lang('app.appName') ?> | <?= $title ?></title>
+    <title><?= $title ?> | <?= lang('app.appName') ?></title>
     <!-- CSS files -->
     <link href="<?= base_url('app-assets/css/tabler' . (session('lang') != 'ar' ? '' : '.rtl') . '.min.css') ?>" rel="stylesheet" />
     <link href="<?= base_url('app-assets/css/tabler-flags' . (session('lang') != 'ar' ? '' : '.rtl') . '.min.css') ?>" rel="stylesheet" />
@@ -85,7 +85,7 @@
                                 <div class="btn-group w-100" role="group">
                                     <?php if (session('isLoggedIn')) : ?>
                                         <?php if ($title == lang('app.welcome')) : ?>
-                                            <a href="<?= base_url('data') ?>" class="btn btn-primary">
+                                            <a href="<?= base_url('user') ?>" class="btn btn-primary">
                                                 <?= lang('app.dashboard') ?>
                                             </a>
                                         <?php endif ?>

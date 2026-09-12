@@ -21,7 +21,7 @@ return [
     'copyright' => 'Hakimiliki',
     'allRightsReserved' => 'Haki zote Zimehifadhiwa.',
     'free' => 'Free',
-    'umoja' => 'Umoja wa wanafunzi wa Tanzania IUM',
+    'umoja' => 'Umoja wa wanafunzi wa Tanzania',
     'status' => 'Hali',
     'done' => 'Timilifu',
     'maintainance' => 'Ipo Matengenezoni',
