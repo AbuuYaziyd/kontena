@@ -31,7 +31,7 @@ class UserController extends BaseController
         $kon = new Kontena();
         $usr = new User();
 
-        $data['title'] = lang('app.user');
+        $data['title'] = lang('app.userData');
         $data['usr'] = $usr;
         $data['kontena'] = $kon->where('current', 1)->first();
         $data['box'] = $usr->selectSum('box')->get()->getRow()->box;
@@ -51,7 +51,7 @@ class UserController extends BaseController
         $usr = new User();
         $knt = new Kontena();
 
-        $data['title'] = lang('app.user');
+        $data['title'] = lang('app.userData');
         $data['user'] = $usr->find($id);
         $data['boxes'] = $usr->selectSum('box')->get()->getRow()->box;
         $data['kontena'] = $knt->where('current', 1)->first();
@@ -101,21 +101,6 @@ class UserController extends BaseController
         // dd($data);
 
         return view('user/admin', $data);
-    }
-
-    public function box($usr_id)
-    {
-        helper('form');
-
-        $usr = new User();
-        $kt = new Kontena();
-
-        $data['title'] = 'Data za Boxi';
-        $data['user'] = $usr->find($usr_id);
-        $data['kontena'] = $kt->where('status', 1)->first();
-        // dd($data);
-
-        return view('user/box', $data);
     }
 
     public function risiti($id)

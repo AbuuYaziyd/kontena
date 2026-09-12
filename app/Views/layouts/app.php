@@ -84,7 +84,7 @@
                             <div class="btn-list">
                                 <div class="btn-group w-100" role="group">
                                     <?php if (session('isLoggedIn')) : ?>
-                                        <?php if ($title == lang('app.welcome')) : ?>
+                                        <?php if ($title != lang('app.user')) : ?>
                                             <a href="<?= base_url('user') ?>" class="btn btn-primary">
                                                 <?= lang('app.dashboard') ?>
                                             </a>

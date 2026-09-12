@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\Data;
 use App\Models\Kontena;
 use App\Models\User;
 
@@ -17,7 +16,7 @@ class MalipoController extends BaseController
 
         $user = $usr->find($id);
 
-        $data['title'] = 'Malipo ya Kontena';
+        $data['title'] = lang('app.payments');
         $data['user'] = $user;
         // dd($data);
 
