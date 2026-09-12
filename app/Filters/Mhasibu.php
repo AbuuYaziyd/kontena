@@ -26,15 +26,11 @@ class Mhasibu implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if (!session()->get('isLoggedIn')) {
-            return redirect()
-                ->to('login');
+            return redirect()->to('login');
         }
 
         if (session('role') != 'mhasibu') {
-            return redirect()
-                ->back()
-                ->with('toast', 'error')
-                ->with('title', 'Mhasibu pekee!');;
+            return redirect()->back()->with('toast', 'error')->with('title', 'Mhasibu pekee!');;
         }
     }
 

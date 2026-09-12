@@ -26,15 +26,11 @@ class Admin implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if (!session()->get('isLoggedIn')) {
-            return redirect()
-                ->to('login');
+            return redirect()->to('login');
         }
 
         if (session('role') != 'admin' && session('role') != 'mhasibu') {
-            return redirect()
-                ->back()
-                ->with('toast', 'error')
-                ->with('title', 'Wahusika pekee!');;
+            return redirect()->back()->with('toast', 'error')->with('title', 'Wahusika pekee!');;
         }
     }
 
