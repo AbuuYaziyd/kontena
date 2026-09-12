@@ -10,7 +10,7 @@
           <div class="row">
             <?php foreach ($wahasibu as $hsb) : ?>
               <?php $sum = $usr->malipoFull() ?>
-              <div class="col-md-4">
+              <div class="col-md-4 mb-2">
                 <a href="<?= base_url('malipo/mhasibu/' . $hsb['id']) ?>" style="text-decoration: none;">
                   <div class="card card-sm">
                     <div class="card-body">

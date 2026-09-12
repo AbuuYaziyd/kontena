@@ -22,23 +22,6 @@ $routes->get('logout', 'AuthController::logout');
 $routes->get('update', 'AuthController::update');
 $routes->post('update', 'AuthController::upt');
 
-$routes->group('data', function ($routes) {
-    $routes->get('/', 'DataController::index', ['filter' => 'auth']);
-    // $routes->get('users', 'DataController::users', ['filter' => 'admin']);
-    // $routes->get('user/(:num)', 'DataController::user/$1', ['filter' => 'admin']);
-    $routes->get('revert/(:num)', 'DataController::revert/$1', ['filter' => 'admin']);
-    $routes->get('new', 'DataController::new', ['filter' => 'auth']);
-    $routes->post('create', 'DataController::create', ['filter' => 'auth']);
-    $routes->get('view/(:num)', 'DataController::view/$1', ['filter' => 'auth']);
-    $routes->get('print/(:num)', 'DataController::print/$1', ['filter' => 'auth']);
-    $routes->post('edit/(:num)', 'DataController::edit/$1', ['filter' => 'auth']);
-    $routes->get('code/(:num)', 'DataController::code/$1', ['filter' => 'auth']);
-    $routes->get('coded', 'DataController::coded', ['filter' => 'auth']);
-    $routes->post('admin', 'DataController::admin', ['filter' => 'auth']);
-    $routes->get('delete/(:num)', 'DataController::delete/$1', ['filter' => 'auth']);
-    $routes->get('reset/(:num)', 'DataController::reset/$1', ['filter' => 'auth']);
-});
-
 $routes->group('user', function ($routes) {
     $routes->get('/', 'UserController::index', ['filter' => 'auth']);
     $routes->get('page/(:num)', 'UserController::page/$1', ['filter' => 'auth']);
