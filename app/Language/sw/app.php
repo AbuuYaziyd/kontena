@@ -65,6 +65,7 @@ return [
     'client' => 'Mteja',
     'total' => 'Jumla',
     'gharama' => 'Gharama za Kusajili Box ni: ',
+    'malipoDone' => 'Malipo ya Kontena yamehifadhiwa Kikamilifu!',
     'regQn1' => 'Je, unahitaji kusajiliwa miongoni mwa watakaosafirisha vitabu kwa Kontena mwaka huu',
     'regQn2' => 'Kama ndio, basi jianadae na Malipo ya Usafirishaji kwa makadirio mwaka huu inaweza kugharimu',
     'regQn3' => 'kwa kila box moja!',

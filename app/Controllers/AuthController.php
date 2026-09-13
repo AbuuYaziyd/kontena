@@ -112,10 +112,10 @@ class AuthController extends BaseController
             $data['title'] = lang('app.login');
             $data['kont'] = $knt->where('status', 1)->first();
 
-            // return view('auth/login', $data);
+            return view('auth/login', $data);
             
-            $data['title'] = lang('app.maintainance');
-            return view('home/soon', $data);
+            // $data['title'] = lang('app.maintainance');
+            // return view('home/soon', $data);
         }
     }
 

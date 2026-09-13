@@ -38,7 +38,7 @@ class MalipoController extends BaseController
         $data = ['malipo' => $user['malipo'] + $this->request->getVar('pesa')];
         $usr->update($id, $data);
 
-        return redirect()->to('malipo/user/' . $id)->with('toast', 'success')->with('title', 'Malipo ya Kontena yamehifadhiwa Kikamilifu!');
+        return redirect()->to('malipo/user/' . $id)->with('toast', 'success')->with('title', lang('app.done'))->with('text', lang('app.malipoDone'));
     }
 
     public function mhasibu($id)

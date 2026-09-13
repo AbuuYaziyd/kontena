@@ -9,7 +9,7 @@
     <meta name="keywords" content="Umoja wa Watanzania Chuo Kikuu cha Kiislamu Madina">
     <meta name="author" content="abouyaziyd">
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('app-assets/img/logo/logo.svg') ?>">
-    <title><?= lang('app.appName') ?> | <?= $title ?></title>
+    <title><?= $title ?> | <?= lang('app.appName') ?></title>
     <!-- CSS files -->
     <link href="<?= base_url('app-assets/css/tabler' . (session('lang') != 'ar' ? '' : '.rtl') . '.min.css') ?>" rel="stylesheet" />
     <link href="<?= base_url('app-assets/css/tabler-flags' . (session('lang') != 'ar' ? '' : '.rtl') . '.min.css') ?>" rel="stylesheet" />
