@@ -103,7 +103,7 @@ class AuthController extends BaseController
     public function login()
     {
         if (session('isLoggedIn') == true) {
-            return redirect()->to('data');
+            return redirect()->to('user');
         } else {
             helper(['form']);
             
@@ -112,7 +112,10 @@ class AuthController extends BaseController
             $data['title'] = lang('app.login');
             $data['kont'] = $knt->where('status', 1)->first();
 
-            return view('auth/login', $data);
+            // return view('auth/login', $data);
+            
+            $data['title'] = lang('app.maintainance');
+            return view('home/soon', $data);
         }
     }
 
