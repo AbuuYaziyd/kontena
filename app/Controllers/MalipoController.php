@@ -31,7 +31,7 @@ class MalipoController extends BaseController
         $user = $usr->find($id);
 
         if ($user['risiti'] == null) {
-            $rst = ['risiti' => $dt->receipt($id)];
+            $rst = ['risiti' => $usr->receipt($id)];
             $usr->update($id, $rst);
         }
 

@@ -77,4 +77,17 @@ class User extends Model
 
         return $sum;
     }
+
+    function receipt($id)
+    {
+        $knt = new Kontena();
+
+        $kontena = $knt->where('status', 1)->first();
+        // dd($kontena);
+
+        $invc = $kontena['id'] . date('s') . $id;
+        $invc = "KNT" . date("m") . sprintf('%07s', $invc);
+
+        return $invc;
+    }
 }
