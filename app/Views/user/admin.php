@@ -91,8 +91,16 @@ Assalaamu Alaikum warahmatullahi Wabarakaatuh!%0A%0A
 Ndugu ' . $us['name'] . '%0A
 Mpaka sasa umelipia kiasi cha *riyali ' . $us['malipo'] . '*, bado kiasi cha *riyali ' . $rem . '*.%0A%0A
 *Je, unahitaji kupunguza Box?*%0A
-*Au unataraji lini kumaliza Malipo?*%0A%0A
-Baarakallahu Fiykum!');
+*Ikifika tarehe 26 Tunataraji kuondosha Box zote ambazo hazijalipiwa!*%0A%0A
+Tanbihi: Kama umemaliza Malipo wasiliana na Abuu Qutayba Ili kuweka sawa Udhibiti wa Pesa!%0A%0A
+Baarakallahu Fiykum!%0A%0A%0A
+------------------------------------------------------%0A%0A%0A
+السلام عليكم ورحمة الله وبركاته!%0A%0A
+الأخ: ' . $us['name'] . '%0A
+لقد سددت حتى الآن مبلغاً إجمالياً قدره *' . $us['malipo'] . ' ريالاً*، وهناك رصيد متبقٍ قدره *' . $rem . ' ريالاً*. %0A%0A
+*  في هذا الشهر نعتزم إزالة جميع الصناديق غير المدفوع ثمنها بحلول يوم 26.*%0A%0A
+*ملاحظة:* إذا كنت قد أتممت الدفع، يرجى التواصل مع "أبي قتيبة" لمطابقة الحسابات. %0A%0A
+بارك الله فيك!');
                           ?>
                           <a href="https://wa.me/<?= str_replace(' ', '', $us['phone']) ?>?text=<?= $ujumbe ?>" class="btn btn-outline-success" target="_blank" data-bs-target="#send"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp">
                               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -126,13 +134,31 @@ Baarakallahu Fiykum!');
                             <?= form_open('user/send') ?>
                             <?php
                             $rem = ($us['box'] * session('price')) - $us['malipo'];
-                            $ujumbe = 'Assalaamu Alaikum warahmatullahi Wabarakaatuh!
-                             Ndugu ' . $us['name'] . '
-                             Mpaka sasa umelipia kiasi cha *riyali ' . $us['malipo'] . '*, bado kiasi cha *riyali ' . $rem . '*.
+$ujumbe = 'Assalaamu Alaikum warahmatullahi Wabarakaatuh!
+
+Ndugu: ' . $us['name'] . '
+Mpaka sasa umelipia kiasi cha *riyali ' . $us['malipo'] . '*, bado kiasi cha *riyali ' . $rem . '*.
+
+*Je, unahitaji kupunguza Box?*
+*Ikifika tarehe 26 Tunataraji kuondosha Box zote ambazo hazijalipiwa!*
+
+Tanbihi: Kama umemaliza Malipo wasiliana na Abuu Qutayba Ili kuweka sawa Udhibiti wa Pesa!
+
+Baarakallahu Fiykum!
+
+---------------------------------------------------
+
+السلام عليكم ورحمة الله وبركاته!
+
+الأخ: ' . $us['name'] . '، 
+لقد سددت حتى الآن مبلغاً إجمالياً قدره *' . $us['malipo'] . ' ريالاً*، وهناك رصيد متبقٍ قدره *' . $rem . ' ريالاً*. 
+
+*هل ترغب في تقليص حجم الصندوق؟* 
+*  في هذا الشهر نعتزم إزالة جميع الصناديق غير المدفوع ثمنها بحلول يوم 26.*
+
+ملاحظة: إذا كنت قد أتممت الدفع، يرجى التواصل مع "أبي قتيبة" لمطابقة الحسابات.* 
                              
-                             *Je, unahitaji kupunguza Box?*
-                             *Au unataraji lini kumaliza Malipo?*
-                             Baarakallahu Fiykum!';
+بارك الله فيك!';
                             $namba = preg_replace("/[^0-9]/", "", $us['phone']); ?>
                             <div class="card-body">
                               <div class="row">
