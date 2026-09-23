@@ -98,12 +98,10 @@
                                     <?php if (session('lang') != 'ar') : ?>
                                         <a href="<?= base_url('locale/ar') ?>" class="btn btn-outline-primary">
                                             <span class="flag flag-xs flag-country-sa me-1"></span>
-                                            العربية
                                         </a>
                                     <?php else : ?>
                                         <a href="<?= base_url('locale/sw') ?>" class="btn btn-outline-primary">
                                             <span class="flag flag-xs flag-country-tz me-1"></span>
-                                            Kiswahili
                                         </a>
                                     <?php endif ?>
                                 </div>
