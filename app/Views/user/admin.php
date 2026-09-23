@@ -96,10 +96,10 @@ Tanbihi: Kama umemaliza Malipo wasiliana na Abuu Qutayba Ili kuweka sawa Udhibit
 Baarakallahu Fiykum!%0A%0A%0A
 ------------------------------------------------------%0A%0A%0A
 السلام عليكم ورحمة الله وبركاته!%0A%0A
-الأخ: ' . $us['name'] . '%0A
-لقد سددت حتى الآن مبلغاً إجمالياً قدره *' . $us['malipo'] . ' ريالاً*، وهناك رصيد متبقٍ قدره *' . $rem . ' ريالاً*. %0A%0A
-*  في هذا الشهر نعتزم إزالة جميع الصناديق غير المدفوع ثمنها بحلول يوم 26.*%0A%0A
-*ملاحظة:* إذا كنت قد أتممت الدفع، يرجى التواصل مع "أبي قتيبة" لمطابقة الحسابات. %0A%0A
+الأخ: ' . $us['name'] . '%0A%0A
+حتى الآن لقد سددت مبلغاً إجمالياً قدره *' . $us['malipo'] . ' ريالاً*، وهناك رصيد متبقٍ قدره *' . $rem . ' ريالاً*. %0A%0A
+*  في هذا الشهر عزمنا بإزالة جميع الصناديق غير المدفوع ثمنها بحلول يوم 26%0A%0A
+*ملاحظة:* إن كنت قد أتممت الدفع، يرجى التواصل مع "أبي قتيبة" لمطابقة الحسابات. %0A%0A
 بارك الله فيك!');
                           ?>
                           <a href="https://wa.me/<?= str_replace(' ', '', $us['phone']) ?>?text=<?= $ujumbe ?>" class="btn btn-outline-success" target="_blank" data-bs-target="#send"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp">
