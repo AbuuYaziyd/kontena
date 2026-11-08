@@ -29,6 +29,11 @@
   <div class="page-body">
     <div class="container-xl">
       <div class="card card-lg">
+        <div class="card-header">
+          <h2>
+            <?= lang('app.boxInfo') ?>
+          </h2>
+        </div>
         <div class="card-body">
           <div id="table-default" class="table-responsive">
             <table class="table table-bordered dtTable">
