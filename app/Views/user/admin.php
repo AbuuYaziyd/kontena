@@ -50,6 +50,7 @@
               <b><?= lang('app.payments') ?></b> |
               <span class="badge bg-danger text-success-fg"><?= $malipo ?> SAR</span>
             </h2>
+            <div class="card-actions"><a href="#" class="btn btn-warning text-success-fg float-end"><?= $malipo ?> SAR</a></div>
           </div>
           <div class="card-body">
             <div id="table-default" class="table-responsive">
@@ -69,7 +70,7 @@
                       <td><?= $key + 1 ?></td>
                       <td>
                         <?= $us['name'] ?><br>
-                        <span class="badge bg-primary text-success-fg"><?= strtoupper(lang('app.' . $us['fikia'])) ?></span>
+                        <span class="badge bg-<?= $us['fikia'] == 'DAR' ? 'primary' : ($us['fikia'] == 'ZNZ' ? 'green' : 'purple') ?> text-success-fg"><?= strtoupper(lang('app.' . $us['fikia'])) ?></span>
                       </td>
                       <td>
                         <div class="row align-items-center">
@@ -134,7 +135,7 @@ Baarakallahu Fiykum!%0A%0A%0A
                             <?= form_open('user/send') ?>
                             <?php
                             $rem = ($us['box'] * session('price')) - $us['malipo'];
-$ujumbe = 'Assalaamu Alaikum warahmatullahi Wabarakaatuh!
+                            $ujumbe = 'Assalaamu Alaikum warahmatullahi Wabarakaatuh!
 
 Ndugu: ' . $us['name'] . '
 Mpaka sasa umelipia kiasi cha *riyali ' . $us['malipo'] . '*, bado kiasi cha *riyali ' . $rem . '*.
