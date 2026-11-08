@@ -93,7 +93,7 @@ class UserController extends BaseController
         $kn = new Kontena();
 
         $data['title'] = lang('app.admin');
-        $data['users'] = $usr->orderBy('box', 'desc')->findAll();
+        $data['users'] = $usr->where('box>=', 1)->orderBy('box', 'desc')->findAll();
         $data['wahasibu'] = $usr->where('role', 'mhasibu')->findAll();
         $data['usr'] = $usr;
         $data['current'] = $kn->where('status', 1)->first();
