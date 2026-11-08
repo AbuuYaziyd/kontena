@@ -69,7 +69,7 @@
                       <td><?= $key + 1 ?></td>
                       <td>
                         <?= $us['name'] ?><br>
-                        <span class="badge bg-primary text-success-fg"><?= lang('app.' . $us['fikia']) ?></span>
+                        <span class="badge bg-primary text-success-fg"><?= strtoupper(lang('app.' . $us['fikia'])) ?></span>
                       </td>
                       <td>
                         <div class="row align-items-center">
