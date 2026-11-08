@@ -42,6 +42,7 @@ return [
     'uni' => 'Chuo Unachosoma',
     'phone' => 'Simu',
     'user' => 'Mtumiaji',
+    'users' => 'Watumiaji',
     'box' => 'Box',
     'receiver' => 'Mpokeaji',
     'receiverData' => 'Data za Mpokeaji',
