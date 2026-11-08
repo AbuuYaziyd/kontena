@@ -50,7 +50,7 @@
               <b><?= lang('app.payments') ?></b> |
               <span class="badge bg-danger text-success-fg"><?= $malipo ?> SAR</span>
             </h2>
-            <div class="card-actions"><a href="#" class="btn btn-warning text-success-fg float-end"><?= lang('app.users') ?></a></div>
+            <div class="card-actions"><a href="<?= base_url('user/data') ?>" class="btn btn-warning text-success-fg float-end"><?= lang('app.users') ?></a></div>
           </div>
           <div class="card-body">
             <div id="table-default" class="table-responsive">

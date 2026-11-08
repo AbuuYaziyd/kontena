@@ -103,6 +103,24 @@ class UserController extends BaseController
         return view('user/admin', $data);
     }
 
+    public function data()
+    {
+        helper('form');
+
+        $usr = new User();
+        $kn = new Kontena();
+
+        $data['title'] = lang('app.data');
+        $data['users'] = $usr->where('box>=', 1)->orderBy('box', 'desc')->findAll();
+        $data['wahasibu'] = $usr->where('role', 'mhasibu')->findAll();
+        $data['usr'] = $usr;
+        $data['current'] = $kn->where('status', 1)->first();
+        $data['malipo'] = $usr->selectSum('malipo')->get()->getRow()->malipo;
+        // dd($data);
+
+        return view('user/data', $data);
+    }
+
     public function risiti($id)
     {
         $set = new Kontena();

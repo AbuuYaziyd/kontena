@@ -28,6 +28,7 @@ $routes->group('user', function ($routes) {
     $routes->get('profile/(:num)', 'UserController::profile/$1', ['filter' => 'auth']);
     $routes->post('update', 'UserController::update', ['filter' => 'auth']);
     $routes->get('admin', 'UserController::admin', ['filter' => 'admin']);
+    $routes->get('data', 'UserController::data', ['filter' => 'admin']);
     $routes->get('risiti/(:num)', 'UserController::risiti/$1', ['filter' => 'auth']);
 });
 
